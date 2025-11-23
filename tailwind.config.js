@@ -33,7 +33,7 @@ module.exports = {
       },
       animation: {
         'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
-        'fade-up': 'fade-up 0.6s ease-out',
+        'fade-up': 'fade-up 0.6s ease-out forwards',
       },
       keyframes: {
         'glow-pulse': {

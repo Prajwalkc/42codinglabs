@@ -33,7 +33,20 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <a 
+            href="/#home" 
+            onClick={(e) => {
+              e.preventDefault()
+              setActiveSection('home')
+              const homeElement = document.getElementById('home')
+              if (homeElement) {
+                homeElement.scrollIntoView({ behavior: 'smooth' })
+              } else {
+                window.location.href = '/#home'
+              }
+            }} 
+            className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer"
+          >
             <div className="text-neon-purple-light text-sm font-bold font-mono" style={{ textShadow: '0 0 10px rgba(178, 111, 255, 0.8), 0 0 20px rgba(178, 111, 255, 0.6)' }}>
               &lt; /&gt;
             </div>
@@ -44,37 +57,73 @@ export default function Navigation() {
                 <span className="premium-white-subtle font-body font-normal text-[10px]">Labs</span>
               </div>
             </div>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <a 
-              href="#home" 
-              onClick={() => setActiveSection('home')}
+              href="/#home" 
+              onClick={(e) => {
+                e.preventDefault()
+                setActiveSection('home')
+                const homeElement = document.getElementById('home')
+                if (homeElement) {
+                  homeElement.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.location.href = '/#home'
+                }
+              }}
               className="premium-white-subtle font-body relative group transition-colors"
             >
               Home
               <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-300 to-purple-500 transition-all duration-300 ${activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </a>
             <a 
-              href="#about" 
-              onClick={() => setActiveSection('about')}
+              href="/#about" 
+              onClick={(e) => {
+                e.preventDefault()
+                setActiveSection('about')
+                const aboutElement = document.getElementById('about')
+                if (aboutElement) {
+                  aboutElement.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.location.href = '/#about'
+                }
+              }}
               className="text-gray-300 font-body hover:premium-white-subtle relative group transition-colors"
             >
               About Us
               <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-300 to-purple-500 transition-all duration-300 ${activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </a>
             <a 
-              href="#services" 
-              onClick={() => setActiveSection('services')}
+              href="/#services" 
+              onClick={(e) => {
+                e.preventDefault()
+                setActiveSection('services')
+                const servicesElement = document.getElementById('services')
+                if (servicesElement) {
+                  servicesElement.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.location.href = '/#services'
+                }
+              }}
               className="text-gray-300 font-body hover:premium-white-subtle relative group transition-colors"
             >
               Courses
               <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-300 to-purple-500 transition-all duration-300 ${activeSection === 'services' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </a>
             <a 
-              href="#contact" 
-              onClick={() => setActiveSection('contact')}
+              href="/#contact" 
+              onClick={(e) => {
+                e.preventDefault()
+                setActiveSection('contact')
+                const contactElement = document.getElementById('contact')
+                if (contactElement) {
+                  contactElement.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.location.href = '/#contact'
+                }
+              }}
               className="text-gray-300 font-body hover:premium-white-subtle relative group transition-colors"
             >
               Sign Up
@@ -85,7 +134,15 @@ export default function Navigation() {
           {/* CTA Button & Mobile Menu */}
           <div className="flex items-center space-x-4">
             <button 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={(e) => {
+                e.preventDefault()
+                const contactElement = document.getElementById('contact')
+                if (contactElement) {
+                  contactElement.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.location.href = '/#contact'
+                }
+              }}
               className="hidden md:block px-6 py-2 gradient-border premium-white-subtle font-semibold rounded-md hover:scale-105 transition-all duration-300 text-sm uppercase tracking-wide"
             >
               LOGIN
@@ -108,35 +165,84 @@ export default function Navigation() {
         {isMenuOpen && (
           <div className="md:hidden py-4 space-y-4 border-t border-neon-purple/20">
             <a 
-              href="#home" 
-              onClick={() => {setActiveSection('home'); setIsMenuOpen(false)}}
+              href="/#home" 
+              onClick={(e) => {
+                e.preventDefault()
+                setActiveSection('home')
+                setIsMenuOpen(false)
+                const homeElement = document.getElementById('home')
+                if (homeElement) {
+                  homeElement.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.location.href = '/#home'
+                }
+              }}
               className={`block font-body transition-colors ${activeSection === 'home' ? 'premium-white-subtle' : 'text-gray-300'}`}
             >
               Home
             </a>
             <a 
-              href="#about" 
-              onClick={() => {setActiveSection('about'); setIsMenuOpen(false)}}
+              href="/#about" 
+              onClick={(e) => {
+                e.preventDefault()
+                setActiveSection('about')
+                setIsMenuOpen(false)
+                const aboutElement = document.getElementById('about')
+                if (aboutElement) {
+                  aboutElement.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.location.href = '/#about'
+                }
+              }}
               className={`block font-body transition-colors ${activeSection === 'about' ? 'premium-white-subtle' : 'text-gray-300'}`}
             >
               About Us
             </a>
             <a 
-              href="#services" 
-              onClick={() => {setActiveSection('services'); setIsMenuOpen(false)}}
+              href="/#services" 
+              onClick={(e) => {
+                e.preventDefault()
+                setActiveSection('services')
+                setIsMenuOpen(false)
+                const servicesElement = document.getElementById('services')
+                if (servicesElement) {
+                  servicesElement.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.location.href = '/#services'
+                }
+              }}
               className={`block font-body transition-colors ${activeSection === 'services' ? 'premium-white-subtle' : 'text-gray-300'}`}
             >
               Courses
             </a>
             <a 
-              href="#contact" 
-              onClick={() => {setActiveSection('contact'); setIsMenuOpen(false)}}
+              href="/#contact" 
+              onClick={(e) => {
+                e.preventDefault()
+                setActiveSection('contact')
+                setIsMenuOpen(false)
+                const contactElement = document.getElementById('contact')
+                if (contactElement) {
+                  contactElement.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.location.href = '/#contact'
+                }
+              }}
               className={`block font-body transition-colors ${activeSection === 'contact' ? 'premium-white-subtle' : 'text-gray-300'}`}
             >
               Sign Up
             </a>
             <button 
-              onClick={() => {document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); setIsMenuOpen(false)}}
+              onClick={(e) => {
+                e.preventDefault()
+                setIsMenuOpen(false)
+                const contactElement = document.getElementById('contact')
+                if (contactElement) {
+                  contactElement.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.location.href = '/#contact'
+                }
+              }}
               className="w-full px-6 py-2 gradient-border premium-white-subtle font-semibold rounded-md hover:scale-105 transition-all duration-300 text-sm uppercase tracking-wide mt-4"
             >
               LOGIN

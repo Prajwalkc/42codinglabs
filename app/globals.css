@@ -99,7 +99,7 @@
   }
   
   .card-entrance {
-    animation: fade-up 0.6s ease-out;
+    animation: fade-up 0.6s ease-out forwards;
   }
   
   .gradient-shimmer {
