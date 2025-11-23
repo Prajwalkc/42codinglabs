@@ -56,7 +56,9 @@ export default function Home() {
               </div>
             </div>
             <p className="text-base md:text-lg lg:text-xl text-gray-300 mb-10 font-body font-normal leading-relaxed max-w-2xl">
-              Master modern tech stacks through hands-on learning. From mobile development to AI integration, we teach the skills you need to build the future.
+              Learn the most in-demand technologies through comprehensive, project-based courses. From mobile app 
+              development to AI integration, full-stack web to UI/UX design—master real-world skills with hands-on 
+              projects, expert guidance, and a supportive community of learners.
             </p>
             <button
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
@@ -84,15 +86,20 @@ export default function Home() {
                   <span className="premium-white-subtle font-body font-normal text-[10px]">Labs</span>
                 </div>
               </span>
-              is an online coding school that teaches multiple tech stacks through 
-              practical, hands-on courses. We offer comprehensive learning paths in mobile development, 
-              AI integration, web technologies, and more. Our curriculum is designed for all skill levels, 
-              from beginners to advanced developers.
+              offers comprehensive courses in the most sought-after technologies. Our curriculum covers 
+              mobile development, AI & machine learning, full-stack web development, and UI/UX design—each 
+              course structured to take you from fundamentals to advanced implementation.
             </p>
             <p>
-              Learn at your own pace with real-world projects, expert mentorship, and a community 
-              of passionate learners. Start your coding journey today and build the skills needed 
-              for tomorrow's tech industry.
+              Every course includes hands-on projects that mirror real-world scenarios, allowing you to 
+              build a portfolio while you learn. Our expert instructors provide personalized feedback, 
+              and our community of learners supports your growth throughout your journey.
+            </p>
+            <p>
+              Whether you're a complete beginner or an experienced developer looking to expand your skillset, 
+              our courses are designed to meet you where you are. With flexible learning schedules, lifetime 
+              access to course materials, and ongoing support, we're committed to helping you achieve your 
+              career goals in technology.
             </p>
           </div>
         </div>
@@ -104,6 +111,14 @@ export default function Home() {
           <NeonHeading level={2} variant="section" className="text-center">Courses</NeonHeading>
           
           <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-12 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
+          
+          <div className="text-center mb-12 max-w-3xl mx-auto">
+            <p className="text-gray-300 text-lg md:text-xl leading-relaxed font-body">
+              Choose from our specialized courses, each designed with industry best practices and real-world 
+              applications. Whether you're starting your coding journey or advancing your skills, our structured 
+              curriculum and expert instructors will guide you every step of the way.
+            </p>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
             <NeonCard
@@ -191,8 +206,9 @@ export default function Home() {
           
           <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-12 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
           
-          <p className="text-center text-gray-300 mb-8 font-body">
-            Ready to start your coding journey? Sign up to get started with our courses.
+          <p className="text-center text-gray-300 mb-8 text-lg font-body">
+            Join thousands of students building their tech careers. Sign up today to get access to 
+            our courses, learning resources, and community support. Your coding journey starts here.
           </p>
           
           <form className="mt-12 space-y-6">

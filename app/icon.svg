@@ -13,6 +13,6 @@
       </feMerge>
     </filter>
   </defs>
-  <text x="60" y="60" font-family="monospace" font-size="45" font-weight="bold" text-anchor="middle" fill="url(#gradient)" filter="url(#glow)">&lt; /&gt;</text>
+  <text x="60" y="62" font-family="monospace" font-size="52" font-weight="bold" text-anchor="middle" fill="url(#gradient)" filter="url(#glow)">&lt; /&gt;</text>
 </svg>
 
