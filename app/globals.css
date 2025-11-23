@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Exo+2:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-gray-200 font-body antialiased;
+    background-color: #0f0f15;
+  }
+}
+
+@layer utilities {
+  .neon-border {
+    border: 1px solid #a855f7;
+    box-shadow: 0 0 10px #a855f7, inset 0 0 10px rgba(168, 85, 247, 0.1);
+  }
+  
+  .neon-border-hover {
+    @apply transition-all duration-300;
+    border: 1px solid #b26fff;
+    box-shadow: 0 0 20px #b26fff, inset 0 0 20px rgba(178, 111, 255, 0.2);
+  }
+  
+  .neon-text {
+    color: #b26fff;
+    text-shadow: 0 0 8px rgba(178, 111, 255, 0.6), 0 0 15px rgba(178, 111, 255, 0.4), 0 0 25px rgba(178, 111, 255, 0.3);
+  }
+  
+  .neon-text-strong {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(178, 111, 255, 0.8), 0 0 20px rgba(178, 111, 255, 0.6), 0 0 30px rgba(178, 111, 255, 0.4), 0 0 40px rgba(178, 111, 255, 0.3);
+  }
+  
+  .glow-on-hover {
+    @apply transition-all duration-300;
+  }
+  
+  .glow-on-hover:hover {
+    box-shadow: 0 0 15px rgba(178, 111, 255, 0.5), 0 0 30px rgba(178, 111, 255, 0.3), 0 0 45px rgba(178, 111, 255, 0.2);
+    transform: scale(1.01);
+  }
+  
+  .grid-background {
+    background-image: 
+      linear-gradient(rgba(178, 111, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(178, 111, 255, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #d8b4fe 0%, #c084fc 30%, #a78bfa 60%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.95;
+  }
+  
+  .gradient-border {
+    border: 2px solid #c084fc;
+    background: transparent;
+    box-shadow: 0 0 10px rgba(192, 132, 252, 0.4), inset 0 0 10px rgba(192, 132, 252, 0.1);
+  }
+  
+  .gradient-border:hover {
+    border-color: #9333ea;
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.6), inset 0 0 15px rgba(147, 51, 234, 0.2);
+  }
+  
+  .premium-white {
+    background: linear-gradient(135deg, #ffffff 0%, #f3e8ff 30%, #e9d5ff 60%, #ddd6fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .premium-white-subtle {
+    color: #f3e8ff;
+    text-shadow: 0 0 8px rgba(243, 232, 255, 0.3), 0 0 15px rgba(221, 214, 254, 0.2);
+  }
+  
+  .form-input-bg {
+    background: linear-gradient(135deg, rgba(15, 15, 21, 0.95) 0%, rgba(20, 15, 28, 0.95) 50%, rgba(15, 15, 21, 0.95) 100%);
+    backdrop-filter: blur(10px);
+  }
+  
+  .form-input-bg:focus {
+    background: linear-gradient(135deg, rgba(20, 15, 28, 0.98) 0%, rgba(25, 18, 35, 0.98) 50%, rgba(20, 15, 28, 0.98) 100%);
+    box-shadow: 0 0 0 1px rgba(192, 132, 252, 0.3);
+  }
+  
+  .gradient-line {
+    animation: shimmer 3s ease-in-out infinite;
+  }
+  
+  .icon-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .card-entrance {
+    animation: fade-up 0.6s ease-out;
+  }
+  
+  .gradient-shimmer {
+    animation: shimmer-text 4s ease-in-out infinite;
+  }
+  
+  .button-pulse {
+    animation: border-pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow: 0 0 8px rgba(178, 111, 255, 0.3);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(178, 111, 255, 0.5);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmer-text {
+  0%, 100% {
+    opacity: 0.95;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes border-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(192, 132, 252, 0.4), inset 0 0 10px rgba(192, 132, 252, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(192, 132, 252, 0.6), inset 0 0 15px rgba(192, 132, 252, 0.2);
+  }
+}
+
