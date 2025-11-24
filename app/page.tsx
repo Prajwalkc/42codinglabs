@@ -94,51 +94,81 @@ export default function Home() {
         <ParticleBackground />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
-          <div className="max-w-3xl animate-fade-up">
-            <div className="flex items-center space-x-4 mb-8">
-              <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-body font-bold tracking-tighter leading-[0.9] uppercase gradient-text">
-                42
-              </h1>
-              <div className="flex flex-col leading-tight">
-                <span className="premium-white font-body font-normal text-xl md:text-3xl lg:text-4xl">
-                  Coding
-                </span>
-                <span className="premium-white font-body font-normal text-xl md:text-3xl lg:text-4xl">
-                  Labs
-                </span>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl animate-fade-up">
+              <div className="flex items-center space-x-4 mb-8">
+                <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-body font-bold tracking-tighter leading-[0.9] uppercase gradient-text">
+                  42
+                </h1>
+                <div className="flex flex-col leading-tight">
+                  <span className="premium-white font-body font-normal text-xl md:text-3xl lg:text-4xl">
+                    Coding
+                  </span>
+                  <span className="premium-white font-body font-normal text-xl md:text-3xl lg:text-4xl">
+                    Labs
+                  </span>
+                </div>
+              </div>
+              <p className="text-base md:text-lg lg:text-xl text-gray-300 mb-10 font-body font-normal leading-relaxed max-w-2xl">
+                Transform your ideas into production-ready applications with our expert development team. 
+                We specialize in mobile apps, full-stack web solutions, AI integration, and UI/UX design. 
+                From startups to enterprises, we deliver scalable, high-quality software solutions that drive business growth.
+              </p>
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("services")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="px-8 py-3 premium-white-subtle font-semibold rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_12px_rgba(178,111,255,0.3),0_0_20px_rgba(178,111,255,0.2)] gradient-border hover:gradient-border-hover"
+                aria-label="Explore Services"
+              >
+                Our Services
+              </button>
+            </div>
+            
+            {/* Hero Image */}
+            <div className="hidden md:block relative animate-fade-up" style={{ animationDelay: "0.2s" }}>
+              <div className="relative rounded-2xl overflow-hidden border border-neon-purple/30 shadow-[0_0_30px_rgba(178,111,255,0.2)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-transparent z-10"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop&q=80"
+                  alt="Software Development"
+                  className="w-full h-[500px] object-cover opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent z-20"></div>
               </div>
             </div>
-            <p className="text-base md:text-lg lg:text-xl text-gray-300 mb-10 font-body font-normal leading-relaxed max-w-2xl">
-              Transform your ideas into production-ready applications with our expert development team. 
-              We specialize in mobile apps, full-stack web solutions, AI integration, and UI/UX design. 
-              From startups to enterprises, we deliver scalable, high-quality software solutions that drive business growth.
-            </p>
-            <button
-              onClick={() =>
-                document
-                  .getElementById("services")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="px-8 py-3 premium-white-subtle font-semibold rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_12px_rgba(178,111,255,0.3),0_0_20px_rgba(178,111,255,0.2)] gradient-border hover:gradient-border-hover"
-              aria-label="Explore Services"
-            >
-              Our Services
-            </button>
           </div>
         </div>
       </section>
 
       {/* About Section */}
       <section id="about" className="relative py-24 px-4 md:px-8 bg-dark-bg-light/20 z-10">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
             About
           </NeonHeading>
 
           <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-12 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
 
-          <div className="text-gray-300 text-base md:text-lg leading-relaxed space-y-6 font-body font-normal">
-            <p>
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+            {/* About Image */}
+            <div className="relative order-2 md:order-1">
+              <div className="relative rounded-2xl overflow-hidden border border-neon-purple/30 shadow-[0_0_30px_rgba(178,111,255,0.2)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-transparent z-10"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&q=80"
+                  alt="Team Collaboration"
+                  className="w-full h-[400px] object-cover opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/60 via-transparent to-transparent z-20"></div>
+              </div>
+            </div>
+
+            {/* About Content */}
+            <div className="text-gray-300 text-base md:text-lg leading-relaxed space-y-6 font-body font-normal order-1 md:order-2">
+              <p>
               <span className="inline-flex items-center space-x-2 mr-2">
                 <span className="font-body font-bold text-3xl md:text-4xl gradient-text">
                   42
@@ -169,6 +199,7 @@ export default function Home() {
               From initial concept to deployment and ongoing maintenance, we're committed to delivering 
               high-quality, scalable solutions that drive your business forward.
             </p>
+            </div>
           </div>
         </div>
       </section>
@@ -191,6 +222,23 @@ export default function Home() {
               From mobile app development to full-stack solutions, our expert team delivers 
               production-ready applications using industry best practices and cutting-edge technologies.
             </p>
+          </div>
+
+          {/* Services Background Image */}
+          <div className="relative mb-16 rounded-2xl overflow-hidden border border-neon-purple/30 shadow-[0_0_30px_rgba(178,111,255,0.2)]">
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-transparent z-10"></div>
+            <img 
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=400&fit=crop&q=80"
+              alt="Technology Services"
+              className="w-full h-[300px] object-cover opacity-80"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 via-dark-bg/40 to-transparent z-20"></div>
+            <div className="absolute inset-0 flex items-center justify-center z-30">
+              <div className="text-center px-8">
+                <h3 className="text-3xl md:text-4xl font-bold premium-white-subtle mb-4">Innovation Meets Excellence</h3>
+                <p className="text-gray-300 text-lg max-w-2xl mx-auto">Delivering cutting-edge solutions that transform businesses</p>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
@@ -294,10 +342,12 @@ export default function Home() {
               {/* Avatar with enhanced styling */}
               <div className="flex justify-center mb-4 relative z-10">
                 <div className="relative">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-neon-purple/50 to-neon-purple/30 flex items-center justify-center border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
-                    <span className="text-3xl font-bold premium-white-subtle">
-                      P
-                    </span>
+                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
+                    <img 
+                      src="https://ui-avatars.com/api/?name=Prajwal&background=b256fe&color=fff&size=200&bold=true"
+                      alt="Prajwal"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-neon-purple/20 to-transparent blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
@@ -370,10 +420,12 @@ export default function Home() {
               {/* Avatar with enhanced styling */}
               <div className="flex justify-center mb-4 relative z-10">
                 <div className="relative">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-neon-purple/50 to-neon-purple/30 flex items-center justify-center border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
-                    <span className="text-3xl font-bold premium-white-subtle">
-                      P
-                    </span>
+                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
+                    <img 
+                      src="https://ui-avatars.com/api/?name=Pooja&background=b256fe&color=fff&size=200&bold=true"
+                      alt="Pooja"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-neon-purple/20 to-transparent blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
@@ -381,7 +433,7 @@ export default function Home() {
 
               {/* Name */}
               <h3 className="text-lg md:text-xl font-body font-bold premium-white-subtle mb-1 text-center relative z-10">
-                Pooja Saru
+                Pooja
               </h3>
 
               {/* Role */}
@@ -444,10 +496,12 @@ export default function Home() {
               {/* Avatar with enhanced styling */}
               <div className="flex justify-center mb-4 relative z-10">
                 <div className="relative">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-neon-purple/50 to-neon-purple/30 flex items-center justify-center border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
-                    <span className="text-3xl font-bold premium-white-subtle">
-                      A
-                    </span>
+                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
+                    <img 
+                      src="https://ui-avatars.com/api/?name=Amit&background=b256fe&color=fff&size=200&bold=true"
+                      alt="Amit"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-neon-purple/20 to-transparent blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
@@ -455,7 +509,7 @@ export default function Home() {
 
               {/* Name */}
               <h3 className="text-lg md:text-xl font-body font-bold premium-white-subtle mb-1 text-center relative z-10">
-                Amit Sharma
+                Amit
               </h3>
 
               {/* Role */}
