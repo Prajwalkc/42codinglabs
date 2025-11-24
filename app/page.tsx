@@ -217,28 +217,70 @@ export default function Home() {
         ref={heroRef}
         id="home"
         className={`relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-24 z-10 transition-colors duration-300 ${
-          theme === 'dark' ? '' : 'bg-gradient-to-b from-[#F5F0E6] to-[#FAF5EE]'
+          theme === 'dark' ? 'bg-dark-bg-light/20' : ''
         }`}
+        style={theme === 'light' ? {
+          background: 'linear-gradient(to bottom, #F5F0E6 0%, #FAF5EE 70%, #FAF5EE 100%)'
+        } : {}}
       >
-        {/* Background Image with Parallax */}
+        {/* Large SVG Icon with Parallax */}
         <div 
-          className="absolute inset-0 z-0 overflow-hidden"
+          className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none"
           style={{
             transform: `translateY(${parallaxOffset * 0.5}px) scale(1.1)`,
             willChange: 'transform'
           }}
         >
-          <img 
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop&q=80"
-            alt="Technology Background"
-            className="w-full h-full object-cover"
-            loading="eager"
-            decoding="async"
+          <svg 
+            width="800" 
+            height="800" 
+            viewBox="0 0 800 800" 
+            className={`w-full h-full max-w-4xl max-h-4xl opacity-20 transition-opacity duration-300 ${
+              theme === 'dark' ? 'text-neon-purple/30' : 'text-beige/20'
+            }`}
             style={{
-              transform: `translateY(${parallaxOffset * 0.3}px)`,
-              willChange: 'transform'
+              transform: `translateY(${parallaxOffset * 0.3}px) rotate(${scrollY * 5}deg)`,
+              willChange: 'transform',
+              filter: theme === 'dark' 
+                ? 'drop-shadow(0 0 40px rgba(178, 111, 255, 0.2))'
+                : 'drop-shadow(0 0 40px rgba(178, 141, 107, 0.15))'
             }}
-          />
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <defs>
+              <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                {theme === 'dark' ? (
+                  <>
+                    <stop offset="0%" stopColor="#B26FFF" stopOpacity="0.3" />
+                    <stop offset="50%" stopColor="#8B5CF6" stopOpacity="0.2" />
+                    <stop offset="100%" stopColor="#B26FFF" stopOpacity="0.3" />
+                  </>
+                ) : (
+                  <>
+                    <stop offset="0%" stopColor="#D4A5A5" stopOpacity="0.2" />
+                    <stop offset="50%" stopColor="#B28D6B" stopOpacity="0.15" />
+                    <stop offset="100%" stopColor="#A1754F" stopOpacity="0.2" />
+                  </>
+                )}
+              </linearGradient>
+            </defs>
+            {/* Code brackets icon */}
+            <path 
+              d="M200 200 L150 400 L200 600 M600 200 L650 400 L600 600" 
+              stroke="url(#iconGradient)" 
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            {/* Terminal/code lines */}
+            <line x1="250" y1="300" x2="550" y2="300" stroke="url(#iconGradient)" strokeLinecap="round" />
+            <line x1="250" y1="400" x2="450" y2="400" stroke="url(#iconGradient)" strokeLinecap="round" />
+            <line x1="250" y1="500" x2="500" y2="500" stroke="url(#iconGradient)" strokeLinecap="round" />
+            {/* Decorative circles */}
+            <circle cx="400" cy="400" r="150" stroke="url(#iconGradient)" strokeDasharray="10,5" opacity="0.5" />
+            <circle cx="400" cy="400" r="100" stroke="url(#iconGradient)" strokeDasharray="5,5" opacity="0.3" />
+          </svg>
         </div>
 
         {/* Content with Parallax */}
@@ -264,18 +306,22 @@ export default function Home() {
                 42
               </h1>
               <div className="flex flex-col leading-tight">
-                <span className="premium-white font-body font-normal text-xl md:text-3xl lg:text-4xl">
+                <span className={`font-body font-normal text-xl md:text-3xl lg:text-4xl transition-colors duration-300 ${
+                  theme === 'dark' ? 'premium-white' : 'text-light-text-secondary'
+                }`}>
                   Coding
                 </span>
-                <span className="premium-white font-body font-normal text-xl md:text-3xl lg:text-4xl">
+                <span className={`font-body font-normal text-xl md:text-3xl lg:text-4xl transition-colors duration-300 ${
+                  theme === 'dark' ? 'premium-white' : 'text-light-text-secondary'
+                }`}>
                   Labs
                 </span>
               </div>
             </div>
-             <p className={`text-base md:text-lg lg:text-xl mb-10 font-body font-medium leading-relaxed max-w-2xl ${
+             <p className={`text-base md:text-lg lg:text-xl mb-10 font-body font-medium leading-relaxed max-w-2xl transition-colors duration-300 ${
                theme === 'dark' 
                  ? 'text-gray-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' 
-                 : 'hero-subtitle-gradient'
+                 : 'text-light-text-secondary'
              }`}>
                Transform your ideas into production-ready applications. We specialize in mobile apps, full-stack web solutions, AI integration, and UI/UX design.
              </p>
@@ -288,7 +334,7 @@ export default function Home() {
               className={`px-8 py-3 font-semibold rounded-lg transition-all duration-300 hover:scale-[1.02] ${
                 theme === 'dark' 
                   ? 'premium-white-subtle hover:shadow-[0_0_12px_rgba(178,111,255,0.3),0_0_20px_rgba(178,111,255,0.2)] gradient-border hover:gradient-border-hover'
-                  : 'text-white hover:text-white/90 beige-gradient-border hover:shadow-[0_0_12px_rgba(178,141,107,0.3),0_0_20px_rgba(178,141,107,0.2)]'
+                  : 'text-light-text-secondary hover:text-light-text-primary beige-gradient-border hover:shadow-[0_0_12px_rgba(178,141,107,0.3),0_0_20px_rgba(178,141,107,0.2)]'
               }`}
               aria-label="Explore Services"
             >
@@ -303,8 +349,8 @@ export default function Home() {
               <div 
                 className={`backdrop-blur-md rounded-xl p-6 transition-all duration-300 ${
                   theme === 'dark' 
-                    ? 'bg-dark-bg-light/70 border-neon-purple/30 shadow-[0_0_20px_rgba(178,111,255,0.2)]' 
-                    : 'bg-gradient-to-br from-[#FAF5EE]/95 to-[#F5F0E6]/90 beige-gradient-border backdrop-blur-md'
+                    ? 'bg-dark-bg-light/70 shadow-[0_0_20px_rgba(178,111,255,0.2)]' 
+                    : 'bg-gradient-to-br from-[#E8DDD0] to-[#D9CBB8] backdrop-blur-md shadow-[0_4px_12px_rgba(178,141,107,0.25),0_2px_6px_rgba(178,141,107,0.15)]'
                 }`}
                 style={{
                   transform: `translateY(${-mousePosition.y * 0.1}px)`,
@@ -314,7 +360,7 @@ export default function Home() {
               >
                 <div className="text-4xl font-bold gradient-text mb-1">{metrics.satisfaction}%</div>
                 <div className={`text-sm font-semibold transition-colors duration-300 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-white'
+                  theme === 'dark' ? 'text-gray-300' : 'text-light-text-secondary'
                 }`}>Client Satisfaction</div>
               </div>
 
@@ -322,8 +368,8 @@ export default function Home() {
               <div 
                 className={`backdrop-blur-md rounded-xl p-6 transition-all duration-300 ${
                   theme === 'dark' 
-                    ? 'bg-dark-bg-light/70 border-neon-purple/30 shadow-[0_0_20px_rgba(178,111,255,0.2)]' 
-                    : 'bg-gradient-to-br from-[#FAF5EE]/95 to-[#F5F0E6]/90 beige-gradient-border backdrop-blur-md'
+                    ? 'bg-dark-bg-light/70 shadow-[0_0_20px_rgba(178,111,255,0.2)]' 
+                    : 'bg-gradient-to-br from-[#E8DDD0] to-[#D9CBB8] backdrop-blur-md shadow-[0_4px_12px_rgba(178,141,107,0.25),0_2px_6px_rgba(178,141,107,0.15)]'
                 }`}
                 style={{
                   transform: `translateY(${mousePosition.y * 0.1}px)`,
@@ -333,7 +379,7 @@ export default function Home() {
               >
                 <div className="text-4xl font-bold gradient-text mb-1">{metrics.projects}+</div>
                 <div className={`text-sm font-semibold transition-colors duration-300 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-white'
+                  theme === 'dark' ? 'text-gray-300' : 'text-light-text-secondary'
                 }`}>Projects Delivered</div>
               </div>
 
@@ -341,8 +387,8 @@ export default function Home() {
               <div 
                 className={`backdrop-blur-md rounded-xl p-6 transition-all duration-300 ${
                   theme === 'dark' 
-                    ? 'bg-dark-bg-light/70 border-neon-purple/30 shadow-[0_0_20px_rgba(178,111,255,0.2)]' 
-                    : 'bg-gradient-to-br from-[#FAF5EE]/95 to-[#F5F0E6]/90 beige-gradient-border backdrop-blur-md'
+                    ? 'bg-dark-bg-light/70 shadow-[0_0_20px_rgba(178,111,255,0.2)]' 
+                    : 'bg-gradient-to-br from-[#E8DDD0] to-[#D9CBB8] backdrop-blur-md shadow-[0_4px_12px_rgba(178,141,107,0.25),0_2px_6px_rgba(178,141,107,0.15)]'
                 }`}
                 style={{
                   transform: `translateY(${-mousePosition.y * 0.15}px)`,
@@ -352,7 +398,7 @@ export default function Home() {
               >
                 <div className="text-4xl font-bold gradient-text mb-1">{metrics.delivery}%</div>
                 <div className={`text-sm font-semibold transition-colors duration-300 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-white'
+                  theme === 'dark' ? 'text-gray-300' : 'text-light-text-secondary'
                 }`}>On-Time Delivery</div>
               </div>
             </div>
@@ -380,7 +426,9 @@ export default function Home() {
             {/* About Image */}
             <div className="relative order-2 md:order-1">
               <div className={`relative rounded-2xl overflow-hidden border transition-all duration-300 ${
-                theme === 'dark' ? 'border-neon-purple/30' : 'border-light-border'
+                theme === 'dark' 
+                  ? 'border-neon-purple/30' 
+                  : 'border-light-border shadow-[0_4px_12px_rgba(178,141,107,0.25),0_2px_6px_rgba(178,141,107,0.15)]'
               }`}>
                 <img 
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&q=80"
@@ -1087,10 +1135,14 @@ export default function Home() {
                 42
               </span>
               <div className="flex flex-col leading-tight">
-                <span className="premium-white-subtle font-body font-normal text-[10px]">
+                <span className={`font-body font-normal text-[10px] transition-colors duration-300 ${
+                  theme === 'dark' ? 'premium-white-subtle' : 'text-light-text-secondary'
+                }`}>
                   Coding
                 </span>
-                <span className="premium-white-subtle font-body font-normal text-[10px]">
+                <span className={`font-body font-normal text-[10px] transition-colors duration-300 ${
+                  theme === 'dark' ? 'premium-white-subtle' : 'text-light-text-secondary'
+                }`}>
                   Labs
                 </span>
               </div>

@@ -42,13 +42,15 @@ export default function Navigation() {
   }, [])
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       theme === 'dark' 
-        ? 'bg-dark-bg/40 border-neon-purple/20 backdrop-blur-lg border-b' 
-        : 'bg-gradient-to-br from-[#FAF5EE]/95 to-[#F5F0E6]/90 backdrop-blur-md'
+        ? 'bg-dark-bg/30 border-neon-purple/20 backdrop-blur-xl border-b' 
+        : 'bg-gradient-to-br from-[#FAF5EE]/80 to-[#F5F0E6]/75 backdrop-blur-xl'
     }`} style={theme === 'light' ? {
       boxShadow: '0 0 4px rgba(178, 141, 107, 0.2), inset 0 0 4px rgba(178, 141, 107, 0.05), 0 0 8px rgba(178, 141, 107, 0.1)'
-    } : {}}>
+    } : {
+      boxShadow: '0 0 8px rgba(178, 111, 255, 0.15), inset 0 0 8px rgba(178, 111, 255, 0.05)'
+    }}>
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -77,10 +79,10 @@ export default function Navigation() {
               <span className="font-body font-bold text-3xl md:text-4xl gradient-text">42</span>
               <div className="flex flex-col leading-tight">
                 <span className={`font-body font-normal text-[10px] transition-colors duration-300 ${
-                  theme === 'dark' ? 'premium-white-subtle' : 'text-light-text-primary'
+                  theme === 'dark' ? 'premium-white-subtle' : 'text-light-text-secondary'
                 }`}>Coding</span>
                 <span className={`font-body font-normal text-[10px] transition-colors duration-300 ${
-                  theme === 'dark' ? 'premium-white-subtle' : 'text-light-text-primary'
+                  theme === 'dark' ? 'premium-white-subtle' : 'text-light-text-secondary'
                 }`}>Labs</span>
               </div>
             </div>

@@ -32,8 +32,20 @@ export default function NeonCard({
     `}>
       {icon && (
         <div className={`mb-4 text-4xl icon-float transition-colors duration-300 ${
-          theme === 'dark' ? 'premium-white-subtle' : 'text-beige'
+          theme === 'dark' ? 'gradient-text' : 'text-beige'
         }`}>
+          {theme === 'dark' && (
+            <svg width="0" height="0" style={{ position: 'absolute' }}>
+              <defs>
+                <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#d8b4fe" />
+                  <stop offset="30%" stopColor="#c084fc" />
+                  <stop offset="60%" stopColor="#a78bfa" />
+                  <stop offset="100%" stopColor="#8b5cf6" />
+                </linearGradient>
+              </defs>
+            </svg>
+          )}
           {icon}
         </div>
       )}

@@ -69,6 +69,15 @@
     transition: opacity 0.3s ease;
   }
   
+  /* Purple gradient for SVG icons in dark mode */
+  .gradient-text svg {
+    stroke: url(#purpleGradient);
+  }
+  
+  .gradient-text svg defs {
+    display: block;
+  }
+  
   html.light .gradient-text {
     background: linear-gradient(135deg, #D4A5A5 0%, #C89A9A 20%, #B28D6B 40%, #A1754F 60%, #B28D6B 80%, #C9A882 100%);
     -webkit-background-clip: text;
