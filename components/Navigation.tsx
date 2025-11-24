@@ -7,23 +7,34 @@ export default function Navigation() {
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'services', 'tutors', 'testimonials', 'contact']
-      const scrollPosition = window.scrollY + 100
+    let ticking = false
+    let lastScrollY = window.scrollY
 
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sections = ['home', 'about', 'services', 'tutors', 'testimonials', 'contact']
+          const scrollPosition = window.scrollY + 100
+
+          for (const section of sections) {
+            const element = document.getElementById(section)
+            if (element) {
+              const { offsetTop, offsetHeight } = element
+              if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                setActiveSection(section)
+                break
+              }
+            }
           }
-        }
+          
+          lastScrollY = window.scrollY
+          ticking = false
+        })
+        ticking = true
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll() // Check on mount
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])

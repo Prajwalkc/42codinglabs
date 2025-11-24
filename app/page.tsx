@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navigation from "@/components/Navigation";
 import NeonButton from "@/components/NeonButton";
 import NeonCard from "@/components/NeonCard";
@@ -81,73 +81,259 @@ const DesignIcon = () => (
 );
 
 export default function Home() {
+  const heroRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const metricsRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [metrics, setMetrics] = useState({ satisfaction: 0, projects: 0, delivery: 0 });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current) return;
+      const rect = heroRef.current.getBoundingClientRect();
+      const scrollProgress = Math.max(0, Math.min(1, -rect.top / rect.height));
+      setScrollY(scrollProgress);
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!heroRef.current) return;
+      const rect = heroRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      setMousePosition({ x: (x - 0.5) * 20, y: (y - 0.5) * 20 });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    heroRef.current?.addEventListener('mousemove', handleMouseMove, { passive: true });
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      heroRef.current?.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  // Metrics counting animation
+  useEffect(() => {
+    if (hasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+            
+            // Animate satisfaction from 0 to 98
+            const animateSatisfaction = () => {
+              let current = 0;
+              const target = 98;
+              const duration = 2000; // 2 seconds
+              const increment = target / (duration / 16); // 60fps
+              
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                  current = target;
+                  clearInterval(timer);
+                }
+                setMetrics(prev => ({ ...prev, satisfaction: Math.floor(current) }));
+              }, 16);
+            };
+
+            // Animate projects from 0 to 100
+            const animateProjects = () => {
+              let current = 0;
+              const target = 100;
+              const duration = 2000;
+              const increment = target / (duration / 16);
+              
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                  current = target;
+                  clearInterval(timer);
+                }
+                setMetrics(prev => ({ ...prev, projects: Math.floor(current) }));
+              }, 16);
+            };
+
+            // Animate delivery from 0 to 95
+            const animateDelivery = () => {
+              let current = 0;
+              const target = 95;
+              const duration = 2000;
+              const increment = target / (duration / 16);
+              
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                  current = target;
+                  clearInterval(timer);
+                }
+                setMetrics(prev => ({ ...prev, delivery: Math.floor(current) }));
+              }, 16);
+            };
+
+            // Start all animations
+            animateSatisfaction();
+            animateProjects();
+            animateDelivery();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (metricsRef.current) {
+      observer.observe(metricsRef.current);
+    }
+
+    return () => {
+      if (metricsRef.current) {
+        observer.unobserve(metricsRef.current);
+      }
+    };
+  }, [hasAnimated]);
+
+  const parallaxOffset = scrollY * 100;
+  const opacity = Math.max(0, 1 - scrollY * 1.5);
+  const scale = Math.max(0.8, 1 - scrollY * 0.2);
+
   return (
     <main className="min-h-screen bg-dark-bg text-gray-200 overflow-x-hidden relative">
       <Navigation />
       <GradientBackground />
 
-      {/* Hero Section */}
+      {/* Hero Section with Parallax */}
       <section
+        ref={heroRef}
         id="home"
-        className="relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-24 bg-dark-bg-light/20"
+        className="relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-24 z-10"
       >
-        <ParticleBackground />
+        {/* Background Image with Parallax */}
+        <div 
+          className="absolute inset-0 z-0 overflow-hidden"
+          style={{
+            transform: `translateY(${parallaxOffset * 0.5}px) scale(1.1)`,
+            willChange: 'transform'
+          }}
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop&q=80"
+            alt="Technology Background"
+            className="w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
+            style={{
+              transform: `translateY(${parallaxOffset * 0.3}px)`,
+              willChange: 'transform'
+            }}
+          />
+          {/* Gradient Overlay to match about section exactly */}
+          <div className="absolute inset-0 bg-dark-bg-light/20"></div>
+        </div>
 
+        {/* Content with Parallax */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="max-w-3xl animate-fade-up">
-              <div className="flex items-center space-x-4 mb-8">
-                <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-body font-bold tracking-tighter leading-[0.9] uppercase gradient-text">
-                  42
-                </h1>
-                <div className="flex flex-col leading-tight">
-                  <span className="premium-white font-body font-normal text-xl md:text-3xl lg:text-4xl">
-                    Coding
-                  </span>
-                  <span className="premium-white font-body font-normal text-xl md:text-3xl lg:text-4xl">
-                    Labs
-                  </span>
-                </div>
+          <div 
+            ref={contentRef}
+            className="max-w-3xl"
+            style={{
+              opacity,
+              transform: `translateY(${parallaxOffset * 0.5}px) scale(${scale})`,
+              willChange: 'transform, opacity'
+            }}
+          >
+            <div 
+              className="flex items-center space-x-4 mb-8"
+              style={{
+                transform: `translate(${mousePosition.x * 0.1}px, ${mousePosition.y * 0.1}px)`,
+                willChange: 'transform',
+                transition: 'transform 0.1s ease-out'
+              }}
+            >
+              <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-body font-bold tracking-tighter leading-[0.9] uppercase gradient-text">
+                42
+              </h1>
+              <div className="flex flex-col leading-tight">
+                <span className="premium-white font-body font-normal text-xl md:text-3xl lg:text-4xl">
+                  Coding
+                </span>
+                <span className="premium-white font-body font-normal text-xl md:text-3xl lg:text-4xl">
+                  Labs
+                </span>
               </div>
-              <p className="text-base md:text-lg lg:text-xl text-gray-300 mb-10 font-body font-normal leading-relaxed max-w-2xl">
-                Transform your ideas into production-ready applications with our expert development team. 
-                We specialize in mobile apps, full-stack web solutions, AI integration, and UI/UX design. 
-                From startups to enterprises, we deliver scalable, high-quality software solutions that drive business growth.
-              </p>
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("services")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="px-8 py-3 premium-white-subtle font-semibold rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_12px_rgba(178,111,255,0.3),0_0_20px_rgba(178,111,255,0.2)] gradient-border hover:gradient-border-hover"
-                aria-label="Explore Services"
-              >
-                Our Services
-              </button>
             </div>
-            
-            {/* Hero Image */}
-            <div className="hidden md:block relative animate-fade-up" style={{ animationDelay: "0.2s" }}>
-              <div className="relative rounded-2xl overflow-hidden border border-neon-purple/30 shadow-[0_0_30px_rgba(178,111,255,0.2)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-transparent z-10"></div>
-                <img 
-                  src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop&q=80"
-                  alt="Software Development"
-                  className="w-full h-[500px] object-cover opacity-90"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent z-20"></div>
+             <p className="text-base md:text-lg lg:text-xl text-gray-100 mb-10 font-body font-medium leading-relaxed max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+               Transform your ideas into production-ready applications. We specialize in mobile apps, full-stack web solutions, AI integration, and UI/UX design.
+             </p>
+            <button
+              onClick={() =>
+                document
+                  .getElementById("services")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="px-8 py-3 premium-white-subtle font-semibold rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_12px_rgba(178,111,255,0.3),0_0_20px_rgba(178,111,255,0.2)] gradient-border hover:gradient-border-hover"
+              aria-label="Explore Services"
+            >
+              Our Services
+            </button>
+          </div>
+
+          {/* Metrics Cards */}
+          <div ref={metricsRef} className="absolute right-8 top-1/2 -translate-y-1/2 z-20 hidden lg:block">
+            <div className="flex flex-col gap-4">
+              {/* Metric Card 1 */}
+              <div 
+                className="bg-dark-bg-light/70 backdrop-blur-md border border-neon-purple/30 rounded-xl p-6 shadow-[0_0_20px_rgba(178,111,255,0.2)]"
+                style={{
+                  transform: `translateY(${-mousePosition.y * 0.1}px)`,
+                  willChange: 'transform',
+                  transition: 'transform 0.1s ease-out'
+                }}
+              >
+                <div className="text-4xl font-bold gradient-text mb-1">{metrics.satisfaction}%</div>
+                <div className="text-sm text-gray-300 font-medium">Client Satisfaction</div>
+              </div>
+
+              {/* Metric Card 2 */}
+              <div 
+                className="bg-dark-bg-light/70 backdrop-blur-md border border-neon-purple/30 rounded-xl p-6 shadow-[0_0_20px_rgba(178,111,255,0.2)]"
+                style={{
+                  transform: `translateY(${mousePosition.y * 0.1}px)`,
+                  willChange: 'transform',
+                  transition: 'transform 0.1s ease-out'
+                }}
+              >
+                <div className="text-4xl font-bold gradient-text mb-1">{metrics.projects}+</div>
+                <div className="text-sm text-gray-300 font-medium">Projects Delivered</div>
+              </div>
+
+              {/* Metric Card 3 */}
+              <div 
+                className="bg-dark-bg-light/70 backdrop-blur-md border border-neon-purple/30 rounded-xl p-6 shadow-[0_0_20px_rgba(178,111,255,0.2)]"
+                style={{
+                  transform: `translateY(${-mousePosition.y * 0.15}px)`,
+                  willChange: 'transform',
+                  transition: 'transform 0.1s ease-out'
+                }}
+              >
+                <div className="text-4xl font-bold gradient-text mb-1">{metrics.delivery}%</div>
+                <div className="text-sm text-gray-300 font-medium">On-Time Delivery</div>
               </div>
             </div>
           </div>
         </div>
+
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative py-24 px-4 md:px-8 bg-dark-bg-light/20 z-10">
+      <section id="about" className="relative py-12 md:py-16 px-4 md:px-8 bg-dark-bg-light/20 z-10">
         <div className="max-w-7xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
-            About
+            About Us
           </NeonHeading>
 
           <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-12 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
@@ -161,44 +347,34 @@ export default function Home() {
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&q=80"
                   alt="Team Collaboration"
                   className="w-full h-[400px] object-cover opacity-90"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/60 via-transparent to-transparent z-20"></div>
               </div>
             </div>
 
             {/* About Content */}
-            <div className="text-gray-300 text-base md:text-lg leading-relaxed space-y-6 font-body font-normal order-1 md:order-2">
+            <div className="text-gray-300 text-sm md:text-base leading-relaxed space-y-4 font-body font-normal order-1 md:order-2">
               <p>
-              <span className="inline-flex items-center space-x-2 mr-2">
-                <span className="font-body font-bold text-3xl md:text-4xl gradient-text">
-                  42
+                <span className="inline-flex items-center space-x-2 mr-2">
+                  <span className="font-body font-bold text-3xl md:text-4xl gradient-text">
+                    42
+                  </span>
+                  <div className="flex flex-col leading-tight">
+                    <span className="premium-white-subtle font-body font-normal text-[10px]">
+                      Coding
+                    </span>
+                    <span className="premium-white-subtle font-body font-normal text-[10px]">
+                      Labs
+                    </span>
+                  </div>
                 </span>
-                <div className="flex flex-col leading-tight">
-                  <span className="premium-white-subtle font-body font-normal text-[10px]">
-                    Coding
-                  </span>
-                  <span className="premium-white-subtle font-body font-normal text-[10px]">
-                    Labs
-                  </span>
-                </div>
-              </span>
-              is a leading IT outsourcing company specializing in custom software development, 
-              mobile applications, and cutting-edge technology solutions. With years of experience 
-              in fintech, AI integration, and enterprise applications, we help businesses transform 
-              their digital presence and scale their operations.
-            </p>
-            <p>
-              Our team of expert developers brings real-world experience from building production-ready 
-              applications that serve thousands of users across multiple countries. We've delivered 
-              solutions ranging from mobile banking platforms and AI-powered chat applications to 
-              full-stack web applications and UI/UX design services.
-            </p>
-            <p>
-              Whether you're a startup looking to build an MVP or an enterprise seeking to modernize 
-              your technology stack, we provide end-to-end development services tailored to your needs. 
-              From initial concept to deployment and ongoing maintenance, we're committed to delivering 
-              high-quality, scalable solutions that drive your business forward.
-            </p>
+                is a leading IT outsourcing company specializing in custom software development, mobile applications, and cutting-edge technology solutions. We help businesses transform their digital presence with production-ready applications that serve thousands of users.
+              </p>
+              <p>
+                Our expert team delivers end-to-end development services, from mobile banking platforms and AI-powered solutions to full-stack web applications. Whether you're a startup building an MVP or an enterprise modernizing your tech stack, we provide scalable, high-quality solutions tailored to your needs.
+              </p>
             </div>
           </div>
         </div>
@@ -207,7 +383,7 @@ export default function Home() {
       {/* Services Section */}
       <section
         id="services"
-        className="relative py-24 px-4 md:px-8 bg-dark-bg-light/20 z-10"
+        className="relative py-12 md:py-16 px-4 md:px-8 bg-dark-bg-light/20 z-10"
       >
         <div className="max-w-7xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
@@ -216,7 +392,7 @@ export default function Home() {
 
           <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-12 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
 
-          <div className="text-center mb-12 max-w-3xl mx-auto">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
             <p className="text-gray-300 text-lg md:text-xl leading-relaxed font-body">
               We offer comprehensive IT outsourcing services tailored to your business needs. 
               From mobile app development to full-stack solutions, our expert team delivers 
@@ -224,24 +400,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Services Background Image */}
-          <div className="relative mb-16 rounded-2xl overflow-hidden border border-neon-purple/30 shadow-[0_0_30px_rgba(178,111,255,0.2)]">
-            <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-transparent z-10"></div>
-            <img 
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=400&fit=crop&q=80"
-              alt="Technology Services"
-              className="w-full h-[300px] object-cover opacity-80"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 via-dark-bg/40 to-transparent z-20"></div>
-            <div className="absolute inset-0 flex items-center justify-center z-30">
-              <div className="text-center px-8">
-                <h3 className="text-3xl md:text-4xl font-bold premium-white-subtle mb-4">Innovation Meets Excellence</h3>
-                <p className="text-gray-300 text-lg max-w-2xl mx-auto">Delivering cutting-edge solutions that transform businesses</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <NeonCard icon={<MobileIcon />} title="Mobile App Development">
               <p>
                 Native iOS, Android, and cross-platform React Native applications. 
@@ -318,7 +477,7 @@ export default function Home() {
       {/* Developers Section */}
       <section
         id="tutors"
-        className="relative py-16 md:py-20 px-4 md:px-8 bg-dark-bg-light/20 z-10"
+        className="hidden relative py-16 md:py-20 px-4 md:px-8 bg-dark-bg-light/20 z-10"
       >
         <div className="max-w-7xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center mb-6">
@@ -347,6 +506,8 @@ export default function Home() {
                       src="https://ui-avatars.com/api/?name=Prajwal&background=b256fe&color=fff&size=200&bold=true"
                       alt="Prajwal"
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-neon-purple/20 to-transparent blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -425,6 +586,8 @@ export default function Home() {
                       src="https://ui-avatars.com/api/?name=Pooja&background=b256fe&color=fff&size=200&bold=true"
                       alt="Pooja"
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-neon-purple/20 to-transparent blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -501,6 +664,8 @@ export default function Home() {
                       src="https://ui-avatars.com/api/?name=Amit&background=b256fe&color=fff&size=200&bold=true"
                       alt="Amit"
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-neon-purple/20 to-transparent blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -572,7 +737,7 @@ export default function Home() {
       {/* Testimonials Section */}
       <section
         id="testimonials"
-        className="relative py-24 px-4 md:px-8 bg-dark-bg-light/20 z-10"
+        className="relative py-12 md:py-16 px-4 md:px-8 bg-dark-bg-light/20 z-10"
       >
         <div className="max-w-7xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
@@ -623,7 +788,7 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="relative py-24 px-4 md:px-8 bg-dark-bg-light/20 z-10"
+        className="relative py-12 md:py-16 px-4 md:px-8 bg-dark-bg-light/20 z-10"
       >
         <div className="max-w-2xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">

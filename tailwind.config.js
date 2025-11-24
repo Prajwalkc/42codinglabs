@@ -46,8 +46,8 @@ module.exports = {
           "50%": { opacity: "0.8", filter: "brightness(1.2)" },
         },
         "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+          "0%": { opacity: "0", transform: "translate3d(0, 10px, 0)" },
+          "100%": { opacity: "1", transform: "translate3d(0, 0, 0)" },
         },
       },
     },
