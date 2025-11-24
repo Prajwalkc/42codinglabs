@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: '42 Coding Labs',
-  description: '42 Coding Labs - Online coding school teaching multiple tech stacks - mobile development, AI, full-stack web, and UI/UX design',
+  description: '42 Coding Labs - IT outsourcing company specializing in mobile app development, full-stack solutions, product development, and UI/UX design services',
 }
 
 export default function RootLayout({

@@ -89,7 +89,7 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-24"
+        className="relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-24 bg-dark-bg-light/20"
       >
         <ParticleBackground />
 
@@ -109,11 +109,9 @@ export default function Home() {
               </div>
             </div>
             <p className="text-base md:text-lg lg:text-xl text-gray-300 mb-10 font-body font-normal leading-relaxed max-w-2xl">
-              Learn the most in-demand technologies through comprehensive,
-              project-based courses. From mobile app development to AI
-              integration, full-stack web to UI/UX design—master real-world
-              skills with hands-on projects, expert guidance, and a supportive
-              community of learners.
+              Transform your ideas into production-ready applications with our expert development team. 
+              We specialize in mobile apps, full-stack web solutions, AI integration, and UI/UX design. 
+              From startups to enterprises, we deliver scalable, high-quality software solutions that drive business growth.
             </p>
             <button
               onClick={() =>
@@ -121,17 +119,17 @@ export default function Home() {
                   .getElementById("services")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="px-8 py-3 premium-white-subtle font-semibold rounded-md transition-all duration-300 hover:scale-[1.02] hover:shadow-neon-md hover:shadow-[0_0_20px_rgba(178,111,255,0.6),0_0_40px_rgba(178,111,255,0.4)] gradient-border hover:gradient-border-hover"
-              aria-label="Explore Courses"
+              className="px-8 py-3 premium-white-subtle font-semibold rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_12px_rgba(178,111,255,0.3),0_0_20px_rgba(178,111,255,0.2)] gradient-border hover:gradient-border-hover"
+              aria-label="Explore Services"
             >
-              Explore Courses
+              Our Services
             </button>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative py-24 px-4 md:px-8 z-10">
+      <section id="about" className="relative py-24 px-4 md:px-8 bg-dark-bg-light/20 z-10">
         <div className="max-w-4xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
             About
@@ -154,25 +152,22 @@ export default function Home() {
                   </span>
                 </div>
               </span>
-              offers comprehensive courses in the most sought-after
-              technologies. Our curriculum covers mobile development, AI &
-              machine learning, full-stack web development, and UI/UX
-              design—each course structured to take you from fundamentals to
-              advanced implementation.
+              is a leading IT outsourcing company specializing in custom software development, 
+              mobile applications, and cutting-edge technology solutions. With years of experience 
+              in fintech, AI integration, and enterprise applications, we help businesses transform 
+              their digital presence and scale their operations.
             </p>
             <p>
-              Every course includes hands-on projects that mirror real-world
-              scenarios, allowing you to build a portfolio while you learn. Our
-              expert instructors provide personalized feedback, and our
-              community of learners supports your growth throughout your
-              journey.
+              Our team of expert developers brings real-world experience from building production-ready 
+              applications that serve thousands of users across multiple countries. We've delivered 
+              solutions ranging from mobile banking platforms and AI-powered chat applications to 
+              full-stack web applications and UI/UX design services.
             </p>
             <p>
-              Whether you're a complete beginner or an experienced developer
-              looking to expand your skillset, our courses are designed to meet
-              you where you are. With flexible learning schedules, lifetime
-              access to course materials, and ongoing support, we're committed
-              to helping you achieve your career goals in technology.
+              Whether you're a startup looking to build an MVP or an enterprise seeking to modernize 
+              your technology stack, we provide end-to-end development services tailored to your needs. 
+              From initial concept to deployment and ongoing maintenance, we're committed to delivering 
+              high-quality, scalable solutions that drive your business forward.
             </p>
           </div>
         </div>
@@ -181,53 +176,49 @@ export default function Home() {
       {/* Services Section */}
       <section
         id="services"
-        className="relative py-24 px-4 md:px-8 bg-dark-bg-light/30 z-10"
+        className="relative py-24 px-4 md:px-8 bg-dark-bg-light/20 z-10"
       >
         <div className="max-w-7xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
-            Courses
+            Services
           </NeonHeading>
 
           <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-12 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
 
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <p className="text-gray-300 text-lg md:text-xl leading-relaxed font-body">
-              Choose from our specialized courses, each designed with industry
-              best practices and real-world applications. Whether you're
-              starting your coding journey or advancing your skills, our
-              structured curriculum and expert instructors will guide you every
-              step of the way.
+              We offer comprehensive IT outsourcing services tailored to your business needs. 
+              From mobile app development to full-stack solutions, our expert team delivers 
+              production-ready applications using industry best practices and cutting-edge technologies.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-            <NeonCard icon={<MobileIcon />} title="Mobile Development">
+            <NeonCard icon={<MobileIcon />} title="Mobile App Development">
               <p>
-                Master iOS, Android, and React Native. Build native and
-                cross-platform apps with industry-standard frameworks and tools.
+                Native iOS, Android, and cross-platform React Native applications. 
+                We build scalable mobile solutions with modern frameworks and best practices.
               </p>
             </NeonCard>
 
-            <NeonCard icon={<AIIcon />} title="AI & Machine Learning">
+            <NeonCard icon={<AIIcon />} title="Full-Stack Development">
               <p>
-                Learn AI fundamentals, LLM integration, and machine learning.
-                Build intelligent applications with cutting-edge AI
-                technologies.
+                End-to-end web applications with modern frameworks. From frontend to backend, 
+                we deliver scalable, secure, and performant solutions.
               </p>
             </NeonCard>
 
-            <NeonCard icon={<ProductIcon />} title="Full-Stack Web">
+            <NeonCard icon={<ProductIcon />} title="Product Development">
               <p>
-                Master frontend and backend development. Learn modern
-                frameworks, databases, and deployment strategies for scalable
-                web applications.
+                Complete product development from concept to launch. MVP development, 
+                feature enhancement, and product scaling services.
               </p>
             </NeonCard>
 
             <NeonCard icon={<DesignIcon />} title="UI/UX Design">
               <p>
-                Create beautiful, user-friendly interfaces. Learn design
-                principles, prototyping, and user experience best practices.
+                User-centered design solutions that enhance user experience. 
+                Prototyping, wireframing, and design system implementation.
               </p>
             </NeonCard>
           </div>
@@ -267,7 +258,7 @@ export default function Home() {
                 >
                   <span className="relative">
                     Visit Link
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-purple group-hover:w-full transition-all duration-300 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-purple group-hover:w-full transition-all duration-300 shadow-[0_0_10px_rgba(178,111,255,0.8)]"></span>
                   </span>
                 </a>
               </div>
@@ -276,104 +267,247 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tutors Section */}
+      {/* Developers Section */}
       <section
         id="tutors"
-        className="relative py-24 px-4 md:px-8 bg-dark-bg-light/30 z-10"
+        className="relative py-16 md:py-20 px-4 md:px-8 bg-dark-bg-light/20 z-10"
       >
         <div className="max-w-7xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center mb-6">
-            Meet the Tutor
+            Meet Our Team
           </NeonHeading>
 
           <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-6 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
 
           <p className="text-center text-gray-300 mb-12 text-base md:text-lg font-body max-w-2xl mx-auto">
-            Learn from industry experts with hands-on experience in mobile, AI,
-            and web technologies. Our instructors bring real-world projects and
-            production-ready expertise to every lesson.
+            Our team of experienced developers brings real-world expertise from building production-ready 
+            applications. With hands-on experience in mobile, AI, and web technologies, we deliver 
+            solutions that scale and perform.
           </p>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-dark-bg-light/30 border border-neon-purple/20 rounded-2xl p-8 md:p-12 transition-all duration-300 hover:scale-[1.02] hover:border-neon-purple hover:shadow-[0_0_5px_rgba(178,111,255,0.3),0_0_10px_rgba(178,111,255,0.2)]">
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-                {/* Avatar/Initial */}
-                <div className="flex-shrink-0">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-neon-purple/40 to-neon-purple/20 flex items-center justify-center border-2 border-neon-purple/30">
-                    <span className="text-4xl font-bold premium-white-subtle">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+            {/* Developer Card */}
+            <div className="group relative p-5 md:p-6 rounded-2xl bg-dark-bg-light/50 border border-neon-purple/20 shadow-[0_0_3px_rgba(178,111,255,0.15),0_0_6px_rgba(178,111,255,0.1)] hover:shadow-[0_0_8px_rgba(178,111,255,0.25),0_0_15px_rgba(178,111,255,0.15)] transition-all duration-300 hover:scale-[1.02] hover:border-neon-purple/50 card-entrance flex flex-col overflow-hidden">
+              {/* Decorative gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+              
+              {/* Avatar with enhanced styling */}
+              <div className="flex justify-center mb-4 relative z-10">
+                <div className="relative">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-neon-purple/50 to-neon-purple/30 flex items-center justify-center border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
+                    <span className="text-3xl font-bold premium-white-subtle">
                       P
                     </span>
                   </div>
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-neon-purple/20 to-transparent blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
+              </div>
 
-                {/* Content */}
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl md:text-3xl font-body font-bold premium-white-subtle mb-2">
-                    Prajwal
-                  </h3>
-                  <p className="text-sm md:text-base font-body font-semibold gradient-text mb-4">
-                    Founder & Senior Mobile Developer
-                  </p>
-                  <p className="text-base md:text-lg text-gray-300 font-body mb-6 leading-relaxed">
-                    Founder & Senior Mobile Developer with a passion for
-                    building production-ready applications. Specializing in
-                    React Native, Next.js, and GraphQL, with extensive
-                    experience in fintech and AI integration.
-                  </p>
+              {/* Name */}
+              <h3 className="text-lg md:text-xl font-body font-bold premium-white-subtle mb-1 text-center relative z-10">
+                Prajwal
+              </h3>
 
-                  {/* Links */}
-                  <div className="flex justify-center md:justify-start flex-wrap gap-4 mb-6">
-                    <a
-                      href="/portfolio"
-                      className="text-sm premium-white-subtle hover:text-neon-purple-light transition-colors duration-300 underline decoration-neon-purple/50 hover:decoration-neon-purple"
-                    >
-                      Portfolio
-                    </a>
-                    <a
-                      href="https://github.com/prajwal"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm premium-white-subtle hover:text-neon-purple-light transition-colors duration-300 underline decoration-neon-purple/50 hover:decoration-neon-purple"
-                    >
-                      GitHub
-                    </a>
+              {/* Role */}
+              <p className="text-sm font-body font-semibold gradient-text mb-3 text-center relative z-10">
+                CTO and Founder
+              </p>
+
+              {/* Bio */}
+              <p className="text-gray-300 font-body text-sm leading-relaxed mb-4 text-center flex-grow relative z-10">
+                Expert in building production-ready applications serving thousands of users. 
+                Specializing in React Native, Next.js, and GraphQL with extensive experience in 
+                fintech, AI integration, and enterprise solutions.
+              </p>
+
+              {/* Tech Stack */}
+              <div className="flex flex-wrap justify-center gap-2 mb-4 relative z-10">
+                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                  React Native
+                </span>
+                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                  Next.js
+                </span>
+                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                  GraphQL
+                </span>
+              </div>
+
+              {/* Links */}
+              <div className="flex justify-center gap-4 mt-auto mb-3 relative z-10">
+                <a
+                  href="https://github.com/prajwal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm premium-white-subtle hover:text-neon-purple-light transition-colors duration-300 underline decoration-neon-purple/50 hover:decoration-neon-purple font-medium"
+                >
+                  GitHub
+                </a>
+              </div>
+
+              {/* Stats with improved design */}
+              <div className="grid grid-cols-3 gap-2 pt-4 mt-3 border-t border-neon-purple/20 relative z-10">
+                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+                  <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">7+</div>
+                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Years</div>
+                </div>
+                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+                  <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">50K+</div>
+                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Users</div>
+                </div>
+                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+                  <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">3</div>
+                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Countries</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Developer Card - Pooja Saru */}
+            <div className="group relative p-5 md:p-6 rounded-2xl bg-dark-bg-light/50 border border-neon-purple/20 shadow-[0_0_3px_rgba(178,111,255,0.15),0_0_6px_rgba(178,111,255,0.1)] hover:shadow-[0_0_8px_rgba(178,111,255,0.25),0_0_15px_rgba(178,111,255,0.15)] transition-all duration-300 hover:scale-[1.02] hover:border-neon-purple/50 card-entrance flex flex-col overflow-hidden" style={{ animationDelay: "0.1s" }}>
+              {/* Decorative gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+              
+              {/* Avatar with enhanced styling */}
+              <div className="flex justify-center mb-4 relative z-10">
+                <div className="relative">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-neon-purple/50 to-neon-purple/30 flex items-center justify-center border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
+                    <span className="text-3xl font-bold premium-white-subtle">
+                      P
+                    </span>
                   </div>
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-neon-purple/20 to-transparent blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              </div>
 
-                  {/* Fun Facts Grid */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-                    <div className="p-4 bg-dark-bg-light/50 rounded-lg border border-neon-purple/20">
-                      <div className="text-2xl font-bold gradient-text mb-1">
-                        7+
-                      </div>
-                      <div className="text-xs text-gray-400 font-body uppercase tracking-wide">
-                        Years Coding
-                      </div>
-                    </div>
-                    <div className="p-4 bg-dark-bg-light/50 rounded-lg border border-neon-purple/20">
-                      <div className="text-2xl font-bold gradient-text mb-1">
-                        50K+
-                      </div>
-                      <div className="text-xs text-gray-400 font-body uppercase tracking-wide">
-                        Users Served
-                      </div>
-                    </div>
-                    <div className="p-4 bg-dark-bg-light/50 rounded-lg border border-neon-purple/20">
-                      <div className="text-2xl font-bold gradient-text mb-1">
-                        3
-                      </div>
-                      <div className="text-xs text-gray-400 font-body uppercase tracking-wide">
-                        Countries
-                      </div>
-                    </div>
-                    <div className="p-4 bg-dark-bg-light/50 rounded-lg border border-neon-purple/20">
-                      <div className="text-2xl font-bold gradient-text mb-1">
-                        ∞
-                      </div>
-                      <div className="text-xs text-gray-400 font-body uppercase tracking-wide">
-                        Coffee Cups
-                      </div>
-                    </div>
+              {/* Name */}
+              <h3 className="text-lg md:text-xl font-body font-bold premium-white-subtle mb-1 text-center relative z-10">
+                Pooja Saru
+              </h3>
+
+              {/* Role */}
+              <p className="text-sm font-body font-semibold gradient-text mb-3 text-center relative z-10">
+                CEO and Founder
+              </p>
+
+              {/* Bio */}
+              <p className="text-gray-300 font-body text-sm leading-relaxed mb-4 text-center flex-grow relative z-10">
+                Strategic leader with extensive experience in CEO roles and project management. 
+                Expert in driving business growth, managing cross-functional teams, and delivering 
+                successful technology projects on time and within budget.
+              </p>
+
+              {/* Tech Stack */}
+              <div className="flex flex-wrap justify-center gap-2 mb-4 relative z-10">
+                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                  Project Management
+                </span>
+                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                  Business Strategy
+                </span>
+                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                  Team Leadership
+                </span>
+              </div>
+
+              {/* Links */}
+              <div className="flex justify-center gap-4 mt-auto mb-3 relative z-10">
+                <a
+                  href="#"
+                  className="text-sm premium-white-subtle hover:text-neon-purple-light transition-colors duration-300 underline decoration-neon-purple/50 hover:decoration-neon-purple font-medium"
+                >
+                  LinkedIn
+                </a>
+              </div>
+
+              {/* Stats with improved design */}
+              <div className="grid grid-cols-3 gap-2 pt-4 mt-3 border-t border-neon-purple/20 relative z-10">
+                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+                  <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">10+</div>
+                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Projects</div>
+                </div>
+                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+                  <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">5+</div>
+                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Years</div>
+                </div>
+                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+                  <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">100%</div>
+                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Success</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Developer Card - Amit Sharma */}
+            <div className="group relative p-5 md:p-6 rounded-2xl bg-dark-bg-light/50 border border-neon-purple/20 shadow-[0_0_3px_rgba(178,111,255,0.15),0_0_6px_rgba(178,111,255,0.1)] hover:shadow-[0_0_8px_rgba(178,111,255,0.25),0_0_15px_rgba(178,111,255,0.15)] transition-all duration-300 hover:scale-[1.02] hover:border-neon-purple/50 card-entrance flex flex-col overflow-hidden" style={{ animationDelay: "0.2s" }}>
+              {/* Decorative gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+              
+              {/* Avatar with enhanced styling */}
+              <div className="flex justify-center mb-4 relative z-10">
+                <div className="relative">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-neon-purple/50 to-neon-purple/30 flex items-center justify-center border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
+                    <span className="text-3xl font-bold premium-white-subtle">
+                      A
+                    </span>
                   </div>
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-neon-purple/20 to-transparent blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              </div>
+
+              {/* Name */}
+              <h3 className="text-lg md:text-xl font-body font-bold premium-white-subtle mb-1 text-center relative z-10">
+                Amit Sharma
+              </h3>
+
+              {/* Role */}
+              <p className="text-sm font-body font-semibold gradient-text mb-3 text-center relative z-10">
+                Experienced Backend Developer
+              </p>
+
+              {/* Bio */}
+              <p className="text-gray-300 font-body text-sm leading-relaxed mb-4 text-center flex-grow relative z-10">
+                Seasoned backend developer with 7+ years of experience building scalable and robust 
+                server-side applications. Expert in API development, database design, and cloud 
+                infrastructure for enterprise-level solutions.
+              </p>
+
+              {/* Tech Stack */}
+              <div className="flex flex-wrap justify-center gap-2 mb-4 relative z-10">
+                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                  Node.js
+                </span>
+                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                  Python
+                </span>
+                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                  AWS
+                </span>
+              </div>
+
+              {/* Links */}
+              <div className="flex justify-center gap-4 mt-auto mb-3 relative z-10">
+                <a
+                  href="https://github.com/amit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm premium-white-subtle hover:text-neon-purple-light transition-colors duration-300 underline decoration-neon-purple/50 hover:decoration-neon-purple font-medium"
+                >
+                  GitHub
+                </a>
+              </div>
+
+              {/* Stats with improved design */}
+              <div className="grid grid-cols-3 gap-2 pt-4 mt-3 border-t border-neon-purple/20 relative z-10">
+                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+                  <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">7+</div>
+                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Years</div>
+                </div>
+                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+                  <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">20+</div>
+                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Projects</div>
+                </div>
+                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+                  <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">5+</div>
+                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Tech Stack</div>
                 </div>
               </div>
             </div>
@@ -384,17 +518,17 @@ export default function Home() {
       {/* Testimonials Section */}
       <section
         id="testimonials"
-        className="hidden relative py-24 px-4 md:px-8 z-10"
+        className="relative py-24 px-4 md:px-8 bg-dark-bg-light/20 z-10"
       >
         <div className="max-w-7xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
-            What Our Learners Say
+            What Our Clients Say
           </NeonHeading>
 
           <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-6 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
 
           <p className="text-center text-gray-300 mb-12 text-base md:text-lg font-body max-w-2xl mx-auto">
-            Early feedback from our beta students and learners.
+            Trusted by startups and enterprises worldwide. Here's what our clients have to say about working with us.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -404,8 +538,8 @@ export default function Home() {
             >
               <TestimonialCard
                 name="Alex Chen"
-                role="Early Access Learner"
-                quote="The mobile development course completely transformed my understanding of React Native. The hands-on projects are exactly what I needed to build real apps. Highly recommend!"
+                role="CTO, Fintech Startup"
+                quote="42 Coding Labs delivered an exceptional mobile banking application that exceeded our expectations. Their expertise in React Native and fintech integration was evident throughout the project. Highly professional and reliable."
               />
             </div>
             <div
@@ -414,8 +548,8 @@ export default function Home() {
             >
               <TestimonialCard
                 name="Sarah Johnson"
-                role="Student"
-                quote="I've tried multiple coding bootcamps, but 42 Coding Labs stands out. The AI course helped me integrate LLMs into my projects within weeks. The community support is incredible."
+                role="Product Manager, AI Company"
+                quote="Working with 42 Coding Labs transformed our AI chat platform. They seamlessly integrated LLM capabilities and delivered a scalable solution. The team's technical expertise and communication were outstanding."
               />
             </div>
             <div
@@ -424,8 +558,8 @@ export default function Home() {
             >
               <TestimonialCard
                 name="Marcus Rivera"
-                role="Founder"
-                quote="As someone transitioning from design to development, the full-stack course was perfect. The curriculum is well-structured, and the instructors provide clear, actionable feedback."
+                role="Founder, E-Commerce Platform"
+                quote="From MVP to production, 42 Coding Labs guided us through every step. Their full-stack development services helped us launch faster than expected. Professional, responsive, and results-driven."
               />
             </div>
           </div>
@@ -435,19 +569,18 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="relative py-24 px-4 md:px-8 bg-dark-bg-light/30 z-10"
+        className="relative py-24 px-4 md:px-8 bg-dark-bg-light/20 z-10"
       >
         <div className="max-w-2xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
-            Sign Up
+            Contact Us
           </NeonHeading>
 
           <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-6 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
 
           <p className="text-center text-gray-300 mb-12 text-base md:text-lg font-body max-w-2xl mx-auto">
-            Join our community of learners and start building real-world
-            projects. Get personalized guidance, lifetime access to course
-            materials, and support from expert instructors.
+            Ready to transform your ideas into reality? Get in touch with us to discuss your project. 
+            We'll provide a detailed proposal and timeline tailored to your business needs.
           </p>
 
           <form
@@ -468,7 +601,7 @@ export default function Home() {
                 id="name"
                 name="name"
                 required
-                className="w-full px-4 py-3 form-input-bg border border-neon-purple/30 rounded-sm text-gray-200 focus:outline-none focus:border-neon-purple/60 focus:shadow-neon-sm transition-all duration-300"
+                className="w-full px-4 py-3 bg-dark-bg-light/50 border border-neon-purple/20 rounded-lg text-gray-200 focus:outline-none focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)] transition-all duration-300"
                 placeholder="Your name"
               />
             </div>
@@ -485,23 +618,23 @@ export default function Home() {
                 id="email"
                 name="email"
                 required
-                className="w-full px-4 py-3 form-input-bg border border-neon-purple/30 rounded-sm text-gray-200 focus:outline-none focus:border-neon-purple/60 focus:shadow-neon-sm transition-all duration-300"
+                className="w-full px-4 py-3 bg-dark-bg-light/50 border border-neon-purple/20 rounded-lg text-gray-200 focus:outline-none focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)] transition-all duration-300"
                 placeholder="your.email@example.com"
               />
             </div>
 
             <div>
               <label
-                htmlFor="interest"
+                htmlFor="service"
                 className="block text-gray-300 mb-2 font-body"
               >
-                Course Interest
+                Service Interest
               </label>
               <select
-                id="interest"
-                name="interest"
+                id="service"
+                name="service"
                 required
-                className="w-full px-4 py-3 form-input-bg border border-neon-purple/30 rounded-sm text-gray-200 focus:outline-none focus:border-neon-purple/60 focus:shadow-neon-sm transition-all duration-300 appearance-none cursor-pointer"
+                className="w-full px-4 py-3 bg-dark-bg-light/50 border border-neon-purple/20 rounded-lg text-gray-200 focus:outline-none focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)] transition-all duration-300 appearance-none cursor-pointer"
                 style={{
                   backgroundImage:
                     "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23c084fc'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")",
@@ -511,18 +644,35 @@ export default function Home() {
                   paddingRight: "2.5rem",
                 }}
               >
-                <option value="">Select a course...</option>
-                <option value="mobile">Mobile Development</option>
-                <option value="ai">AI & Machine Learning</option>
-                <option value="fullstack">Full-Stack Web</option>
+                <option value="">Select a service...</option>
+                <option value="mobile">Mobile App Development</option>
+                <option value="fullstack">Full-Stack Development</option>
+                <option value="product">Product Development</option>
                 <option value="design">UI/UX Design</option>
-                <option value="all">All Courses</option>
+                <option value="other">Other</option>
               </select>
+            </div>
+
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-gray-300 mb-2 font-body"
+              >
+                Project Details
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                required
+                className="w-full px-4 py-3 bg-dark-bg-light/50 border border-neon-purple/20 rounded-lg text-gray-200 focus:outline-none focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)] transition-all duration-300 resize-none"
+                placeholder="Tell us about your project..."
+              />
             </div>
 
             <div className="flex justify-center pt-4">
               <NeonButton type="submit" variant="primary">
-                Sign Up Now
+                Send Message
               </NeonButton>
             </div>
           </form>
@@ -530,7 +680,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="relative py-12 px-4 md:px-8">
+      <footer className="relative py-12 px-4 md:px-8 bg-dark-bg-light/20">
         <div className="max-w-7xl mx-auto">
           <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-8 shadow-[0_0_8px_rgba(178,111,255,0.3)]"></div>
           <div className="text-center text-gray-400 font-body">

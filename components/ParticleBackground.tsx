@@ -21,7 +21,14 @@ export default function ParticleBackground() {
       vx: number
       vy: number
       size: number
+      color: string
     }> = []
+
+        const colors = [
+          'rgba(178, 111, 255, 0.2)',
+          'rgba(168, 85, 247, 0.2)',
+          'rgba(192, 132, 252, 0.2)'
+        ]
 
     for (let i = 0; i < 30; i++) {
       particles.push({
@@ -30,6 +37,7 @@ export default function ParticleBackground() {
         vx: (Math.random() - 0.5) * 0.5,
         vy: (Math.random() - 0.5) * 0.5,
         size: Math.random() * 2 + 1,
+        color: colors[Math.floor(Math.random() * colors.length)]
       })
     }
 
@@ -47,7 +55,7 @@ export default function ParticleBackground() {
 
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(178, 111, 255, 0.2)'
+        ctx.fillStyle = particle.color
         ctx.shadowBlur = 8
         ctx.shadowColor = 'rgba(178, 111, 255, 0.5)'
         ctx.fill()

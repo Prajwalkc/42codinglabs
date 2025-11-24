@@ -37,8 +37,8 @@ export default function TutorCard({
     <div className={`
       relative p-6 md:p-8 rounded-xl h-full flex flex-col
       bg-dark-bg-light/50 border border-neon-purple/20
-      shadow-[0_0_3px_rgba(178,111,255,0.15),0_0_6px_rgba(178,111,255,0.1)]
-      hover:shadow-[0_0_5px_rgba(178,111,255,0.25),0_0_10px_rgba(178,111,255,0.15)]
+      shadow-[0_0_3px_rgba(229,213,200,0.15),0_0_6px_rgba(229,213,200,0.1)]
+      hover:shadow-[0_0_5px_rgba(229,213,200,0.25),0_0_10px_rgba(229,213,200,0.15)]
       hover:border-neon-purple/40
       transition-all duration-300
       hover:scale-[1.02]

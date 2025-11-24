@@ -8,7 +8,7 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'services', 'contact']
+      const sections = ['home', 'about', 'services', 'tutors', 'testimonials', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -76,7 +76,7 @@ export default function Navigation() {
               className="premium-white-subtle font-body relative group transition-colors"
             >
               Home
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-300 to-purple-500 transition-all duration-300 ${activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 transition-all duration-300 ${activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'}`} style={{ background: 'linear-gradient(to right, #c084fc, #a855f7, #9333ea)' }}></span>
             </a>
             <a 
               href="/#about" 
@@ -109,7 +109,7 @@ export default function Navigation() {
               }}
               className="text-gray-300 font-body hover:premium-white-subtle relative group transition-colors"
             >
-              Courses
+              Services
               <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-300 to-purple-500 transition-all duration-300 ${activeSection === 'services' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </a>
             <a 
@@ -126,28 +126,13 @@ export default function Navigation() {
               }}
               className="text-gray-300 font-body hover:premium-white-subtle relative group transition-colors"
             >
-              Sign Up
+              Contact Us
               <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-300 to-purple-500 transition-all duration-300 ${activeSection === 'contact' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </a>
           </div>
 
-          {/* CTA Button & Mobile Menu */}
+          {/* Mobile Menu */}
           <div className="flex items-center space-x-4">
-            <button 
-              onClick={(e) => {
-                e.preventDefault()
-                const contactElement = document.getElementById('contact')
-                if (contactElement) {
-                  contactElement.scrollIntoView({ behavior: 'smooth' })
-                } else {
-                  window.location.href = '/#contact'
-                }
-              }}
-              className="hidden md:block px-6 py-2 gradient-border premium-white-subtle font-semibold rounded-md hover:scale-105 transition-all duration-300 text-sm uppercase tracking-wide"
-            >
-              LOGIN
-            </button>
-            
             {/* Hamburger Menu */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -213,7 +198,7 @@ export default function Navigation() {
               }}
               className={`block font-body transition-colors ${activeSection === 'services' ? 'premium-white-subtle' : 'text-gray-300'}`}
             >
-              Courses
+              Services
             </a>
             <a 
               href="/#contact" 
@@ -230,23 +215,8 @@ export default function Navigation() {
               }}
               className={`block font-body transition-colors ${activeSection === 'contact' ? 'premium-white-subtle' : 'text-gray-300'}`}
             >
-              Sign Up
+              Contact Us
             </a>
-            <button 
-              onClick={(e) => {
-                e.preventDefault()
-                setIsMenuOpen(false)
-                const contactElement = document.getElementById('contact')
-                if (contactElement) {
-                  contactElement.scrollIntoView({ behavior: 'smooth' })
-                } else {
-                  window.location.href = '/#contact'
-                }
-              }}
-              className="w-full px-6 py-2 gradient-border premium-white-subtle font-semibold rounded-md hover:scale-105 transition-all duration-300 text-sm uppercase tracking-wide mt-4"
-            >
-              LOGIN
-            </button>
           </div>
         )}
       </div>

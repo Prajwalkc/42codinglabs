@@ -15,11 +15,11 @@ export default function NeonButton({
   className = '',
   variant = 'primary' 
 }: NeonButtonProps) {
-  const baseStyles = 'px-8 py-3 font-semibold transition-all duration-300 rounded-sm'
+  const baseStyles = 'px-8 py-3 font-semibold transition-all duration-300 rounded-lg'
   
   const variantStyles = {
-    primary: 'bg-transparent gradient-border premium-white-subtle hover:scale-105 rounded-md button-pulse',
-    outline: 'border-2 border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-white hover:shadow-neon-md'
+    primary: 'bg-transparent gradient-border premium-white-subtle hover:scale-[1.02] rounded-lg',
+    outline: 'border-2 border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-white hover:shadow-neon-sm rounded-lg'
   }
   
   return (
