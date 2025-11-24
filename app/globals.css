@@ -6,8 +6,19 @@
 
 @layer base {
   body {
-    @apply bg-dark-bg text-gray-200 font-body antialiased;
+    @apply font-body antialiased;
     background-color: #120f1a;
+    color: #e5e7eb;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .light body {
+    background: linear-gradient(to bottom, #F5F0E6 0%, #FFFFFF 100%);
+    color: #1E1E25;
+  }
+  
+  html.light {
+    background: linear-gradient(to bottom, #F5F0E6 0%, #FFFFFF 100%);
   }
 }
 
@@ -55,6 +66,38 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     opacity: 0.95;
+    transition: opacity 0.3s ease;
+  }
+  
+  html.light .gradient-text {
+    background: linear-gradient(135deg, #D4A5A5 0%, #C89A9A 20%, #B28D6B 40%, #A1754F 60%, #B28D6B 80%, #C9A882 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Beige gradient text utility for light mode */
+  .beige-gradient-text {
+    background: linear-gradient(135deg, #D4A5A5 0%, #C89A9A 20%, #B28D6B 40%, #A1754F 60%, #B28D6B 80%, #C9A882 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  html.light .beige-gradient-text {
+    background: linear-gradient(135deg, #D4A5A5 0%, #C89A9A 20%, #B28D6B 40%, #A1754F 60%, #B28D6B 80%, #C9A882 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Beige gradient for SVG icons */
+  html.light .beige-gradient-text svg {
+    stroke: url(#beigeGradient);
+  }
+  
+  html.light .beige-gradient-text svg defs {
+    display: block;
   }
   
   .gradient-border {
@@ -68,6 +111,29 @@
     box-shadow: 0 0 12px rgba(168, 85, 247, 0.4), inset 0 0 12px rgba(168, 85, 247, 0.15);
   }
   
+  /* Beige gradient border for light mode */
+  .beige-gradient-border {
+    border: 2px solid #B28D6B;
+    background: transparent;
+    box-shadow: 0 0 4px rgba(178, 141, 107, 0.2), inset 0 0 4px rgba(178, 141, 107, 0.05), 0 0 8px rgba(178, 141, 107, 0.1);
+  }
+  
+  .beige-gradient-border:hover {
+    border-color: #A1754F;
+    box-shadow: 0 0 6px rgba(161, 117, 79, 0.25), inset 0 0 6px rgba(161, 117, 79, 0.08), 0 0 12px rgba(178, 141, 107, 0.15);
+  }
+  
+  html.light .beige-gradient-border {
+    border: 2px solid #B28D6B;
+    background: transparent;
+    box-shadow: 0 0 4px rgba(178, 141, 107, 0.2), inset 0 0 4px rgba(178, 141, 107, 0.05), 0 0 8px rgba(178, 141, 107, 0.1);
+  }
+  
+  html.light .beige-gradient-border:hover {
+    border-color: #A1754F;
+    box-shadow: 0 0 6px rgba(161, 117, 79, 0.25), inset 0 0 6px rgba(161, 117, 79, 0.08), 0 0 12px rgba(178, 141, 107, 0.15);
+  }
+  
   .premium-white {
     background: linear-gradient(135deg, #ffffff 0%, #f3e8ff 30%, #e9d5ff 60%, #ddd6fe 100%);
     -webkit-background-clip: text;
@@ -75,9 +141,62 @@
     background-clip: text;
   }
   
+  html.light .premium-white {
+    background: linear-gradient(135deg, #ffffff 0%, #fefcf9 25%, #faf5ee 50%, #f5f0e6 75%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* White to cream gradient for light mode hero subtitle */
+  .hero-subtitle-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #fefcf9 25%, #faf5ee 50%, #f5f0e6 75%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.15));
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  
+  html.light .hero-subtitle-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #fefcf9 20%, #faf5ee 40%, #f5f0e6 60%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  }
+  
   .premium-white-subtle {
     color: #f3e8ff;
     text-shadow: 0 0 8px rgba(243, 232, 255, 0.3), 0 0 15px rgba(221, 214, 254, 0.2);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+  
+  html.light .premium-white-subtle {
+    color: #1E1E25;
+    text-shadow: none;
+  }
+  
+  /* Light mode specific utilities */
+  html.light .neon-border {
+    border: 1px solid #E2E3E5;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  html.light .neon-border-hover {
+    border: 1px solid #B28D6B;
+    box-shadow: 0 0 0 1px #B28D6B;
+  }
+  
+  html.light .form-input-bg {
+    background: #FFFFFF;
+    border: 1px solid #E2E3E5;
+  }
+  
+  html.light .form-input-bg:focus {
+    background: #FFFFFF;
+    border-color: #B28D6B;
+    box-shadow: 0 0 0 3px rgba(178, 141, 107, 0.1);
   }
   
   .form-input-bg {

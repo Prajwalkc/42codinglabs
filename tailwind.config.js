@@ -17,6 +17,25 @@ module.exports = {
           DEFAULT: "#0f0f15",
           light: "#14141a",
         },
+        // Warm Beige/Gold Light Mode Colors
+        "beige": {
+          DEFAULT: "#B28D6B",
+          hover: "#A1754F",
+          light: "#FAF5EE",
+          base: "#F5F0E6",
+        },
+        "light-bg": {
+          main: "#F5F0E6",
+          secondary: "#FFFFFF",
+          card: "#FAF5EE",
+        },
+        "light-text": {
+          primary: "#1E1E25",
+          secondary: "#6E6E78",
+          muted: "#9A9AA3",
+        },
+        "light-border": "#E2E3E5",
+        "light-footer": "#FAF5EE",
       },
       fontFamily: {
         futuristic: ["Rajdhani", "Exo 2", "sans-serif"],

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Navigation from "@/components/Navigation";
+import { useTheme } from "@/contexts/ThemeContext";
 import NeonButton from "@/components/NeonButton";
 import NeonCard from "@/components/NeonCard";
 import NeonHeading from "@/components/NeonHeading";
@@ -81,6 +82,7 @@ const DesignIcon = () => (
 );
 
 export default function Home() {
+  const { theme } = useTheme();
   const heroRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const metricsRef = useRef<HTMLDivElement>(null);
@@ -202,7 +204,11 @@ export default function Home() {
   const scale = Math.max(0.8, 1 - scrollY * 0.2);
 
   return (
-    <main className="min-h-screen bg-dark-bg text-gray-200 overflow-x-hidden relative">
+    <main className={`min-h-screen overflow-x-hidden relative transition-colors duration-300 ${
+      theme === 'dark' ? 'bg-dark-bg text-gray-200' : 'text-light-text-primary'
+    }`} style={theme === 'light' ? {
+      background: 'linear-gradient(to bottom, #F5F0E6 0%, #FFFFFF 100%)'
+    } : {}}>
       <Navigation />
       <GradientBackground />
 
@@ -210,7 +216,9 @@ export default function Home() {
       <section
         ref={heroRef}
         id="home"
-        className="relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-24 z-10"
+        className={`relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-24 z-10 transition-colors duration-300 ${
+          theme === 'dark' ? '' : 'bg-gradient-to-b from-[#F5F0E6] to-[#FAF5EE]'
+        }`}
       >
         {/* Background Image with Parallax */}
         <div 
@@ -231,8 +239,6 @@ export default function Home() {
               willChange: 'transform'
             }}
           />
-          {/* Gradient Overlay to match about section exactly */}
-          <div className="absolute inset-0 bg-dark-bg-light/20"></div>
         </div>
 
         {/* Content with Parallax */}
@@ -266,7 +272,11 @@ export default function Home() {
                 </span>
               </div>
             </div>
-             <p className="text-base md:text-lg lg:text-xl text-gray-100 mb-10 font-body font-medium leading-relaxed max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+             <p className={`text-base md:text-lg lg:text-xl mb-10 font-body font-medium leading-relaxed max-w-2xl ${
+               theme === 'dark' 
+                 ? 'text-gray-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' 
+                 : 'hero-subtitle-gradient'
+             }`}>
                Transform your ideas into production-ready applications. We specialize in mobile apps, full-stack web solutions, AI integration, and UI/UX design.
              </p>
             <button
@@ -275,7 +285,11 @@ export default function Home() {
                   .getElementById("services")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="px-8 py-3 premium-white-subtle font-semibold rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_12px_rgba(178,111,255,0.3),0_0_20px_rgba(178,111,255,0.2)] gradient-border hover:gradient-border-hover"
+              className={`px-8 py-3 font-semibold rounded-lg transition-all duration-300 hover:scale-[1.02] ${
+                theme === 'dark' 
+                  ? 'premium-white-subtle hover:shadow-[0_0_12px_rgba(178,111,255,0.3),0_0_20px_rgba(178,111,255,0.2)] gradient-border hover:gradient-border-hover'
+                  : 'text-white hover:text-white/90 beige-gradient-border hover:shadow-[0_0_12px_rgba(178,141,107,0.3),0_0_20px_rgba(178,141,107,0.2)]'
+              }`}
               aria-label="Explore Services"
             >
               Our Services
@@ -287,7 +301,11 @@ export default function Home() {
             <div className="flex flex-col gap-4">
               {/* Metric Card 1 */}
               <div 
-                className="bg-dark-bg-light/70 backdrop-blur-md border border-neon-purple/30 rounded-xl p-6 shadow-[0_0_20px_rgba(178,111,255,0.2)]"
+                className={`backdrop-blur-md rounded-xl p-6 transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'bg-dark-bg-light/70 border-neon-purple/30 shadow-[0_0_20px_rgba(178,111,255,0.2)]' 
+                    : 'bg-gradient-to-br from-[#FAF5EE]/95 to-[#F5F0E6]/90 beige-gradient-border backdrop-blur-md'
+                }`}
                 style={{
                   transform: `translateY(${-mousePosition.y * 0.1}px)`,
                   willChange: 'transform',
@@ -295,12 +313,18 @@ export default function Home() {
                 }}
               >
                 <div className="text-4xl font-bold gradient-text mb-1">{metrics.satisfaction}%</div>
-                <div className="text-sm text-gray-300 font-medium">Client Satisfaction</div>
+                <div className={`text-sm font-semibold transition-colors duration-300 ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-white'
+                }`}>Client Satisfaction</div>
               </div>
 
               {/* Metric Card 2 */}
               <div 
-                className="bg-dark-bg-light/70 backdrop-blur-md border border-neon-purple/30 rounded-xl p-6 shadow-[0_0_20px_rgba(178,111,255,0.2)]"
+                className={`backdrop-blur-md rounded-xl p-6 transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'bg-dark-bg-light/70 border-neon-purple/30 shadow-[0_0_20px_rgba(178,111,255,0.2)]' 
+                    : 'bg-gradient-to-br from-[#FAF5EE]/95 to-[#F5F0E6]/90 beige-gradient-border backdrop-blur-md'
+                }`}
                 style={{
                   transform: `translateY(${mousePosition.y * 0.1}px)`,
                   willChange: 'transform',
@@ -308,12 +332,18 @@ export default function Home() {
                 }}
               >
                 <div className="text-4xl font-bold gradient-text mb-1">{metrics.projects}+</div>
-                <div className="text-sm text-gray-300 font-medium">Projects Delivered</div>
+                <div className={`text-sm font-semibold transition-colors duration-300 ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-white'
+                }`}>Projects Delivered</div>
               </div>
 
               {/* Metric Card 3 */}
               <div 
-                className="bg-dark-bg-light/70 backdrop-blur-md border border-neon-purple/30 rounded-xl p-6 shadow-[0_0_20px_rgba(178,111,255,0.2)]"
+                className={`backdrop-blur-md rounded-xl p-6 transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'bg-dark-bg-light/70 border-neon-purple/30 shadow-[0_0_20px_rgba(178,111,255,0.2)]' 
+                    : 'bg-gradient-to-br from-[#FAF5EE]/95 to-[#F5F0E6]/90 beige-gradient-border backdrop-blur-md'
+                }`}
                 style={{
                   transform: `translateY(${-mousePosition.y * 0.15}px)`,
                   willChange: 'transform',
@@ -321,7 +351,9 @@ export default function Home() {
                 }}
               >
                 <div className="text-4xl font-bold gradient-text mb-1">{metrics.delivery}%</div>
-                <div className="text-sm text-gray-300 font-medium">On-Time Delivery</div>
+                <div className={`text-sm font-semibold transition-colors duration-300 ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-white'
+                }`}>On-Time Delivery</div>
               </div>
             </div>
           </div>
@@ -330,32 +362,40 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative py-12 md:py-16 px-4 md:px-8 bg-dark-bg-light/20 z-10">
+      <section id="about" className={`relative py-12 md:py-16 px-4 md:px-8 z-10 transition-colors duration-300 ${
+        theme === 'dark' ? 'bg-dark-bg-light/20' : 'bg-gradient-to-b from-[#FAF5EE] to-[#FFFFFF]'
+      }`}>
         <div className="max-w-7xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
             About Us
           </NeonHeading>
 
-          <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-12 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
+          <div className={`h-px bg-gradient-to-r from-transparent to-transparent mb-12 gradient-line transition-all duration-300 ${
+            theme === 'dark' 
+              ? 'via-neon-purple/60 shadow-[0_0_8px_rgba(178,111,255,0.3)]' 
+              : 'via-beige/40 shadow-[0_0_8px_rgba(178,141,107,0.15)]'
+          }`}></div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
             {/* About Image */}
             <div className="relative order-2 md:order-1">
-              <div className="relative rounded-2xl overflow-hidden border border-neon-purple/30 shadow-[0_0_30px_rgba(178,111,255,0.2)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-transparent z-10"></div>
+              <div className={`relative rounded-2xl overflow-hidden border transition-all duration-300 ${
+                theme === 'dark' ? 'border-neon-purple/30' : 'border-light-border'
+              }`}>
                 <img 
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&q=80"
                   alt="Team Collaboration"
-                  className="w-full h-[400px] object-cover opacity-90"
+                  className="w-full h-[400px] object-cover"
                   loading="lazy"
                   decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/60 via-transparent to-transparent z-20"></div>
               </div>
             </div>
 
             {/* About Content */}
-            <div className="text-gray-300 text-sm md:text-base leading-relaxed space-y-4 font-body font-normal order-1 md:order-2">
+            <div className={`text-sm md:text-base leading-relaxed space-y-4 font-body font-normal order-1 md:order-2 transition-colors duration-300 ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+            }`}>
               <p>
                 <span className="inline-flex items-center space-x-2 mr-2">
                   <span className="font-body font-bold text-3xl md:text-4xl gradient-text">
@@ -383,17 +423,25 @@ export default function Home() {
       {/* Services Section */}
       <section
         id="services"
-        className="relative py-12 md:py-16 px-4 md:px-8 bg-dark-bg-light/20 z-10"
+        className={`relative py-12 md:py-16 px-4 md:px-8 z-10 transition-colors duration-300 ${
+          theme === 'dark' ? 'bg-dark-bg-light/20' : 'bg-gradient-to-b from-[#FFFFFF] to-[#FAF5EE]'
+        }`}
       >
         <div className="max-w-7xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
             Services
           </NeonHeading>
 
-          <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-12 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
+          <div className={`h-px bg-gradient-to-r from-transparent to-transparent mb-12 gradient-line transition-all duration-300 ${
+            theme === 'dark' 
+              ? 'via-neon-purple/60 shadow-[0_0_8px_rgba(178,111,255,0.3)]' 
+              : 'via-beige/40 shadow-[0_0_8px_rgba(178,141,107,0.15)]'
+          }`}></div>
 
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <p className="text-gray-300 text-lg md:text-xl leading-relaxed font-body">
+            <p className={`text-lg md:text-xl leading-relaxed font-body transition-colors duration-300 ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+            }`}>
               We offer comprehensive IT outsourcing services tailored to your business needs. 
               From mobile app development to full-stack solutions, our expert team delivers 
               production-ready applications using industry best practices and cutting-edge technologies.
@@ -452,20 +500,34 @@ export default function Home() {
             ].map((project, index) => (
               <div
                 key={index}
-                className="group flex items-center justify-between p-6 bg-dark-bg-light/30 border border-neon-purple/20 rounded-sm hover:border-neon-purple/50 transition-all duration-300"
+                className={`group flex items-center justify-between p-6 rounded-sm transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'bg-dark-bg-light/30 border-neon-purple/20 hover:border-neon-purple/50 border' 
+                    : 'bg-gradient-to-br from-[#FAF5EE]/95 to-[#F5F0E6]/90 beige-gradient-border backdrop-blur-md'
+                }`}
               >
-                <span className="text-lg md:text-xl text-gray-200 font-body font-medium">
+                <span className={`text-lg md:text-xl font-body font-medium transition-colors duration-300 ${
+                  theme === 'dark' ? 'text-gray-200' : 'text-gray-800'
+                }`}>
                   {project.name}
                 </span>
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-neon-purple font-semibold relative group-hover:text-neon-purple-light transition-colors duration-300"
+                  className={`font-semibold relative transition-colors duration-300 ${
+                    theme === 'dark' 
+                      ? 'text-neon-purple group-hover:text-neon-purple-light' 
+                      : 'beige-gradient-text group-hover:opacity-80'
+                  }`}
                 >
                   <span className="relative">
                     Visit Link
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-purple group-hover:w-full transition-all duration-300 shadow-[0_0_10px_rgba(178,111,255,0.8)]"></span>
+                    <span className={`absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
+                      theme === 'dark' 
+                        ? 'bg-neon-purple shadow-[0_0_10px_rgba(178,111,255,0.8)]' 
+                        : 'bg-beige shadow-[0_0_10px_rgba(178,141,107,0.3)]'
+                    }`}></span>
                   </span>
                 </a>
               </div>
@@ -484,9 +546,15 @@ export default function Home() {
             Meet Our Team
           </NeonHeading>
 
-          <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-6 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
+          <div className={`h-px bg-gradient-to-r from-transparent to-transparent mb-6 gradient-line transition-all duration-300 ${
+            theme === 'dark' 
+              ? 'via-neon-purple/60 shadow-[0_0_8px_rgba(178,111,255,0.3)]' 
+              : 'via-beige/40 shadow-[0_0_8px_rgba(178,141,107,0.15)]'
+          }`}></div>
 
-          <p className="text-center text-gray-300 mb-12 text-base md:text-lg font-body max-w-2xl mx-auto">
+          <p className={`text-center mb-12 text-base md:text-lg font-body max-w-2xl mx-auto transition-colors duration-300 ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             Our team of experienced developers brings real-world expertise from building production-ready 
             applications. With hands-on experience in mobile, AI, and web technologies, we deliver 
             solutions that scale and perform.
@@ -494,14 +562,22 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
             {/* Developer Card */}
-            <div className="group relative p-5 md:p-6 rounded-2xl bg-dark-bg-light/50 border border-neon-purple/20 shadow-[0_0_3px_rgba(178,111,255,0.15),0_0_6px_rgba(178,111,255,0.1)] hover:shadow-[0_0_8px_rgba(178,111,255,0.25),0_0_15px_rgba(178,111,255,0.15)] transition-all duration-300 hover:scale-[1.02] hover:border-neon-purple/50 card-entrance flex flex-col overflow-hidden">
+            <div className={`group relative p-5 md:p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02] card-entrance flex flex-col overflow-hidden ${
+              theme === 'dark' 
+                ? 'bg-dark-bg-light/50 border-neon-purple/20 shadow-[0_0_3px_rgba(178,111,255,0.15),0_0_6px_rgba(178,111,255,0.1)] hover:shadow-[0_0_8px_rgba(178,111,255,0.25),0_0_15px_rgba(178,111,255,0.15)] hover:border-neon-purple/50 border' 
+                : 'bg-gradient-to-br from-[#FAF5EE]/95 to-[#F5F0E6]/90 beige-gradient-border backdrop-blur-sm'
+            }`}>
               {/* Decorative gradient overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               
               {/* Avatar with enhanced styling */}
               <div className="flex justify-center mb-4 relative z-10">
                 <div className="relative">
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
+                  <div className={`w-20 h-20 rounded-full overflow-hidden border-2 transition-all duration-300 ${
+                    theme === 'dark' 
+                      ? 'border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)]' 
+                      : 'border-beige/40 shadow-[0_1px_3px_rgba(178,141,107,0.15)] group-hover:shadow-[0_2px_4px_rgba(178,141,107,0.2)]'
+                  }`}>
                     <img 
                       src="https://ui-avatars.com/api/?name=Prajwal&background=b256fe&color=fff&size=200&bold=true"
                       alt="Prajwal"
@@ -525,7 +601,9 @@ export default function Home() {
               </p>
 
               {/* Bio */}
-              <p className="text-gray-300 font-body text-sm leading-relaxed mb-4 text-center flex-grow relative z-10">
+              <p className={`font-body text-sm leading-relaxed mb-4 text-center flex-grow relative z-10 transition-colors duration-300 ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              }`}>
                 Expert in building production-ready applications serving thousands of users. 
                 Specializing in React Native, Next.js, and GraphQL with extensive experience in 
                 fintech, AI integration, and enterprise solutions.
@@ -533,13 +611,25 @@ export default function Home() {
 
               {/* Tech Stack */}
               <div className="flex flex-wrap justify-center gap-2 mb-4 relative z-10">
-                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                <span className={`px-2.5 py-1 text-xs rounded-lg border font-body font-medium transition-all duration-200 ${
+                  theme === 'dark' 
+                    ? 'bg-neon-purple/15 text-neon-purple-light border-neon-purple/25 hover:bg-neon-purple/25 hover:border-neon-purple/40' 
+                    : 'bg-beige/10 beige-gradient-text border-beige/30 hover:bg-beige/20 hover:border-beige/50'
+                }`}>
                   React Native
                 </span>
-                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                <span className={`px-2.5 py-1 text-xs rounded-lg border font-body font-medium transition-all duration-200 ${
+                  theme === 'dark' 
+                    ? 'bg-neon-purple/15 text-neon-purple-light border-neon-purple/25 hover:bg-neon-purple/25 hover:border-neon-purple/40' 
+                    : 'bg-beige/10 beige-gradient-text border-beige/30 hover:bg-beige/20 hover:border-beige/50'
+                }`}>
                   Next.js
                 </span>
-                <span className="px-2.5 py-1 text-xs bg-neon-purple/15 text-neon-purple-light rounded-lg border border-neon-purple/25 font-body font-medium hover:bg-neon-purple/25 hover:border-neon-purple/40 transition-all duration-200">
+                <span className={`px-2.5 py-1 text-xs rounded-lg border font-body font-medium transition-all duration-200 ${
+                  theme === 'dark' 
+                    ? 'bg-neon-purple/15 text-neon-purple-light border-neon-purple/25 hover:bg-neon-purple/25 hover:border-neon-purple/40' 
+                    : 'bg-beige/10 beige-gradient-text border-beige/30 hover:bg-beige/20 hover:border-beige/50'
+                }`}>
                   GraphQL
                 </span>
               </div>
@@ -550,38 +640,70 @@ export default function Home() {
                   href="https://github.com/prajwal"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm premium-white-subtle hover:text-neon-purple-light transition-colors duration-300 underline decoration-neon-purple/50 hover:decoration-neon-purple font-medium"
+                  className={`text-sm transition-colors duration-300 underline font-medium ${
+                    theme === 'dark' 
+                      ? 'premium-white-subtle hover:text-neon-purple-light decoration-neon-purple/50 hover:decoration-neon-purple' 
+                      : 'beige-gradient-text hover:opacity-80 decoration-beige/40 hover:decoration-beige'
+                  }`}
                 >
                   GitHub
                 </a>
               </div>
 
               {/* Stats with improved design */}
-              <div className="grid grid-cols-3 gap-2 pt-4 mt-3 border-t border-neon-purple/20 relative z-10">
-                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+              <div className={`grid grid-cols-3 gap-2 pt-4 mt-3 border-t relative z-10 transition-colors duration-300 ${
+                theme === 'dark' ? 'border-neon-purple/20' : 'border-light-border'
+              }`}>
+                <div className={`text-center p-1.5 rounded-lg border transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'bg-dark-bg-light/30 border-neon-purple/10 group-hover:border-neon-purple/20' 
+                    : 'bg-beige/5 border-light-border group-hover:border-beige/40'
+                }`}>
                   <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">7+</div>
-                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Years</div>
+                  <div className={`text-xs font-body uppercase tracking-wide transition-colors duration-300 ${
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                  }`}>Years</div>
                 </div>
-                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+                <div className={`text-center p-1.5 rounded-lg border transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'bg-dark-bg-light/30 border-neon-purple/10 group-hover:border-neon-purple/20' 
+                    : 'bg-beige/5 border-light-border group-hover:border-beige/40'
+                }`}>
                   <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">50K+</div>
-                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Users</div>
+                  <div className={`text-xs font-body uppercase tracking-wide transition-colors duration-300 ${
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                  }`}>Users</div>
                 </div>
-                <div className="text-center p-1.5 rounded-lg bg-dark-bg-light/30 border border-neon-purple/10 group-hover:border-neon-purple/20 transition-all duration-300">
+                <div className={`text-center p-1.5 rounded-lg border transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'bg-dark-bg-light/30 border-neon-purple/10 group-hover:border-neon-purple/20' 
+                    : 'bg-beige/5 border-light-border group-hover:border-beige/40'
+                }`}>
                   <div className="text-lg md:text-xl font-bold gradient-text mb-0.5">3</div>
-                  <div className="text-xs text-gray-400 font-body uppercase tracking-wide">Countries</div>
+                  <div className={`text-xs font-body uppercase tracking-wide transition-colors duration-300 ${
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                  }`}>Countries</div>
                 </div>
               </div>
             </div>
 
             {/* Developer Card - Pooja Saru */}
-            <div className="group relative p-5 md:p-6 rounded-2xl bg-dark-bg-light/50 border border-neon-purple/20 shadow-[0_0_3px_rgba(178,111,255,0.15),0_0_6px_rgba(178,111,255,0.1)] hover:shadow-[0_0_8px_rgba(178,111,255,0.25),0_0_15px_rgba(178,111,255,0.15)] transition-all duration-300 hover:scale-[1.02] hover:border-neon-purple/50 card-entrance flex flex-col overflow-hidden" style={{ animationDelay: "0.1s" }}>
+            <div className={`group relative p-5 md:p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02] card-entrance flex flex-col overflow-hidden ${
+              theme === 'dark' 
+                ? 'bg-dark-bg-light/50 border-neon-purple/20 shadow-[0_0_3px_rgba(178,111,255,0.15),0_0_6px_rgba(178,111,255,0.1)] hover:shadow-[0_0_8px_rgba(178,111,255,0.25),0_0_15px_rgba(178,111,255,0.15)] hover:border-neon-purple/50 border' 
+                : 'bg-gradient-to-br from-[#F5F0E6] to-[#FAF5EE] beige-gradient-border'
+            }`} style={{ animationDelay: "0.1s" }}>
               {/* Decorative gradient overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               
               {/* Avatar with enhanced styling */}
               <div className="flex justify-center mb-4 relative z-10">
                 <div className="relative">
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
+                  <div className={`w-20 h-20 rounded-full overflow-hidden border-2 transition-all duration-300 ${
+                    theme === 'dark' 
+                      ? 'border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)]' 
+                      : 'border-beige/40 shadow-[0_1px_3px_rgba(178,141,107,0.15)] group-hover:shadow-[0_2px_4px_rgba(178,141,107,0.2)]'
+                  }`}>
                     <img 
                       src="https://ui-avatars.com/api/?name=Pooja&background=b256fe&color=fff&size=200&bold=true"
                       alt="Pooja"
@@ -652,14 +774,22 @@ export default function Home() {
             </div>
 
             {/* Developer Card - Amit Sharma */}
-            <div className="group relative p-5 md:p-6 rounded-2xl bg-dark-bg-light/50 border border-neon-purple/20 shadow-[0_0_3px_rgba(178,111,255,0.15),0_0_6px_rgba(178,111,255,0.1)] hover:shadow-[0_0_8px_rgba(178,111,255,0.25),0_0_15px_rgba(178,111,255,0.15)] transition-all duration-300 hover:scale-[1.02] hover:border-neon-purple/50 card-entrance flex flex-col overflow-hidden" style={{ animationDelay: "0.2s" }}>
+            <div className={`group relative p-5 md:p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02] card-entrance flex flex-col overflow-hidden ${
+              theme === 'dark' 
+                ? 'bg-dark-bg-light/50 border-neon-purple/20 shadow-[0_0_3px_rgba(178,111,255,0.15),0_0_6px_rgba(178,111,255,0.1)] hover:shadow-[0_0_8px_rgba(178,111,255,0.25),0_0_15px_rgba(178,111,255,0.15)] hover:border-neon-purple/50 border' 
+                : 'bg-gradient-to-br from-[#F5F0E6] to-[#FAF5EE] beige-gradient-border'
+            }`} style={{ animationDelay: "0.2s" }}>
               {/* Decorative gradient overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               
               {/* Avatar with enhanced styling */}
               <div className="flex justify-center mb-4 relative z-10">
                 <div className="relative">
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)] transition-all duration-300">
+                  <div className={`w-20 h-20 rounded-full overflow-hidden border-2 transition-all duration-300 ${
+                    theme === 'dark' 
+                      ? 'border-neon-purple/40 shadow-[0_0_15px_rgba(178,111,255,0.3)] group-hover:shadow-[0_0_20px_rgba(178,111,255,0.4)]' 
+                      : 'border-beige/40 shadow-[0_1px_3px_rgba(178,141,107,0.15)] group-hover:shadow-[0_2px_4px_rgba(178,141,107,0.2)]'
+                  }`}>
                     <img 
                       src="https://ui-avatars.com/api/?name=Amit&background=b256fe&color=fff&size=200&bold=true"
                       alt="Amit"
@@ -737,16 +867,24 @@ export default function Home() {
       {/* Testimonials Section */}
       <section
         id="testimonials"
-        className="relative py-12 md:py-16 px-4 md:px-8 bg-dark-bg-light/20 z-10"
+        className={`relative py-12 md:py-16 px-4 md:px-8 z-10 transition-colors duration-300 ${
+          theme === 'dark' ? 'bg-dark-bg-light/20' : 'bg-gradient-to-b from-[#FAF5EE] to-[#F5F0E6]'
+        }`}
       >
         <div className="max-w-7xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
             What Our Clients Say
           </NeonHeading>
 
-          <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-6 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
+          <div className={`h-px bg-gradient-to-r from-transparent to-transparent mb-6 gradient-line transition-all duration-300 ${
+            theme === 'dark' 
+              ? 'via-neon-purple/60 shadow-[0_0_8px_rgba(178,111,255,0.3)]' 
+              : 'via-beige/40 shadow-[0_0_8px_rgba(178,141,107,0.15)]'
+          }`}></div>
 
-          <p className="text-center text-gray-300 mb-12 text-base md:text-lg font-body max-w-2xl mx-auto">
+          <p className={`text-center mb-12 text-base md:text-lg font-body max-w-2xl mx-auto transition-colors duration-300 ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             Trusted by startups and enterprises worldwide. Here's what our clients have to say about working with us.
           </p>
 
@@ -788,16 +926,24 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="relative py-12 md:py-16 px-4 md:px-8 bg-dark-bg-light/20 z-10"
+        className={`relative py-12 md:py-16 px-4 md:px-8 z-10 transition-colors duration-300 ${
+          theme === 'dark' ? 'bg-dark-bg-light/20' : 'bg-gradient-to-b from-[#F5F0E6] to-[#FAF5EE]'
+        }`}
       >
         <div className="max-w-2xl mx-auto">
           <NeonHeading level={2} variant="section" className="text-center">
             Contact Us
           </NeonHeading>
 
-          <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-6 shadow-[0_0_8px_rgba(178,111,255,0.3)] gradient-line"></div>
+          <div className={`h-px bg-gradient-to-r from-transparent to-transparent mb-6 gradient-line transition-all duration-300 ${
+            theme === 'dark' 
+              ? 'via-neon-purple/60 shadow-[0_0_8px_rgba(178,111,255,0.3)]' 
+              : 'via-beige/40 shadow-[0_0_8px_rgba(178,141,107,0.15)]'
+          }`}></div>
 
-          <p className="text-center text-gray-300 mb-12 text-base md:text-lg font-body max-w-2xl mx-auto">
+          <p className={`text-center mb-12 text-base md:text-lg font-body max-w-2xl mx-auto transition-colors duration-300 ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             Ready to transform your ideas into reality? Get in touch with us to discuss your project. 
             We'll provide a detailed proposal and timeline tailored to your business needs.
           </p>
@@ -811,7 +957,9 @@ export default function Home() {
             <div>
               <label
                 htmlFor="name"
-                className="block text-gray-300 mb-2 font-body"
+                className={`block mb-2 font-body transition-colors duration-300 ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-light-text-primary'
+                }`}
               >
                 Full Name
               </label>
@@ -820,7 +968,11 @@ export default function Home() {
                 id="name"
                 name="name"
                 required
-                className="w-full px-4 py-3 bg-dark-bg-light/50 border border-neon-purple/20 rounded-lg text-gray-200 focus:outline-none focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)] transition-all duration-300"
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'bg-dark-bg-light/50 border-neon-purple/20 text-gray-200 focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)]' 
+                    : 'bg-white border-light-border text-light-text-primary focus:border-beige focus:shadow-[0_0_0_3px_rgba(178,141,107,0.1)]'
+                }`}
                 placeholder="Your name"
               />
             </div>
@@ -828,7 +980,9 @@ export default function Home() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-gray-300 mb-2 font-body"
+                className={`block mb-2 font-body transition-colors duration-300 ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-light-text-primary'
+                }`}
               >
                 Email
               </label>
@@ -837,7 +991,11 @@ export default function Home() {
                 id="email"
                 name="email"
                 required
-                className="w-full px-4 py-3 bg-dark-bg-light/50 border border-neon-purple/20 rounded-lg text-gray-200 focus:outline-none focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)] transition-all duration-300"
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'bg-dark-bg-light/50 border-neon-purple/20 text-gray-200 focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)]' 
+                    : 'bg-white border-light-border text-light-text-primary focus:border-beige focus:shadow-[0_0_0_3px_rgba(178,141,107,0.1)]'
+                }`}
                 placeholder="your.email@example.com"
               />
             </div>
@@ -845,7 +1003,9 @@ export default function Home() {
             <div>
               <label
                 htmlFor="service"
-                className="block text-gray-300 mb-2 font-body"
+                className={`block mb-2 font-body transition-colors duration-300 ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-light-text-primary'
+                }`}
               >
                 Service Interest
               </label>
@@ -853,10 +1013,15 @@ export default function Home() {
                 id="service"
                 name="service"
                 required
-                className="w-full px-4 py-3 bg-dark-bg-light/50 border border-neon-purple/20 rounded-lg text-gray-200 focus:outline-none focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)] transition-all duration-300 appearance-none cursor-pointer"
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-all duration-300 appearance-none cursor-pointer ${
+                  theme === 'dark' 
+                    ? 'bg-dark-bg-light/50 border-neon-purple/20 text-gray-200 focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)]' 
+                    : 'bg-white border-light-border text-light-text-primary focus:border-beige focus:shadow-[0_0_0_3px_rgba(178,141,107,0.1)]'
+                }`}
                 style={{
-                  backgroundImage:
-                    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23c084fc'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")",
+                  backgroundImage: theme === 'dark'
+                    ? "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23c084fc'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")"
+                    : "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23B28D6B'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")",
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "right 0.75rem center",
                   backgroundSize: "1.5em 1.5em",
@@ -875,7 +1040,9 @@ export default function Home() {
             <div>
               <label
                 htmlFor="message"
-                className="block text-gray-300 mb-2 font-body"
+                className={`block mb-2 font-body transition-colors duration-300 ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-light-text-primary'
+                }`}
               >
                 Project Details
               </label>
@@ -884,7 +1051,11 @@ export default function Home() {
                 name="message"
                 rows={4}
                 required
-                className="w-full px-4 py-3 bg-dark-bg-light/50 border border-neon-purple/20 rounded-lg text-gray-200 focus:outline-none focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)] transition-all duration-300 resize-none"
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-all duration-300 resize-none ${
+                  theme === 'dark' 
+                    ? 'bg-dark-bg-light/50 border-neon-purple/20 text-gray-200 focus:border-neon-purple/50 focus:shadow-[0_0_8px_rgba(178,111,255,0.2)]' 
+                    : 'bg-white border-light-border text-light-text-primary focus:border-beige focus:shadow-[0_0_0_3px_rgba(178,141,107,0.1)]'
+                }`}
                 placeholder="Tell us about your project..."
               />
             </div>
@@ -899,10 +1070,18 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="relative py-12 px-4 md:px-8 bg-dark-bg-light/20">
+      <footer className={`relative py-12 px-4 md:px-8 transition-colors duration-300 ${
+        theme === 'dark' ? 'bg-dark-bg-light/20' : 'bg-gradient-to-b from-[#FAF5EE] to-[#F5F0E6]'
+      }`}>
         <div className="max-w-7xl mx-auto">
-          <div className="h-px bg-gradient-to-r from-transparent via-neon-purple/60 to-transparent mb-8 shadow-[0_0_8px_rgba(178,111,255,0.3)]"></div>
-          <div className="text-center text-gray-400 font-body">
+          <div className={`h-px bg-gradient-to-r from-transparent to-transparent mb-8 transition-all duration-300 ${
+            theme === 'dark' 
+              ? 'via-neon-purple/60 shadow-[0_0_8px_rgba(178,111,255,0.3)]' 
+              : 'via-beige/40 shadow-[0_0_8px_rgba(178,141,107,0.15)]'
+          }`}></div>
+          <div className={`text-center font-body transition-colors duration-300 ${
+            theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+          }`}>
             <p className="mb-2 inline-flex items-center space-x-2">
               <span className="font-body font-bold text-3xl md:text-4xl gradient-text">
                 42
