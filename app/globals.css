@@ -137,21 +137,8 @@ section{position:relative}
 .reel{margin-top:80px;border-radius:28px;padding:10px;background:linear-gradient(180deg,rgba(117,77,236,.35),rgba(117,77,236,.05));
   box-shadow:0 0 120px -30px rgba(117,77,236,.55)}
 .reel-in{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/9;background:radial-gradient(ellipse at 50% 60%,#1a1030,#050508 70%);perspective:900px}
-.reel canvas{position:absolute;inset:0;width:100%;height:100%}
-.reel .word{position:absolute;inset:0;display:grid;place-items:center;font-weight:800;font-size:clamp(34px,9vw,118px);letter-spacing:-.04em;color:#ECEAF4;
-  text-shadow:0 8px 30px rgba(0,0,0,.5);z-index:3;text-transform:uppercase}
-.shape{position:absolute;z-index:4;animation:float 7s ease-in-out infinite;animation-delay:var(--fd,0s)}
-.sphere{border-radius:50%;background:radial-gradient(circle at 32% 30%,#C9B8FF 0%,#8A63F0 22%,#4A23A8 60%,#1C0E40 100%);box-shadow:inset -10px -14px 30px rgba(0,0,0,.45)}
-.ring{border-radius:50%;border:solid #EDEBF3;box-shadow:inset 4px 6px 10px rgba(0,0,0,.25),0 8px 20px rgba(0,0,0,.4)}
-.star{background:linear-gradient(135deg,#B49CFF,#5B34C8);clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
-.cube{transform-style:preserve-3d;animation:spin 14s linear infinite}
-.cube i{position:absolute;inset:0;border-radius:14%;background:linear-gradient(135deg,#3a3a44,#0d0d12);border:1px solid rgba(255,255,255,.08)}
-.cube.light i{background:linear-gradient(135deg,#f2f2f6,#9a9aa8)}
+.reel-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#050508}
 @keyframes float{50%{translate:0 -18px}}
-@keyframes spin{to{transform:rotateX(360deg) rotateY(720deg)}}
-.reel-bar{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;
-  background:linear-gradient(transparent,rgba(0,0,0,.6));font-size:13px;color:#d8d6e4}
-.reel-bar .pill{display:inline-flex;align-items:center;gap:8px;background:var(--brand);color:#fff;border-radius:999px;padding:8px 14px;font-weight:500;font-size:12px}
 .reel-cap{display:flex;justify-content:space-between;margin-top:18px;font-size:14px;gap:12px;flex-wrap:wrap}
 .reel-cap span:last-child{color:var(--muted)}
 
@@ -368,8 +355,7 @@ footer{border-top:1px solid var(--line);padding-block:72px 40px}
   .nav-in .btn span.t{display:none}
   .nav-in .btn{padding-left:8px}
   .about .arrow{display:none}
-  .reel-bar .pill{display:none}
-}
+  }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .rv.pre{opacity:1;transform:none;filter:none}
@@ -378,7 +364,6 @@ footer{border-top:1px solid var(--line);padding-block:72px 40px}
 /* ---------- added for the Next.js build ---------- */
 .giant-mark{display:block;width:min(240px,46vw);margin:56px auto 0;color:var(--line);-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent);mask-image:linear-gradient(180deg,#000 30%,transparent);user-select:none}
 .giant-mark svg{width:100%;height:auto;display:block}
-.reel .word svg{width:clamp(90px,18vw,220px);height:auto;color:#ECEAF4;filter:drop-shadow(0 8px 30px rgba(0,0,0,.5))}
 .sub-hero{padding-top:180px;padding-bottom:120px;min-height:70vh;background:radial-gradient(900px 500px at 15% 20%,rgba(117,77,236,.16),transparent 60%)}
 .sub-hero .lead{max-width:560px}
 .sub-hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
