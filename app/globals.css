@@ -156,6 +156,8 @@ html.light .reel::after{background:linear-gradient(to bottom,rgba(246,246,250,0)
 
 /* ---------- about ---------- */
 .stats + .about{padding-top:48px}
+/* the nav floats over the page: land the About jump below it */
+#about{scroll-margin-top:72px}
 .about .row{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .about .row small{color:var(--muted);font-size:13px}
 .about .mega{font-size:clamp(44px,10.5vw,124px);position:relative}
