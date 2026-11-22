@@ -134,14 +134,17 @@ section{position:relative}
 
 /* ---------- reel ---------- */
 /* full width, as tall as the screen allows without cropping the 16:9 film */
-.reel{position:relative;width:100%;height:min(100svh,56.25vw);overflow:hidden;background:#050508}
+.reel{position:relative;width:100%;height:min(100svh,56.25vw);overflow:hidden;background:var(--bg)}
 .reel-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#050508}
 @media (max-aspect-ratio:4/5){.reel{height:100svh}}
-html.light .reel,html.light .reel-video{background:#F6F6FA}
+html.light .reel,html.light .reel-video{background:var(--bg)}
 html.light .reel-scroll{color:#3a3a4c}
 html.light .reel-scroll i{border-color:rgba(18,18,28,.22);background:rgba(246,246,250,.6)}
 /* the hero now follows the reel, so it no longer needs first-screen height or room for the nav */
-.reel + .hero{min-height:0;padding-top:72px}
+.reel + .hero{min-height:0;padding-top:72px;background:radial-gradient(900px 600px at 15% 62%,rgba(117,77,236,.16),transparent 60%)}
+/* melt the film into the page: its encoded edge colour and glow never match the page exactly */
+.reel::after{content:"";position:absolute;left:0;right:0;bottom:0;height:24%;z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(7,7,11,0),var(--bg))}
+html.light .reel::after{background:linear-gradient(to bottom,rgba(246,246,250,0),var(--bg))}
 .reel + .hero .hero-in{padding-bottom:72px}
 .reel-scroll{position:absolute;left:50%;bottom:clamp(20px,4vh,40px);transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;
   color:#d8d6e4;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;text-decoration:none}
