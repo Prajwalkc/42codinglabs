@@ -13,7 +13,7 @@ const MARKERS = [
   { location: [1.3521, 103.8198] as [number, number], size: 0.05 }, // Singapore
 ]
 
-/** Dotted rotating globe in the hero, with markers on Kathmandu and client cities. */
+/** Dotted rotating globe in the hero, with markers on Kathmandu and client cities. Pauses while off screen. */
 export function Globe() {
   const ref = useRef<HTMLCanvasElement>(null)
   const [on, setOn] = useState(false)
@@ -44,7 +44,14 @@ export function Globe() {
       },
     })
     setOn(true)
-    return () => globe.destroy()
+    // Only spin (and draw) while the globe is on screen; it resumes where it stopped.
+    const canvas = ref.current
+    const io = new IntersectionObserver(([e]) => globe.toggle(e.isIntersecting), { threshold: 0 })
+    io.observe(canvas)
+    return () => {
+      io.disconnect()
+      globe.destroy()
+    }
   }, [])
 
   return (
