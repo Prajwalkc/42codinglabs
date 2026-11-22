@@ -22,6 +22,30 @@ export function Mark({ className }: { className?: string }) {
 }
 
 /**
+ * The compact mark (42 + teal cursor, no horizon) set inline in running text, in place of the typed "42".
+ * A visually hidden "42" stays in the text so search engines, screen readers and copy-paste still read "42 Coding Labs".
+ */
+export function InlineMark() {
+  return (
+    <span className="inline-mark">
+      <svg viewBox="0 0 48 44" aria-hidden="true" focusable="false">
+        <path
+          d="M22 31H5L19 7v31M26 18c0-10 15-10 15 0 0 8-14 12-14 20h12"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="5.8"
+          strokeLinecap="butt"
+          strokeLinejoin="miter"
+          strokeMiterlimit="2"
+        />
+        <rect x="41" y="32.4" width="6" height="5.6" rx="1" fill="#2BD4C0" />
+      </svg>
+      <span className="sr-only">42</span>
+    </span>
+  )
+}
+
+/**
  * Logo with the "line, then cursor" animation: the horizon draws in, the teal square lands,
  * then the 4 and 2 draw up. Plays once on page load and again on hover; ends still, no blink.
  */

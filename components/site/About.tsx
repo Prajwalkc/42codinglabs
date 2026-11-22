@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { Chip } from './icons'
+import { InlineMark } from './Logo'
 
 const POINTS = [
   ['You talk to the builders.', 'No account managers in between. The engineers writing your code are on your calls, in your Slack and answering your questions.'],
@@ -29,7 +30,7 @@ export function About() {
     <section className="about sec" id="about">
       <div className="wrap">
         <div className="sec-head row rv">
-          <div className="eyebrow">About 42 Coding Labs</div>
+          <div className="eyebrow"><span>About <InlineMark /> Coding Labs</span></div>
           <small>Small studio. Senior hands.</small>
         </div>
         <h2 className="mega rv">

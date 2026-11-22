@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import { Mark } from './Logo'
+import { InlineMark, Mark } from './Logo'
 
 function Cube({ size, light, style }: { size: number; light?: boolean; style: CSSProperties }) {
   const h = size / 2
@@ -129,7 +129,7 @@ export function Reel() {
               {word === 'MARK' ? <Mark key="mark" /> : word}
             </div>
             <div className="reel-bar">
-              <span>42 Coding Labs · Studio reel</span>
+              <span><InlineMark /> Coding Labs · Studio reel</span>
               <span className="pill">Full film coming soon</span>
             </div>
           </div>

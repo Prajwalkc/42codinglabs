@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Logo, Mark } from './Logo'
+import { InlineMark, Logo, Mark } from './Logo'
 
 export function Footer() {
   return (
@@ -33,7 +33,7 @@ export function Footer() {
           <Mark />
         </span>
         <div className="foot-bot">
-          <span>© {new Date().getFullYear()} 42 Coding Labs. The answer is good code.</span>
+          <span>© {new Date().getFullYear()} <InlineMark /> Coding Labs. The answer is good code.</span>
           <span>Kathmandu · Remote worldwide</span>
         </div>
       </div>

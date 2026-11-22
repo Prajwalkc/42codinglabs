@@ -386,3 +386,9 @@ footer{border-top:1px solid var(--line);padding-block:72px 40px}
 /* The globe is rendered for a dark ground; invert it on the light theme. */
 html.light .globe.on{filter:invert(1) hue-rotate(180deg);opacity:.75}
 @media (max-width:720px){html.light .globe.on{opacity:.45}}
+
+/* Inline logo mark in running text (replaces the typed "42"; hidden text keeps it readable) */
+.inline-mark{display:inline-flex;align-items:baseline;vertical-align:-.12em;margin-right:.08em}
+.inline-mark svg{height:1.05em;width:auto;overflow:visible;color:currentColor}
+.eyebrow .inline-mark svg{height:1.35em;color:var(--fg)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
