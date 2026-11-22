@@ -41,22 +41,23 @@ export function Reel() {
             <span className="v" style={{ display: 'inline' }}>the answer.</span>
           </span>
         </h2>
-        <div className="reel rv">
-          <div className="reel-in">
-            <video
-              ref={video}
-              className="reel-video"
-              src="/film/reel-loop-1080p.mp4"
-              poster="/film/reel-loop-poster.jpg"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="42 Coding Labs studio reel: Think, Code, Ship, typed by a cursor, ending on the 42 Coding Labs logo"
-            />
-          </div>
-        </div>
+      </div>
+      {/* full-bleed: the reel runs edge to edge, outside the content column */}
+      <div className="reel rv">
+        <video
+          ref={video}
+          className="reel-video"
+          src="/film/reel-loop-1080p.mp4"
+          poster="/film/reel-loop-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="42 Coding Labs studio reel: Think, Code, Ship, typed by a cursor, ending on the 42 Coding Labs logo"
+        />
+      </div>
+      <div className="wrap">
         <div className="reel-cap rv">
           <span>From first commit to shipped product</span>
           <span>Studio reel · 12 s loop</span>
