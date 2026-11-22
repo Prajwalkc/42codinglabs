@@ -1,0 +1,38 @@
+/* 42 Coding Labs A4 document templates (letterhead, proposal, invoice).
+   Light theme for paper: ink #12121C on #FFFFFF, muted #5E5E72, lines #E2E1EC, violet accents.
+   Open a template in Chrome, click into any text to edit it, then Print > Save as PDF
+   (Paper A4, Margins Default, Background graphics on). */
+@import url(../shared/brand.css);
+@page{size:A4;margin:22mm 18mm 26mm}
+@page :first{margin-top:18mm}
+html{background:#E9E8F0}
+body{color:var(--ink);font-size:10pt;line-height:1.6;background:#fff;width:210mm;min-height:297mm;margin:10mm auto;padding:18mm 18mm 26mm;box-shadow:0 10px 40px rgba(18,18,28,.12)}
+@media print{html{background:none}body{width:auto;min-height:0;margin:0;padding:0;box-shadow:none}.screen-only{display:none}}
+[contenteditable]:focus{outline:1px dashed var(--violet);outline-offset:3px}
+.head{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:7mm;border-bottom:.3mm solid var(--ink)}
+.head img{height:11mm}
+.head .meta{text-align:right;font-size:8pt;line-height:1.6;color:var(--muted-light)}
+.head .meta b{color:var(--ink);font-weight:600}
+h1{font-size:24pt;font-weight:600;letter-spacing:-.025em;line-height:1.15}
+h2{font-size:13pt;font-weight:600;letter-spacing:-.01em;margin:9mm 0 2.5mm}
+h3{font-size:10pt;font-weight:600;margin:5mm 0 1mm}
+p{margin:0 0 3mm}
+.eyebrow{display:flex;align-items:center;gap:2.5mm;font-size:7.5pt;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-light)}
+.eyebrow::before{content:"";width:1.6mm;height:1.6mm;background:var(--violet)}
+.muted{color:var(--muted-light)}
+.ph{color:var(--violet)!important}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th{text-align:left;font-size:7.5pt;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-light);border-bottom:.3mm solid var(--ink);padding:2mm 2mm 2mm 0}
+td{border-bottom:.25mm solid var(--line-light);padding:2.6mm 2mm 2.6mm 0;vertical-align:top}
+.num{text-align:right;font-variant-numeric:tabular-nums;padding-right:0}
+ul{padding-left:5mm;margin:0 0 3mm}
+li{margin-bottom:1mm}
+/* On screen the footer is a normal block. In print, Chrome draws it in the page margin on every page. */
+.foot{display:flex;justify-content:space-between;font-size:7.5pt;color:var(--muted-light);border-top:.25mm solid var(--line-light);padding-top:2.5mm;margin-top:14mm}
+@media print{.foot{display:none}}
+@page{
+  @bottom-left{content:"42 Coding Labs · Kathmandu, Nepal";font-family:Poppins,Arial,sans-serif;font-size:7.5pt;color:#5E5E72;vertical-align:top;padding-top:6mm}
+  @bottom-right{content:"hello@42codinglabs.com · 42codinglabs.com   " counter(page);font-family:Poppins,Arial,sans-serif;font-size:7.5pt;color:#5E5E72;vertical-align:top;padding-top:6mm;white-space:pre}
+}
+.note{font-size:8.5pt;color:var(--muted-light);background:#F6F6FA;border-left:.6mm solid var(--violet);padding:3mm 4mm;margin:4mm 0}
+.screen-only{font:12px Arial;color:#5E5E72;text-align:center;margin:-6mm 0 6mm}

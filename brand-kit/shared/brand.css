@@ -1,0 +1,18 @@
+/* 42 Coding Labs: shared tokens for print and social pieces */
+@font-face{font-family:Poppins;font-weight:400;src:url(fonts/poppins-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:Poppins;font-weight:500;src:url(fonts/poppins-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:Poppins;font-weight:600;src:url(fonts/poppins-latin-600-normal.woff2) format('woff2')}
+:root{
+  --black:#07070B; --surface:#0D0D15; --surface-2:#12121C; --white:#F4F4F8; --muted:#9B9BAD; --line:#1E1E29;
+  --violet:#754DEC; --violet-700:#5026B2; --teal:#2BD4C0;
+  --ink:#12121C; --paper:#F6F6FA; --muted-light:#5E5E72; --line-light:#E2E1EC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Poppins,'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ph{color:var(--violet)!important} /* placeholder text: replace before printing */
+/* Tagline "Think. Code. Ship" ends in the teal block cursor instead of a full stop */
+.tcur{display:inline-block;width:.15em;height:.14em;background:var(--teal);border-radius:.03em;margin-left:.05em;vertical-align:baseline}
+/* Tagline style, taken from the approved business card: THINK. CODE. SHIP in spaced caps,
+   then the teal cursor after a word-space gap. Use: <span class="tagline">Think. Code. Ship<span class="tcur"></span></span> */
+.tagline.tagline{text-transform:uppercase;letter-spacing:.14em;font-weight:500}
+.tagline.tagline .tcur{width:.46em;height:.56em;margin-left:.5em;border-radius:.08em}
