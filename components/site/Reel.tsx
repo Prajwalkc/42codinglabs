@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 
 /**
- * Studio reel: a 17 s seamless loop (Think. Code. Ship. typed by the teal cursor, ending on the 42 Coding Labs logo).
+ * Studio reel: a 12 s seamless loop (Think. Code. Ship. typed by the teal cursor, ending on the 42 Coding Labs logo).
  * Source project: whisper labs/42-coding-labs/film/loop (HyperFrames). Silent, so it can autoplay muted.
  */
 export function Reel() {
@@ -59,7 +59,7 @@ export function Reel() {
         </div>
         <div className="reel-cap rv">
           <span>From first commit to shipped product</span>
-          <span>Studio reel · 17 s loop</span>
+          <span>Studio reel · 12 s loop</span>
         </div>
       </div>
     </section>
