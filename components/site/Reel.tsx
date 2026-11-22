@@ -2,12 +2,15 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-// Tall screens (phones held upright) get the 9:16 cut; everything else the 16:9 one.
+// Tall screens (phones held upright) get the 9:16 cut; everything else the 16:9 one. Each has a dark and a light version.
 const PORTRAIT = '(max-aspect-ratio: 4/5)'
 const FILMS = {
-  wide: { src: '/film/reel-loop-1080p.mp4', poster: '/film/reel-loop-poster.jpg' },
-  tall: { src: '/film/reel-loop-portrait.mp4', poster: '/film/reel-loop-portrait-poster.jpg' },
+  'wide-dark': { src: '/film/reel-loop-1080p.mp4', poster: '/film/reel-loop-poster.jpg' },
+  'tall-dark': { src: '/film/reel-loop-portrait.mp4', poster: '/film/reel-loop-portrait-poster.jpg' },
+  'wide-light': { src: '/film/reel-loop-light-1080p.mp4', poster: '/film/reel-loop-light-1080p-poster.jpg' },
+  'tall-light': { src: '/film/reel-loop-portrait-light.mp4', poster: '/film/reel-loop-portrait-light-poster.jpg' },
 }
+type Film = (typeof FILMS)['wide-dark']
 
 /**
  * Studio reel, the first screen of the home page: a 12 s seamless loop (Think. Code. Ship. typed by the teal
@@ -16,15 +19,25 @@ const FILMS = {
  */
 export function Reel() {
   const video = useRef<HTMLVideoElement>(null)
-  const [film, setFilm] = useState<(typeof FILMS)['wide'] | null>(null)
+  const [film, setFilm] = useState<Film | null>(null)
 
-  // Pick the cut for this screen shape, and switch if the phone is rotated.
+  // Pick the cut for this screen shape and theme; switch if the phone is rotated or the theme is toggled.
   useEffect(() => {
     const mq = matchMedia(PORTRAIT)
-    const pick = () => setFilm(mq.matches ? FILMS.tall : FILMS.wide)
+    const html = document.documentElement
+    const pick = () => {
+      const shape = mq.matches ? 'tall' : 'wide'
+      const theme = html.classList.contains('light') ? 'light' : 'dark'
+      setFilm(FILMS[`${shape}-${theme}` as keyof typeof FILMS])
+    }
     pick()
     mq.addEventListener('change', pick)
-    return () => mq.removeEventListener('change', pick)
+    const mo = new MutationObserver(pick)
+    mo.observe(html, { attributes: true, attributeFilter: ['class'] })
+    return () => {
+      mq.removeEventListener('change', pick)
+      mo.disconnect()
+    }
   }, [])
 
   useEffect(() => {
