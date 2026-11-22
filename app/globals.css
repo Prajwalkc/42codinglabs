@@ -140,19 +140,11 @@ section{position:relative}
 /* the hero now follows the reel, so it no longer needs first-screen height or room for the nav */
 .reel + .hero{min-height:0;padding-top:72px}
 .reel + .hero .hero-in{padding-bottom:72px}
-.reel-scroll{position:absolute;right:max(20px,calc((100vw - 1180px)/2 + 20px));bottom:clamp(20px,4vh,40px);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;
+.reel-scroll{position:absolute;left:50%;bottom:clamp(20px,4vh,40px);transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;
   color:#d8d6e4;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;text-decoration:none}
 .reel-scroll i{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,244,248,.28);background:rgba(7,7,11,.35);transition:border-color .2s,background .2s}
 .reel-scroll svg{animation:nudge 1.8s ease-in-out infinite}
 .reel-scroll:hover i,.reel-scroll:focus-visible i{border-color:var(--teal);background:rgba(7,7,11,.6)}
-.reel-credit{position:absolute;z-index:2;left:max(20px,calc((100vw - 1180px)/2 + 20px));bottom:clamp(20px,4vh,40px);display:flex;align-items:center;gap:22px;flex-wrap:wrap;max-width:calc(100% - 120px)}
-.reel-credit p{font-size:15px;font-weight:500;color:var(--fg);letter-spacing:-.01em}
-.reel-credit .where{color:#b9b7c8}
-@media (max-width:720px){
-  .reel-credit{flex-direction:column;align-items:flex-start;gap:14px}
-  .reel-credit .sep{display:none}
-  .reel-credit .where{display:block;margin-top:2px}
-}
 @keyframes nudge{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
 @keyframes float{50%{translate:0 -18px}}
 

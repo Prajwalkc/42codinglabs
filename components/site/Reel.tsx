@@ -1,8 +1,6 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import { Chip } from './icons'
 
 // Tall screens (phones held upright) get the 9:16 cut; everything else the 16:9 one.
 const PORTRAIT = '(max-aspect-ratio: 4/5)'
@@ -68,17 +66,6 @@ export function Reel() {
           aria-label="Think, Code, Ship, typed by a cursor, ending on the 42 Coding Labs logo"
         />
       )}
-      {/* a credit line, so a visitor who never scrolls still knows what we do and how to start */}
-      <div className="reel-credit">
-        <p>
-          Apps, platforms and AI products<span className="sep"> · </span>
-          <span className="where">Kathmandu to the world</span>
-        </p>
-        <Link className="btn btn-primary" href="/#contact">
-          Book a call
-          <Chip />
-        </Link>
-      </div>
       <a className="reel-scroll" href="#studio" aria-label="Scroll down to the studio">
         <span>Scroll</span>
         <i aria-hidden="true">
