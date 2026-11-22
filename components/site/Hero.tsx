@@ -11,7 +11,7 @@ const words: [string, boolean][] = [
 export function Hero() {
   let i = 0
   return (
-    <section className="hero">
+    <section className="hero" id="studio">
       <Globe />
       <div className="wrap">
         <div className="hero-in">

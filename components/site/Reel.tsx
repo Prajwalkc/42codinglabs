@@ -1,17 +1,35 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+// Tall screens (phones held upright) get the 9:16 cut; everything else the 16:9 one.
+const PORTRAIT = '(max-aspect-ratio: 4/5)'
+const FILMS = {
+  wide: { src: '/film/reel-loop-1080p.mp4', poster: '/film/reel-loop-poster.jpg' },
+  tall: { src: '/film/reel-loop-portrait.mp4', poster: '/film/reel-loop-portrait-poster.jpg' },
+}
 
 /**
- * Studio reel: a 12 s seamless loop (Think. Code. Ship. typed by the teal cursor, ending on the 42 Coding Labs logo).
- * Source project: whisper labs/42-coding-labs/film/loop (HyperFrames). Silent, so it can autoplay muted.
+ * Studio reel, the first screen of the home page: a 12 s seamless loop (Think. Code. Ship. typed by the teal
+ * cursor, ending on the 42 Coding Labs logo). Source projects: whisper labs/42-coding-labs/film/loop and
+ * loop-portrait (HyperFrames). Silent, so it can autoplay muted.
  */
 export function Reel() {
   const video = useRef<HTMLVideoElement>(null)
+  const [film, setFilm] = useState<(typeof FILMS)['wide'] | null>(null)
+
+  // Pick the cut for this screen shape, and switch if the phone is rotated.
+  useEffect(() => {
+    const mq = matchMedia(PORTRAIT)
+    const pick = () => setFilm(mq.matches ? FILMS.tall : FILMS.wide)
+    pick()
+    mq.addEventListener('change', pick)
+    return () => mq.removeEventListener('change', pick)
+  }, [])
 
   useEffect(() => {
     const v = video.current
-    if (!v) return
+    if (!v || !film) return
     // Respect reduced motion: show the poster frame and let the visitor press play.
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       v.pause()
@@ -28,35 +46,34 @@ export function Reel() {
     )
     io.observe(v)
     return () => io.disconnect()
-  }, [])
+  }, [film])
 
   return (
-    <section className="pov sec">
-      <div className="wrap">
-        <div className="eyebrow rv">How we think</div>
-        <h2 className="mega rv">
-          <span>Ideas are easy.</span>
-          <span>
-            <span className="o" style={{ display: 'inline' }}>Shipping is </span>
-            <span className="v" style={{ display: 'inline' }}>the answer.</span>
-          </span>
-        </h2>
-      </div>
-      {/* full-bleed: the reel runs edge to edge, outside the content column */}
-      <div className="reel rv">
+    // The first screen: just the reel, edge to edge. The hero follows on scroll.
+    <section className="reel" aria-label="42 Coding Labs studio reel">
+      {film && (
         <video
+          key={film.src}
           ref={video}
           className="reel-video"
-          src="/film/reel-loop-1080p.mp4"
-          poster="/film/reel-loop-poster.jpg"
+          src={film.src}
+          poster={film.poster}
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
-          aria-label="42 Coding Labs studio reel: Think, Code, Ship, typed by a cursor, ending on the 42 Coding Labs logo"
+          preload="auto"
+          aria-label="Think, Code, Ship, typed by a cursor, ending on the 42 Coding Labs logo"
         />
-      </div>
+      )}
+      <a className="reel-scroll" href="#studio" aria-label="Scroll down to the studio">
+        <span>Scroll</span>
+        <i aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </i>
+      </a>
     </section>
   )
 }

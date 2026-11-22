@@ -12,9 +12,9 @@ import { Contact } from '@/components/site/Contact'
 export default function Home() {
   return (
     <>
+      <Reel />
       <Hero />
       <Stats />
-      <Reel />
       <About />
       <Services />
       <Process />
