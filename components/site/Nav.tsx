@@ -44,7 +44,7 @@ export function Nav() {
   return (
     <header className="nav">
       <div className="nav-in">
-        <Logo />
+        <Logo animated />
         <nav className="links" aria-label="Primary">
           {LINKS.map(([label, href]) => (
             <Link key={label} href={href}>

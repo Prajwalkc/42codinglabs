@@ -30,7 +30,7 @@ export function Footer() {
           </div>
         </div>
         <span className="giant-mark" aria-hidden="true">
-          <Mark blink={false} />
+          <Mark />
         </span>
         <div className="foot-bot">
           <span>© {new Date().getFullYear()} 42 Coding Labs. The answer is good code.</span>

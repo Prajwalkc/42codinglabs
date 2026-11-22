@@ -34,11 +34,15 @@ button,input,select,textarea{font:inherit;color:inherit}
 .logo .mark{width:36px;height:36px;flex:none;color:var(--fg);display:block}
 .logo .mark svg{width:100%;height:100%;display:block;overflow:visible}
 .logo .wm{font-weight:600}
-.logo .cur{animation:curblink .5s steps(1) 4}
-.logo:hover .cur{animation:curblink .5s steps(1) 4}
-.logo:hover .mark .cur{animation-name:curblink2}
-@keyframes curblink{50%{opacity:0}}
-@keyframes curblink2{50%{opacity:0}}
+/* Logo animation A: horizon draws, cursor lands, then the 4 and 2 draw. Complete at rest without .play */
+.logo .mark .m4,.logo .mark .m2,.logo .mark .mh{stroke-dasharray:1}
+.logo .mark .mc{transform-box:fill-box;transform-origin:center}
+.logo.play .mh{animation:lgDraw .6s cubic-bezier(.65,0,.35,1) both}
+.logo.play .mc{animation:lgPop .42s cubic-bezier(.34,1.56,.64,1) .52s both}
+.logo.play .m4{animation:lgDraw .6s var(--spring) .8s both}
+.logo.play .m2{animation:lgDraw .6s var(--spring) 1s both}
+@keyframes lgDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes lgPop{from{transform:scale(0)}to{transform:scale(1)}}
 .links{display:flex;gap:4px;margin:0 auto}
 .links a{font-size:14px;color:var(--muted);padding:8px 14px;border-radius:999px;transition:color .25s,background .25s}
 .links a:hover{color:var(--fg);background:var(--brand-soft)}
