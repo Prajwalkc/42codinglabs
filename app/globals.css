@@ -392,3 +392,6 @@ html.light .globe.on{filter:invert(1) hue-rotate(180deg);opacity:.75}
 .inline-mark svg{height:1.05em;width:auto;overflow:visible;color:currentColor}
 .eyebrow .inline-mark svg{height:1.35em;color:var(--fg)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* Logo lockup: "Coding Labs" sits on the 42 baseline; the gap after the cursor is two cursor widths (one reads like a full stop) */
+.logo{gap:7.5px}
+.logo .wm{transform:translateY(5.6px)}
