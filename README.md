@@ -1,94 +1,28 @@
-# 42 Coding Labs - Neon Purple Website
+# 42 Coding Labs website
 
-A modern, immersive neon purple website design for 42 Coding Labs. Built with Next.js 14 and Tailwind CSS.
+Marketing site for 42 Coding Labs, a software studio in Kathmandu. Next.js 14 (App Router), TypeScript and Tailwind, exported as a static site and deployed on Vercel from `main`.
 
-## 🎨 Design Features
+## Run it
 
-- **Dark futuristic background** (#0a0a0f)
-- **Neon purple glow effects** on headings, borders, and buttons
-- **Minimal, clean layout** with controlled glow effects
-- **Responsive design** for all screen sizes
-- **Smooth animations** with subtle fade-up effects
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ installed
-- npm or yarn package manager
-
-### Installation
-
-1. Install dependencies:
 ```bash
 npm install
+npm run dev        # http://localhost:3000
+npm run build      # static export into out/
 ```
 
-2. Run the development server:
-```bash
-npm run dev
-```
+## Contact form
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser
+The form posts to Formspree. Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_FORM_ENDPOINT`; on Vercel add the same variable under Project Settings > Environment Variables. Without it, the form shows a "not connected yet" message and sends nothing.
 
-## 📦 Project Structure
+## Structure
 
-```
-├── app/
-│   ├── globals.css       # Global styles and neon utilities
-│   ├── layout.tsx        # Root layout
-│   └── page.tsx          # Main landing page
-├── components/
-│   ├── NeonButton.tsx    # Reusable neon button component
-│   ├── NeonCard.tsx      # Glowing card component
-│   ├── NeonHeading.tsx   # Neon text heading component
-│   ├── NeonGrid.tsx      # Grid background component
-│   └── ParticleBackground.tsx  # Animated particle background
-└── tailwind.config.js    # Tailwind configuration with neon utilities
-```
+- `app/layout.tsx`: Poppins font, metadata, nav, footer, scroll reveals, no-flash light/dark theme.
+- `app/page.tsx`: homepage, composed from `components/site/*` sections.
+- `app/work`, `app/pricing`, `app/blog`: placeholder pages until real content exists.
+- `components/site/Logo.tsx`: the 42 mark (flat-cut 42 on a horizon line with a teal block cursor).
+- `app/globals.css`: design tokens and all component styles. Teal `#2BD4C0` is only for the cursor and small accents; the violet gradient sits behind things, never on the 42.
 
-## 🎯 Sections
+## Brand rules
 
-1. **Hero Section** - Large "42" with "Coding Labs" subtitle and CTA button
-2. **About Section** - Company description with neon divider
-3. **Services Section** - Four service cards with icons
-4. **Projects Section** - Minimal project links with neon hover effects
-5. **Contact Section** - Contact form with neon-outlined inputs
-6. **Footer** - Simple footer with neon line divider
-
-## 🛠 Custom Tailwind Utilities
-
-The project includes custom Tailwind utilities for neon effects:
-
-- `neon-text` - Purple glowing text
-- `neon-text-strong` - Stronger purple glow
-- `neon-border` - Purple glowing border
-- `shadow-neon-sm/md/lg/xl` - Various neon shadow intensities
-- `glow-on-hover` - Hover glow effect
-
-## 📝 Customization
-
-To customize colors, edit `tailwind.config.js`:
-
-```js
-colors: {
-  'neon-purple': {
-    DEFAULT: '#a855f7',
-    light: '#b26fff',
-    dark: '#9b5eff',
-  },
-}
-```
-
-## 🚢 Build for Production
-
-```bash
-npm run build
-npm start
-```
-
-## 📄 License
-
-This project is private and proprietary to 42 Coding Labs.
-
-
+- Use the logo mark only as a logo (nav, footer, icons) and in two decorative spots (big footer mark, end of the reel). Write "42 Coding Labs" as text everywhere else.
+- Testimonials and the reel are marked as placeholders. Replace them with real reviews and footage before removing the labels.
