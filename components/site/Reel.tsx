@@ -2,15 +2,17 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-// Tall screens (phones held upright) get the 9:16 cut; everything else the 16:9 one. Each has a dark and a light version.
+// Tall screens (phones held upright) get the 9:16 cut; everything else the 16:9 one. Each has a dark and a light
+// version, as VP9 WebM (about half the size) with an H.264 MP4 fallback. Posters are set in CSS so they show
+// before any JavaScript runs.
 const PORTRAIT = '(max-aspect-ratio: 4/5)'
 const FILMS = {
-  'wide-dark': { src: '/film/reel-loop-1080p.mp4', poster: '/film/reel-loop-poster.jpg' },
-  'tall-dark': { src: '/film/reel-loop-portrait.mp4', poster: '/film/reel-loop-portrait-poster.jpg' },
-  'wide-light': { src: '/film/reel-loop-light-1080p.mp4', poster: '/film/reel-loop-light-1080p-poster.jpg' },
-  'tall-light': { src: '/film/reel-loop-portrait-light.mp4', poster: '/film/reel-loop-portrait-light-poster.jpg' },
+  'wide-dark': '/film/reel-loop-1080p',
+  'tall-dark': '/film/reel-loop-portrait',
+  'wide-light': '/film/reel-loop-light-1080p',
+  'tall-light': '/film/reel-loop-portrait-light',
 }
-type Film = (typeof FILMS)['wide-dark']
+type Film = (typeof FILMS)[keyof typeof FILMS]
 
 /**
  * Studio reel, the first screen of the home page: a 12 s seamless loop (Think. Code. Ship. typed by the teal
@@ -20,6 +22,25 @@ type Film = (typeof FILMS)['wide-dark']
 export function Reel() {
   const video = useRef<HTMLVideoElement>(null)
   const [film, setFilm] = useState<Film | null>(null)
+  const [ready, setReady] = useState(false)
+  const [playing, setPlaying] = useState(false)
+
+  // Don't compete with the page for bandwidth: start fetching the film once the page has loaded and is idle.
+  useEffect(() => {
+    let idle = 0
+    const go = () => {
+      const ric = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback
+      idle = ric ? ric(() => setReady(true), { timeout: 1500 }) : window.setTimeout(() => setReady(true), 200)
+    }
+    if (document.readyState === 'complete') go()
+    else window.addEventListener('load', go, { once: true })
+    return () => {
+      window.removeEventListener('load', go)
+      const cic = (window as Window & { cancelIdleCallback?: (id: number) => void }).cancelIdleCallback
+      if (cic) cic(idle)
+      else clearTimeout(idle)
+    }
+  }, [])
 
   // Pick the cut for this screen shape and theme; switch if the phone is rotated or the theme is toggled.
   useEffect(() => {
@@ -29,6 +50,7 @@ export function Reel() {
       const shape = mq.matches ? 'tall' : 'wide'
       const theme = html.classList.contains('light') ? 'light' : 'dark'
       setFilm(FILMS[`${shape}-${theme}` as keyof typeof FILMS])
+      setPlaying(false)
     }
     pick()
     mq.addEventListener('change', pick)
@@ -42,11 +64,12 @@ export function Reel() {
 
   useEffect(() => {
     const v = video.current
-    if (!v || !film) return
+    if (!v || !film || !ready) return
     // Respect reduced motion: show the poster frame and let the visitor press play.
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       v.pause()
       v.controls = true
+      setPlaying(true)
       return
     }
     // Only play while the reel is on screen.
@@ -59,25 +82,27 @@ export function Reel() {
     )
     io.observe(v)
     return () => io.disconnect()
-  }, [film])
+  }, [film, ready])
 
   return (
     // The first screen: just the reel, edge to edge. The hero follows on scroll.
     <section className="reel" aria-label="42 Coding Labs studio reel">
-      {film && (
+      {film && ready && (
         <video
-          key={film.src}
+          key={film}
           ref={video}
-          className="reel-video"
-          src={film.src}
-          poster={film.poster}
+          className={`reel-video${playing ? ' on' : ''}`}
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
+          onPlaying={() => setPlaying(true)}
           aria-label="Think, Code, Ship, typed by a cursor, ending on the 42 Coding Labs logo"
-        />
+        >
+          <source src={`${film}.webm`} type="video/webm" />
+          <source src={`${film}.mp4`} type="video/mp4" />
+        </video>
       )}
       <a className="reel-scroll" href="#studio" aria-label="Scroll down to the studio">
         <span>Scroll</span>
