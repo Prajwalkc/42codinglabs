@@ -137,6 +137,9 @@ section{position:relative}
 .reel{position:relative;width:100%;height:min(100svh,56.25vw);overflow:hidden;background:#050508}
 .reel-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#050508}
 @media (max-aspect-ratio:4/5){.reel{height:100svh}}
+/* the hero now follows the reel, so it no longer needs first-screen height or room for the nav */
+.reel + .hero{min-height:0;padding-top:72px}
+.reel + .hero .hero-in{padding-bottom:72px}
 .reel-scroll{position:absolute;left:50%;bottom:clamp(20px,4vh,40px);transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;
   color:#d8d6e4;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;text-decoration:none}
 .reel-scroll i{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,244,248,.28);background:rgba(7,7,11,.35);transition:border-color .2s,background .2s}
