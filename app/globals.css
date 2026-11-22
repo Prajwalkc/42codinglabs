@@ -137,8 +137,6 @@ section{position:relative}
 .reel{position:relative;margin-top:80px;width:100%;aspect-ratio:16/9;overflow:hidden;background:#050508}
 .reel-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#050508}
 @keyframes float{50%{translate:0 -18px}}
-.reel-cap{display:flex;justify-content:space-between;margin-top:18px;font-size:14px;gap:12px;flex-wrap:wrap}
-.reel-cap span:last-child{color:var(--muted)}
 
 /* ---------- about ---------- */
 .about .row{display:flex;justify-content:space-between;align-items:center;gap:16px}

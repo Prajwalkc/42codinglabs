@@ -57,12 +57,6 @@ export function Reel() {
           aria-label="42 Coding Labs studio reel: Think, Code, Ship, typed by a cursor, ending on the 42 Coding Labs logo"
         />
       </div>
-      <div className="wrap">
-        <div className="reel-cap rv">
-          <span>From first commit to shipped product</span>
-          <span>Studio reel · 12 s loop</span>
-        </div>
-      </div>
     </section>
   )
 }
