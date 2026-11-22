@@ -33,7 +33,7 @@ export function Footer() {
           <Mark />
         </span>
         <div className="foot-bot">
-          <span>© {new Date().getFullYear()} <InlineMark /> Coding Labs. The answer is good code.</span>
+          <span>© {new Date().getFullYear()} <InlineMark /> Coding Labs · <span className="tagline">Think. Code. Ship<i className="tcur" aria-hidden="true" /></span></span>
           <span>Kathmandu · Remote worldwide</span>
         </div>
       </div>

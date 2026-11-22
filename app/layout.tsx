@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     '42 Coding Labs is a software studio in Kathmandu building mobile apps, web platforms and AI products for teams in the US, UK, EU and the Gulf.',
   openGraph: {
     title: '42 Coding Labs',
-    description: 'Apps, platforms and AI products for ambitious teams. The answer is good code.',
+    description: 'Apps, platforms and AI products for ambitious teams. Think. Code. Ship.',
     url: 'https://www.42codinglabs.com',
     siteName: '42 Coding Labs',
     type: 'website',
