@@ -149,6 +149,7 @@ section{position:relative}
 @keyframes float{50%{translate:0 -18px}}
 
 /* ---------- about ---------- */
+.stats + .about{padding-top:48px}
 .about .row{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .about .row small{color:var(--muted);font-size:13px}
 .about .mega{font-size:clamp(44px,10.5vw,124px);position:relative}
