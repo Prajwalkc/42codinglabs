@@ -16,7 +16,7 @@ type Film = (typeof FILMS)[keyof typeof FILMS]
 
 /**
  * Studio reel, the first screen of the home page: a 12 s seamless loop (Think. Code. Ship. typed by the teal
- * cursor, ending on the 42 Coding Labs logo). Source projects: whisper labs/42-coding-labs/film/loop and
+ * cursor, ending on the 42 Coding Labs logo). Source projects: ~/Projects/42-coding-labs/film/loop and
  * loop-portrait (HyperFrames). Silent, so it can autoplay muted.
  */
 export function Reel() {
