@@ -1,9 +1,7 @@
 /**
- * Local packages for businesses in Nepal, shown only on /software-company-nepal.
- * The rest of the site is for US, UK, EU and Gulf clients and shows no NPR prices.
- *
- * Prices and the WhatsApp number are set by Prajwal. Until a value is filled in, the page shows
- * "Ask for a quote" and hides the WhatsApp button, so nothing invented is ever published.
+ * Packages, shown worldwide on /pricing and with local details (eSewa, Khalti, Fonepay, Nepali)
+ * on /software-company-nepal. No prices are published yet (Prajwal, 23 Nov 2026): every card says
+ * "Ask for a quote". Never put invented prices or numbers here.
  */
 
 /**
@@ -13,7 +11,7 @@
 export const WHATSAPP: string | null = '971503715287'
 
 if (!WHATSAPP && process.env.NODE_ENV === 'production') {
-  console.warn('[nepal] WHATSAPP is not set in lib/nepal.ts: the WhatsApp button on /software-company-nepal is hidden.')
+  console.warn('[packages] WHATSAPP is not set in lib/packages.ts: the WhatsApp buttons are hidden.')
 }
 
 const WA_TEXT = [
@@ -38,47 +36,52 @@ export type Pkg = {
   featured?: boolean
 }
 
-export const BUILDS: Pkg[] = [
-  {
-    name: 'Business website',
-    price: null,
-    unit: 'one-time',
-    blurb: 'A clean, fast website that tells people what you do and how to reach you.',
-    items: [
-      'Designed for your business, mobile-first',
-      'English and Nepali if you need both',
-      'Contact form, WhatsApp and Google Maps',
-      'Domain, code and content in your name',
-    ],
-  },
-  {
-    name: 'Mobile app',
-    price: null,
-    unit: 'one-time',
-    blurb: 'Your idea as a real iOS and Android app, from a first MVP to a production-ready app.',
-    items: [
-      'Start with an MVP, then grow it into a full production app',
-      'iOS and Android from one codebase',
-      'Sign-in, push notifications and eSewa, Khalti and Fonepay payments',
-      'App Store and Google Play publishing',
-      'Code and store accounts in your name',
-    ],
-  },
-  {
-    name: 'Business app and admin panel',
-    price: null,
-    unit: 'one-time',
-    blurb: 'The complete software to run your business: an app for your customers, an admin panel for your team.',
-    items: [
-      'iOS and Android app, published on the App Store and Google Play',
-      'Admin panel for bookings, orders, customers, staff and payments',
-      'eSewa, Khalti and Fonepay payments',
-      'Push notifications, in English and Nepali',
-      'Code, store accounts and data in your name',
-    ],
-    featured: true,
-  },
-]
+/** One-time builds. `local` swaps in Nepal details: eSewa, Khalti and Fonepay, and English and Nepali. */
+export function builds(local = false): Pkg[] {
+  const pay = local ? 'eSewa, Khalti and Fonepay payments' : 'Card payments and in-app purchases'
+  const langs = local ? 'English and Nepali' : 'the languages your customers use'
+  return [
+    {
+      name: 'Business website',
+      price: null,
+      unit: 'one-time',
+      blurb: 'A clean, fast website that tells people what you do and how to reach you.',
+      items: [
+        'Designed for your business, mobile-first',
+        `In ${langs}`,
+        'Contact form, WhatsApp and Google Maps',
+        'Domain, code and content in your name',
+      ],
+    },
+    {
+      name: 'Mobile app',
+      price: null,
+      unit: 'one-time',
+      blurb: 'Your idea as a real iOS and Android app, from a first MVP to a production-ready app.',
+      items: [
+        'Start with an MVP, then grow it into a full production app',
+        'iOS and Android from one codebase',
+        `Sign-in, push notifications and ${pay.charAt(0).toLowerCase() + pay.slice(1)}`,
+        'App Store and Google Play publishing',
+        'Code and store accounts in your name',
+      ],
+    },
+    {
+      name: 'Business app and admin panel',
+      price: null,
+      unit: 'one-time',
+      blurb: 'The complete software to run your business: an app for your customers, an admin panel for your team.',
+      items: [
+        'iOS and Android app, published on the App Store and Google Play',
+        'Admin panel for bookings, orders, customers, staff and payments',
+        pay,
+        `Push notifications, in ${langs}`,
+        'Code, store accounts and data in your name',
+      ],
+      featured: true,
+    },
+  ]
+}
 
 export const CARE: Pkg[] = [
   {

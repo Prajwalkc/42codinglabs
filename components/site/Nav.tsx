@@ -12,7 +12,7 @@ const LINKS = [
   ['Home', '/'],
   ['Work', '/work'],
   ['About Us', '/#about'],
-  ['Pricing', '/pricing'],
+  ['Packages', '/pricing'],
   ['Blog', '/blog'],
 ]
 

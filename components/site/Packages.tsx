@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import type { Pkg } from '@/lib/nepal'
-import { whatsappHref } from '@/lib/nepal'
+import type { Pkg } from '@/lib/packages'
+import { whatsappHref } from '@/lib/packages'
 import { Chip } from './icons'
 import { stagger } from './ServicePage'
 
@@ -14,7 +14,7 @@ function WaIcon() {
 }
 
 /** "Message us on WhatsApp" (pre-filled) plus "Book a call". The WhatsApp button only appears once a number is set. */
-export function NepalCtas() {
+export function ContactCtas() {
   const wa = whatsappHref()
   return (
     <div className="ctas">

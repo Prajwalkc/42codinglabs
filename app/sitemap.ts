@@ -5,10 +5,11 @@ import { CASE_STUDIES } from '@/lib/case-studies'
 
 export const dynamic = 'force-static'
 
-// Only pages with real content. /blog and /pricing are noindexed placeholders; add them back when they have content.
+// Only pages with real content. /blog is a noindexed placeholder; add it back when it has posts.
 const PAGES: [string, number][] = [
   ['', 1],
   ['/services', 0.8],
+  ['/pricing', 0.8],
   ...SERVICE_ORDER.map((s): [string, number] => [`/services/${s}`, 0.9]),
   ['/software-company-nepal', 0.8],
   ['/work', 0.7],

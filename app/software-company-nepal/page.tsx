@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { JsonLd, pageJsonLd, pageMeta } from '@/lib/seo'
 import { NEPAL_FAQS, orderedServices } from '@/lib/services'
 import { Block, Faqs, LinkCards, PageHero, Parts, stagger } from '@/components/site/ServicePage'
-import { NepalCtas, Packages } from '@/components/site/NepalPackages'
-import { BUILDS, CARE, EDGES } from '@/lib/nepal'
+import { ContactCtas, Packages } from '@/components/site/Packages'
+import { CARE, EDGES, builds } from '@/lib/packages'
 
 const PATH = '/software-company-nepal'
 const DESCRIPTION =
@@ -32,7 +32,7 @@ export default function NepalPage() {
         crumbs={crumbs}
         h1={['Software studio', 'in', 'Kathmandu.']}
         lead="42 Coding Labs is a software and app development company in Kathmandu, Nepal. We build mobile apps, web platforms and backends for businesses here at home and for teams in the US, UK, EU and the Gulf."
-        cta={<NepalCtas />}
+        cta={<ContactCtas />}
       />
 
       <Block label="Nepal">
@@ -60,7 +60,7 @@ export default function NepalPage() {
         <p className="work-note rv" style={stagger(1)}>
           A fixed price for the build, agreed before we start. Everything we make is yours to keep.
         </p>
-        <Packages items={BUILDS} />
+        <Packages items={builds(true)} />
 
         <h2 className="work-h2 rv" style={{ marginTop: 96 }}>Monthly care plans.</h2>
         <p className="work-note rv" style={stagger(1)}>
@@ -111,7 +111,7 @@ export default function NepalPage() {
         <div className="page-end rv">
           <h2 className="work-h2">Tell us what you are working on.</h2>
           <p className="work-note">We reply within one business day with honest next steps and a rough plan.</p>
-          <NepalCtas />
+          <ContactCtas />
         </div>
       </Block>
     </>
