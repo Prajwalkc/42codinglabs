@@ -25,7 +25,7 @@ function Words({ text, from }: { text: string; from: number }) {
 }
 
 /** Page hero for service and landing pages: breadcrumb, three-part H1, lead, CTAs and the proof strip. */
-export function PageHero({ crumbs, h1, lead }: { crumbs: [string, string][]; h1: [string, string, string]; lead: string }) {
+export function PageHero({ crumbs, h1, lead, cta }: { crumbs: [string, string][]; h1: [string, string, string]; lead: string; cta?: ReactNode }) {
   const n0 = h1[0].split(' ').length
   const n1 = h1[1].split(' ').length
   return (
@@ -57,7 +57,7 @@ export function PageHero({ crumbs, h1, lead }: { crumbs: [string, string][]; h1:
           </span>
         </h1>
         <p className="lead">{lead}</p>
-        <CtaRow />
+        {cta ?? <CtaRow />}
         <ul className="proof" aria-label="Studio facts">
           {PROOF.map((p) => (
             <li key={p}>{p}</li>

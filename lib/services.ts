@@ -311,6 +311,9 @@ export const NEPAL_FAQS: Faq[] = [
   { q: 'Do you build apps and software for businesses in Nepal?', a: 'Yes. Our Mountain Whisper platform, a guest app, admin panel and API, was built for a Nepal travel company, and its admin panel works in English and Nepali.' },
   { q: 'Can you build an app in Nepali?', a: 'Yes. We build interfaces in English and Nepali, so staff and customers can use the language they prefer.' },
   { q: 'What experience does the team have?', a: 'Our engineers have 8+ years of senior engineering behind them and 10+ apps live on the stores, including mobile work at eSewa in Nepal, Pyypl in the UAE and Aquanow in Canada before 42 Coding Labs.' },
+  { q: 'Do you take eSewa, Khalti and Fonepay payments in websites and apps?', a: 'Yes. Our e-commerce sites and apps for Nepal take payments through eSewa, Khalti and Fonepay.' },
+  { q: 'Do I own the website or app?', a: 'Yes, fully. The code, domain, hosting and content are in your name from day one, and there is no fee to take your code elsewhere.' },
+  { q: 'Is ad spend included in the monthly plans?', a: 'No. Money for Facebook, Instagram, TikTok or Google ads is paid by you directly to the platform, so you always see exactly what was spent. Our plans cover the work, not the ad budget.' },
   TIMEZONES,
   OWNERSHIP,
 ]

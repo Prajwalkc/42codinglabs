@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd, pageJsonLd, pageMeta } from '@/lib/seo'
 import { NEPAL_FAQS, orderedServices } from '@/lib/services'
-import { Block, CtaRow, Faqs, LinkCards, PageHero, Parts, stagger } from '@/components/site/ServicePage'
+import { Block, Faqs, LinkCards, PageHero, Parts, stagger } from '@/components/site/ServicePage'
+import { NepalCtas, Packages } from '@/components/site/NepalPackages'
+import { BUILDS, CARE, EDGES } from '@/lib/nepal'
 
 const PATH = '/software-company-nepal'
 const DESCRIPTION =
@@ -30,6 +32,7 @@ export default function NepalPage() {
         crumbs={crumbs}
         h1={['Software studio', 'in', 'Kathmandu.']}
         lead="42 Coding Labs is a software and app development company in Kathmandu, Nepal. We build mobile apps, web platforms and backends for businesses here at home and for teams in the US, UK, EU and the Gulf."
+        cta={<NepalCtas />}
       />
 
       <Block label="Nepal">
@@ -52,7 +55,48 @@ export default function NepalPage() {
         </div>
       </Block>
 
-      <Block label="Why work with us">
+      <Block label="Packages for Nepal">
+        <h2 className="work-h2 rv" style={{ marginTop: 28 }}>Websites, shops and apps, built once.</h2>
+        <p className="work-note rv" style={stagger(1)}>
+          A fixed price for the build, agreed before we start. Everything we make is yours to keep.
+        </p>
+        <Packages items={BUILDS} />
+
+        <h2 className="work-h2 rv" style={{ marginTop: 96 }}>Monthly care plans.</h2>
+        <p className="work-note rv" style={stagger(1)}>
+          Fixed deliverables every month, so you know exactly what you are paying for. Everything we make stays yours.
+        </p>
+        <Packages items={CARE} />
+        <p className="ad-note rv">
+          <b>Ad spend is separate.</b> Money for Facebook, Instagram, TikTok or Google ads is paid by you directly to the platform,
+          never through us, so you always see what was spent.
+        </p>
+      </Block>
+
+      <Block label="Why local businesses choose us">
+        <Parts items={EDGES} />
+      </Block>
+
+      <Block label="For trekking and tour operators">
+        <div className="work-case">
+          <div>
+            <h2 className="work-h2 rv">A guest app and admin panel, built for trips.</h2>
+          </div>
+          <div className="work-body">
+            <p className="rv" style={stagger(1, 80)}>
+              We built a platform for trekking and tour operators. Guests get one app for the whole trip: a day-by-day plan,
+              offline maps, chat with your team, a wallet for travel documents and a hold-to-send SOS.
+            </p>
+            <p className="rv" style={stagger(2, 80)}>
+              Your staff enter trips, bookings, guests and payments once in an admin panel that works in English and Nepali, and
+              each booked guest gets their own plan. It runs under your brand, and the data stays yours.
+            </p>
+            <Link className="text-link rv" href="/work" style={stagger(3, 80)}>See the case study →</Link>
+          </div>
+        </div>
+      </Block>
+
+      <Block label="Working from abroad?">
         <Parts items={WHY} />
       </Block>
 
@@ -66,7 +110,7 @@ export default function NepalPage() {
         <div className="page-end rv">
           <h2 className="work-h2">Tell us what you are working on.</h2>
           <p className="work-note">We reply within one business day with honest next steps and a rough plan.</p>
-          <CtaRow />
+          <NepalCtas />
         </div>
       </Block>
     </>
