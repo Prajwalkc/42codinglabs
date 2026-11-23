@@ -552,7 +552,10 @@ a.work-status:hover{color:var(--fg);border-color:rgba(117,77,236,.5)}
 .pkg ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
 .pkg li{position:relative;padding-left:22px;font-size:14px;line-height:1.55}
 .pkg li::before{content:"";position:absolute;left:2px;top:.42em;width:10px;height:6px;border-left:1.5px solid var(--brand);border-bottom:1.5px solid var(--brand);rotate:-45deg}
-.wa-btn svg{margin-right:2px}
+.wa-btn .wa-chip{background:#25D366;color:#fff;box-shadow:0 6px 16px -6px rgba(37,211,102,.7)}
+.wa-btn .wa-chip svg{width:18px;height:18px}
+.wa-btn:hover{border-color:rgba(37,211,102,.55)}
+.wa-btn:hover .wa-chip{transform:scale(1.08)}
 .nap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:36px 0 0}
 .nap dt{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--brand)}
 .nap dd{margin:8px 0 0;font-size:16px;font-weight:500}

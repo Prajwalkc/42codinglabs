@@ -11,7 +11,7 @@ const DESCRIPTION =
   'Packages from 42 Coding Labs: AI-built app rescue, App Store launch, a business website, a mobile app from MVP to production, a complete business app with admin panel, monthly care plans and dedicated developers. Fixed scope, and you own everything.'
 
 export const metadata: Metadata = pageMeta({
-  title: 'Packages: websites, mobile apps and admin panels',
+  title: 'Packages and pricing: websites, mobile apps and admin panels',
   description: DESCRIPTION,
   path: PATH,
 })
