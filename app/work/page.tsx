@@ -61,12 +61,12 @@ export default function WorkPage() {
 
       <section className="sec work-sec">
         <div className="wrap">
-          <div className="sec-head">
+          <div className="sec-head rv">
             <div className="eyebrow">Case studies</div>
           </div>
           <div className="cs-cards">
-            {CASE_STUDIES.map((c) => (
-              <Link className="cs-card" key={c.slug} href={`/work/${c.slug}`}>
+            {CASE_STUDIES.map((c, i) => (
+              <Link className="cs-card rv" key={c.slug} href={`/work/${c.slug}`} style={{ ['--d' as string]: `${i * 0.08}s` }}>
                 <div className={`cs-cover cs-cover-${c.cover.type}`}>
                   {c.cover.type === 'phones' ? (
                     c.cover.shots.map((s) => <PhoneShot key={s.src} shot={s} />)
@@ -88,16 +88,16 @@ export default function WorkPage() {
 
       <section className="sec work-sec">
         <div className="wrap">
-          <div className="sec-head">
+          <div className="sec-head rv">
             <div className="eyebrow">Before 42 Coding Labs</div>
           </div>
-          <h2 className="work-h2" style={{ marginTop: 28 }}>Fintech apps our engineers shipped</h2>
-          <p className="work-note">
+          <h2 className="work-h2 rv" style={{ marginTop: 28 }}>Fintech apps our engineers shipped</h2>
+          <p className="work-note rv">
             Built as employees of these companies. The apps are theirs; we show only public information and our role.
           </p>
           <div className="work-list">
-            {BEFORE.map((b) => (
-              <a className="work-row" key={b.co} href={b.href} target="_blank" rel="noopener noreferrer">
+            {BEFORE.map((b, i) => (
+              <a className="work-row rv" style={{ ['--d' as string]: `${i * 0.08}s` }} key={b.co} href={b.href} target="_blank" rel="noopener noreferrer">
                 <div className="work-co">
                   <b>{b.co}</b>
                   <small>{b.where}</small>
@@ -108,7 +108,7 @@ export default function WorkPage() {
             ))}
           </div>
 
-          <div className="ctas work-cta">
+          <div className="ctas work-cta rv">
             <Link className="btn btn-primary btn-lg" href="/#contact">
               Book a call
               <Chip />

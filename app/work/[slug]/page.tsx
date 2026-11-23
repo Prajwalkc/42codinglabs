@@ -47,16 +47,16 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       <section className="sec work-sec cs-sec">
         <div className="wrap">
           <div className="work-case">
-            <h2 className="work-h2">The story</h2>
+            <h2 className="work-h2 rv">The story</h2>
             <div className="work-body">
-              {c.story.map((p) => (
-                <p key={p.slice(0, 24)}>{p}</p>
+              {c.story.map((p, i) => (
+                <p className="rv" key={p.slice(0, 24)} style={{ ['--d' as string]: `${(i + 1) * 0.08}s` }}>{p}</p>
               ))}
             </div>
           </div>
 
           {c.phones && (
-            <div className="work-phones">
+            <div className="work-phones rv">
               {c.phones.map((s) => (
                 <PhoneShot key={s.src} shot={s} />
               ))}
@@ -66,23 +66,23 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           {c.browsers &&
             (c.browsersStacked ? (
               c.browsers.map((b) => (
-                <div className="work-admin" key={b.src}>
+                <div className="work-admin rv" key={b.src}>
                   <BrowserShot shot={b} />
                   {b.caption && <p className="work-caption">{b.caption}</p>}
                 </div>
               ))
             ) : (
-              <div className="work-browsers">
+              <div className="work-browsers rv">
                 {c.browsers.map((b) => (
                   <BrowserShot key={b.src} shot={b} />
                 ))}
               </div>
             ))}
 
-          <h2 className="work-h2 cs-h2">What we built</h2>
+          <h2 className="work-h2 cs-h2 rv">What we built</h2>
           <div className="work-parts">
-            {c.parts.map((p) => (
-              <div className="work-part" key={p.k}>
+            {c.parts.map((p, i) => (
+              <div className="work-part rv" key={p.k} style={{ ['--d' as string]: `${i * 0.08}s` }}>
                 <small>{p.k}</small>
                 <b>{p.t}</b>
                 <p>{p.d}</p>
@@ -90,13 +90,13 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             ))}
           </div>
 
-          <ul className="work-stack" aria-label="Technology">
+          <ul className="work-stack rv" aria-label="Technology">
             {c.stack.map((s) => (
               <li key={s}>{s}</li>
             ))}
           </ul>
 
-          <div className="ctas work-cta">
+          <div className="ctas work-cta rv">
             <Link className="btn btn-primary btn-lg" href="/#contact">
               Book a call
               <Chip />
@@ -108,7 +108,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </div>
 
           {next.slug !== c.slug && (
-            <Link className="cs-next" href={`/work/${next.slug}`}>
+            <Link className="cs-next rv" href={`/work/${next.slug}`}>
               <small>Next case study</small>
               <b>{next.name}</b>
               <span>{next.summary}</span>

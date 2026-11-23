@@ -502,6 +502,18 @@ a.work-status:hover{color:var(--fg);border-color:rgba(117,77,236,.5)}
   .link-cards{grid-template-columns:1fr}
 }
 
+/* Entrance for the other sub-page heroes (Work, case studies, Coming soon): eyebrow, then the
+   heading line by line (or whole, if it has no lines), then the lead, status pill and CTAs. */
+.sub-hero:not(.page-hero) .eyebrow{animation:rise 1.1s var(--spring) both}
+.sub-hero:not(.page-hero) h1.mega>span{animation:rise 1.1s var(--spring) .15s both}
+.sub-hero:not(.page-hero) h1.mega>span+span{animation-delay:.3s}
+.sub-hero:not(.page-hero) h1.mega:not(:has(>span)){animation:rise 1.1s var(--spring) .15s both}
+.sub-hero:not(.page-hero) .lead{animation:rise 1.1s var(--spring) .5s both}
+.sub-hero:not(.page-hero) .work-status{animation:rise 1.1s var(--spring) .65s both}
+.sub-hero:not(.page-hero) .ctas{animation:rise 1.1s var(--spring) .65s both}
+/* Reveal plus their own hover transitions, with the stagger delay only on the reveal. */
+.work-row.rv,.cs-next.rv{transition:opacity 1s var(--spring),transform 1s var(--spring),filter 1s var(--spring),padding .4s var(--spring);transition-delay:var(--d,0s),var(--d,0s),var(--d,0s),0s}
+
 /* Page hero entrance: words rise in like the home hero, then lead, CTAs and proof strip */
 .page-hero .crumbs{animation:rise 1.1s var(--spring) both}
 .page-hero h1 span.w{display:inline-block;animation:rise 1.1s var(--spring) both;animation-delay:calc(var(--i)*70ms + .15s)}
