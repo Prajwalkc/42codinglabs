@@ -13,9 +13,11 @@ const FILMS = {
   'tall-light': '/film/reel-loop-portrait-light',
 }
 type Film = (typeof FILMS)[keyof typeof FILMS]
+// Played faster than it was rendered (Prajwal, 23 Nov 2026): the 12 s loop runs in 8 s.
+const SPEED = 1.5
 
 /**
- * Studio reel, the first screen of the home page: a 12 s seamless loop (Think. Code. Ship. typed by the teal
+ * Studio reel, the first screen of the home page: a 12 s seamless loop, played at SPEED (Think. Code. Ship. typed by the teal
  * cursor, ending on the 42 Coding Labs logo). Source projects: ~/Projects/42-coding-labs/film/loop and
  * loop-portrait (HyperFrames). Silent, so it can autoplay muted.
  */
@@ -78,6 +80,13 @@ export function Reel() {
     v.defaultMuted = true
     v.setAttribute('muted', '')
     v.setAttribute('playsinline', '')
+    // Browsers reset the rate when a new source loads, so set it again once the metadata is in.
+    const setSpeed = () => {
+      v.defaultPlaybackRate = SPEED
+      v.playbackRate = SPEED
+    }
+    setSpeed()
+    v.addEventListener('loadedmetadata', setSpeed)
     // If autoplay is still refused (iPhone Low Power Mode, Safari's "Never Auto-Play"), the poster stays up and
     // the first tap, click or key press starts the reel.
     const onGesture = () => {
@@ -98,6 +107,7 @@ export function Reel() {
     io.observe(v)
     return () => {
       io.disconnect()
+      v.removeEventListener('loadedmetadata', setSpeed)
       gestures.forEach((g) => window.removeEventListener(g, onGesture))
     }
   }, [film, ready])
