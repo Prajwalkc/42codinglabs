@@ -20,7 +20,7 @@ const FAQS: Faq[] = [
   { q: 'Why is there no price on the packages?', a: 'Every business needs a slightly different scope, so we price each project after a short call. You get a written, fixed-scope estimate within one business day, and that is the price you pay.' },
   { q: 'Can I start with an MVP and grow it later?', a: 'Yes. Most apps should. We build the smallest version that proves the idea, launch it on the App Store and Google Play, then grow it into a full production app as you learn from real users.' },
   { q: 'Do I own the website or app?', a: 'Yes, fully. The code, domain, hosting, store accounts and data are in your name from day one, and there is no fee to take your code elsewhere.' },
-  { q: 'Is ad spend included in the monthly plans?', a: 'No. Money for ads on Facebook, Instagram, TikTok or Google is paid by you directly to the platform, so you always see exactly what was spent. Our plans cover the work, not the ad budget.' },
+  { q: 'What happens after launch?', a: 'You can run it yourself, or pick a monthly care plan: hosting, monitoring, fixes and improvements with a report every month. Either way the code and accounts stay yours.' },
   { q: 'Where is the team, and how do we work across time zones?', a: 'We are in Kathmandu, Nepal, with working hours that overlap the US, UK, EU and the Gulf. You talk to the engineers directly, on calls, WhatsApp or Slack, and get a written report with every delivery.' },
 ]
 
@@ -58,10 +58,6 @@ export default function PricingPage() {
           Fixed deliverables every month, so you know exactly what you are paying for. Everything we make stays yours.
         </p>
         <Packages items={CARE} />
-        <p className="ad-note rv">
-          <b>Ad spend is separate.</b> Money for ads on Facebook, Instagram, TikTok or Google is paid by you directly to the
-          platform, never through us, so you always see what was spent.
-        </p>
       </Block>
 
       <Block label="Team">

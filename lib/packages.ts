@@ -134,14 +134,14 @@ export const CARE: Pkg[] = [
     price: null,
     unit: '/ month',
     blurb: 'Keep your website or app safe, fast and up to date.',
-    items: ['Hosting, SSL and daily backups', 'Updates and small fixes', '4 short videos (reels)', 'Monthly report'],
+    items: ['Hosting, SSL and daily backups', 'Uptime and error monitoring', 'Updates and small fixes', 'Monthly report'],
   },
   {
     name: 'Grow',
     price: null,
     unit: '/ month',
-    blurb: 'Everything in Care, plus more content and faster fixes.',
-    items: ['Everything in Care', '8 short videos (reels)', 'Fixes within 1 business day', 'Monthly report and call'],
+    blurb: 'Everything in Care, plus faster fixes and steady improvements.',
+    items: ['Everything in Care', 'Fixes within 1 business day', 'Small improvements every month', 'Monthly report and call'],
     featured: true,
   },
   {
@@ -149,7 +149,7 @@ export const CARE: Pkg[] = [
     price: null,
     unit: '/ month',
     blurb: 'For apps and busy businesses that change every month.',
-    items: ['Everything in Grow', '12 short videos (reels)', 'App updates and store releases', 'Monthly strategy call'],
+    items: ['Everything in Grow', 'New features every month', 'App updates and store releases', 'Monthly product call'],
   },
 ]
 
