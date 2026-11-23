@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { Logo } from './Logo'
 import { Chip } from './icons'
@@ -19,7 +20,18 @@ const LINKS = [
 export function Nav() {
   const [ddOpen, setDdOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  // After picking a service, keep the menu shut even though the pointer is still over it (it also
+  // opens on hover). It opens again when the pointer comes back to the Services button. (Resetting
+  // on mouseleave does not work: hiding the menu itself counts as the pointer leaving.)
+  const [hush, setHush] = useState(false)
   const ddRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
+
+  // Close both menus whenever the page changes.
+  useEffect(() => {
+    setDdOpen(false)
+    setMenuOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     const close = (e: MouseEvent) => {
@@ -46,8 +58,8 @@ export function Nav() {
               {label}
             </Link>
           ))}
-          <div className={`dd${ddOpen ? ' open' : ''}`} ref={ddRef}>
-            <button className="dd-btn" aria-expanded={ddOpen} aria-haspopup="true" onClick={() => setDdOpen((o) => !o)}>
+          <div className={`dd${ddOpen ? ' open' : ''}${hush ? ' hush' : ''}`} ref={ddRef}>
+            <button className="dd-btn" aria-expanded={ddOpen} aria-haspopup="true" onMouseEnter={() => setHush(false)} onClick={() => { setHush(false); setDdOpen((o) => !o) }}>
               Services
               <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
                 <path d="M3 4.5l3 3 3-3" />
@@ -55,7 +67,15 @@ export function Nav() {
             </button>
             <div className="dd-menu">
               {SERVICES.map(([t, s, href]) => (
-                <Link key={t} href={href} onClick={() => setDdOpen(false)}>
+                <Link
+                  key={t}
+                  href={href}
+                  onClick={(e) => {
+                    setDdOpen(false)
+                    setHush(true)
+                    e.currentTarget.blur()
+                  }}
+                >
                   <b>{t}</b>
                   <span>{s}</span>
                 </Link>
