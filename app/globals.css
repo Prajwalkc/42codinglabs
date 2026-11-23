@@ -60,7 +60,6 @@ button,input,select,textarea{font:inherit;color:inherit}
 .dd-menu a:hover{background:var(--brand-soft)}
 .dd-menu b{display:block;font-size:14px;font-weight:500}
 .dd-menu span{display:block;font-size:12px;color:var(--muted)}
-.dd-menu .dd-local{margin-top:6px;border-top:1px solid var(--line);border-radius:0 0 12px 12px;padding-top:12px}
 .info-link{text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line)}
 .info-link:hover{text-decoration-color:var(--brand)}
 .icon-btn.burger{display:none}

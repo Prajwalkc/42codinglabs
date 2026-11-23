@@ -60,10 +60,6 @@ export function Nav() {
                   <span>{s}</span>
                 </Link>
               ))}
-              <Link className="dd-local" href="/software-company-nepal" onClick={() => setDdOpen(false)}>
-                <b>For businesses in Nepal</b>
-                <span>Websites, apps and admin panels, local payments</span>
-              </Link>
             </div>
           </div>
         </nav>
@@ -89,7 +85,7 @@ export function Nav() {
         </button>
       </div>
       <div className={`mmenu${menuOpen ? ' open' : ''}`}>
-        {[...LINKS, ['Services', '/services'], ['For businesses in Nepal', '/software-company-nepal']].map(([label, href]) => (
+        {[...LINKS, ['Services', '/services']].map(([label, href]) => (
           <Link key={label} href={href} onClick={() => setMenuOpen(false)}>
             {label}
           </Link>
