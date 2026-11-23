@@ -498,3 +498,36 @@ a.work-status:hover{color:var(--fg);border-color:rgba(117,77,236,.5)}
   .faq details p{padding:0 0 22px 32px}
   .link-cards{grid-template-columns:1fr}
 }
+
+/* Page hero entrance: words rise in like the home hero, then lead, CTAs and proof strip */
+.page-hero .crumbs{animation:rise 1.1s var(--spring) both}
+.page-hero h1 span.w{display:inline-block;animation:rise 1.1s var(--spring) both;animation-delay:calc(var(--i)*70ms + .15s)}
+.page-hero .lead{animation:rise 1.1s var(--spring) .6s both}
+.page-hero .ctas{animation:rise 1.1s var(--spring) .75s both}
+.proof{list-style:none;display:flex;flex-wrap:wrap;gap:8px 0;padding:0;margin:36px 0 0;font-size:13px;color:var(--muted);animation:rise 1.1s var(--spring) .9s both}
+.proof li{white-space:nowrap}
+.proof li+li::before{content:"·";margin:0 12px;opacity:.5}
+@media (max-width:720px){.proof{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}.proof li{white-space:normal}.proof li+li::before{content:none}}
+
+/* How it works: one horizon line, steps along it, the teal cursor gliding to each step */
+.sl{position:relative;margin-top:48px}
+.sl-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n),1fr);gap:32px}
+.sl-line{position:absolute;left:0;right:0;top:6px;height:1px;background:var(--line)}
+.sl-step{position:relative;padding-right:8px}
+.sl-dot{display:block;width:13px;height:13px;border-radius:50%;background:var(--bg);border:1.5px solid var(--line);transition:border-color .6s var(--spring),background .6s var(--spring)}
+.sl-dot.reached{border-color:var(--fg)}
+.sl-k{display:block;margin-top:26px;font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--brand)}
+.sl-step h3{margin:8px 0 0;font-size:18px;font-weight:600;letter-spacing:-.025em}
+.sl-step p{margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.65}
+.sl-cur{position:absolute;left:0;top:0;z-index:2;width:12px;height:15px;border-radius:2px;background:#2BD4C0;box-shadow:0 0 14px rgba(43,212,192,.55);
+  opacity:0;transition:transform .9s var(--spring),opacity .4s;animation:blink 1.1s steps(1) infinite}
+.sl-cur.on{opacity:1}
+@keyframes blink{50%{opacity:.35}}
+@media (max-width:720px){
+  .sl-list{grid-template-columns:1fr;gap:36px}
+  .sl-line{left:6px;right:auto;top:6px;bottom:6px;width:1px;height:auto}
+  .sl-step{padding-left:36px}
+  .sl-dot{position:absolute;left:0;top:0}
+  .sl-k{margin-top:0;line-height:13px}
+}
+@media (prefers-reduced-motion:reduce){.sl-cur{animation:none}}

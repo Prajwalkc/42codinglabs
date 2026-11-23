@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd, pageJsonLd, pageMeta } from '@/lib/seo'
 import { NEPAL_FAQS, orderedServices } from '@/lib/services'
-import { Block, CtaRow, Faqs, LinkCards, PageHero } from '@/components/site/ServicePage'
+import { Block, CtaRow, Faqs, LinkCards, PageHero, Parts, stagger } from '@/components/site/ServicePage'
 
 const PATH = '/software-company-nepal'
 const DESCRIPTION =
@@ -35,33 +35,25 @@ export default function NepalPage() {
       <Block label="Nepal">
         <div className="work-case">
           <div>
-            <h2 className="work-h2">Built in Nepal, used around the world.</h2>
+            <h2 className="work-h2 rv">Built in Nepal, used around the world.</h2>
           </div>
           <div className="work-body">
-            <p>
+            <p className="rv" style={stagger(1, 80)}>
               For businesses in Nepal, we build the apps and systems your customers and staff use every day, in English and
               Nepali. Our Mountain Whisper platform, a guest app, admin panel and API for a Nepal travel company, is one example.
             </p>
-            <p>
+            <p className="rv" style={stagger(2, 80)}>
               For teams abroad, we work as your remote engineering team: senior people, direct contact and hours that overlap
               yours. Before 42 Coding Labs our engineers worked on mobile apps at eSewa in Nepal, Pyypl in the UAE and Aquanow
               in Canada.
             </p>
-            <Link className="text-link" href="/work">See the work →</Link>
+            <Link className="text-link rv" href="/work" style={stagger(3, 80)}>See the work →</Link>
           </div>
         </div>
       </Block>
 
       <Block label="Why work with us">
-        <div className="work-parts page-parts">
-          {WHY.map((p) => (
-            <div className="work-part" key={p.k}>
-              <small>{p.k}</small>
-              <h3>{p.t}</h3>
-              <p>{p.d}</p>
-            </div>
-          ))}
-        </div>
+        <Parts items={WHY} />
       </Block>
 
       <Block label="What we build">
@@ -69,9 +61,9 @@ export default function NepalPage() {
       </Block>
 
       <Block label="Questions">
-        <h2 className="work-h2" style={{ marginTop: 28 }}>Frequently asked questions</h2>
+        <h2 className="work-h2 rv" style={{ marginTop: 28 }}>Frequently asked questions</h2>
         <Faqs faqs={NEPAL_FAQS} />
-        <div className="page-end">
+        <div className="page-end rv">
           <h2 className="work-h2">Tell us what you are working on.</h2>
           <p className="work-note">We reply within one business day with honest next steps and a rough plan.</p>
           <CtaRow />

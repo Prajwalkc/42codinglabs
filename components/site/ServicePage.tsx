@@ -1,12 +1,35 @@
 import Link from 'next/link'
-import type { ReactNode } from 'react'
+import { Fragment, type CSSProperties, type ReactNode } from 'react'
 import type { Faq } from '@/lib/services'
 import { Arrow, Chip } from './icons'
 
-/** Page hero for service and landing pages: breadcrumb, three-part H1, lead and CTAs. */
-export function PageHero({ crumbs, h1, lead }: { crumbs: [string, string][]; h1: [string, string, string]; lead: string }) {
+export { StepLine as Steps } from './StepLine'
+
+/** Stagger for `.rv` items in a row: RevealObserver blur-rises each one this much later than the last. */
+export const stagger = (i: number, ms = 70): CSSProperties => ({ ['--d' as string]: `${(i * ms) / 1000}s` })
+
+/** Real facts from the home page stats, shown quietly under the hero CTAs. */
+const PROOF = ['10+ apps live on the stores', '8+ years senior engineering', 'Reply within 24h', '100% code ownership']
+
+/** Splits a heading line into words that rise in one after another, like the home hero. */
+function Words({ text, from }: { text: string; from: number }) {
   return (
-    <section className="sub-hero work-hero">
+    <>
+      {text.split(' ').map((w, k) => (
+        <Fragment key={k}>
+          <span className="w" style={{ ['--i' as string]: from + k }}>{w}</span>{' '}
+        </Fragment>
+      ))}
+    </>
+  )
+}
+
+/** Page hero for service and landing pages: breadcrumb, three-part H1, lead, CTAs and the proof strip. */
+export function PageHero({ crumbs, h1, lead }: { crumbs: [string, string][]; h1: [string, string, string]; lead: string }) {
+  const n0 = h1[0].split(' ').length
+  const n1 = h1[1].split(' ').length
+  return (
+    <section className="sub-hero work-hero page-hero">
       <div className="wrap">
         <nav className="eyebrow crumbs" aria-label="Breadcrumb">
           {crumbs.map(([label, href], i) =>
@@ -21,14 +44,25 @@ export function PageHero({ crumbs, h1, lead }: { crumbs: [string, string][]; h1:
           )}
         </nav>
         <h1 className="mega">
-          <span>{h1[0]}</span>
           <span>
-            <span className="o" style={{ display: 'inline' }}>{h1[1]} </span>
-            <span className="v" style={{ display: 'inline' }}>{h1[2]}</span>
+            <Words text={h1[0]} from={0} />
+          </span>
+          <span>
+            <span className="o" style={{ display: 'inline' }}>
+              <Words text={h1[1]} from={n0} />
+            </span>
+            <span className="v" style={{ display: 'inline' }}>
+              <Words text={h1[2]} from={n0 + n1} />
+            </span>
           </span>
         </h1>
         <p className="lead">{lead}</p>
         <CtaRow />
+        <ul className="proof" aria-label="Studio facts">
+          {PROOF.map((p) => (
+            <li key={p}>{p}</li>
+          ))}
+        </ul>
       </div>
     </section>
   )
@@ -54,7 +88,7 @@ export function Block({ label, children }: { label: string; children: ReactNode 
   return (
     <section className="sec work-sec">
       <div className="wrap">
-        <div className="sec-head">
+        <div className="sec-head rv">
           <div className="eyebrow">{label}</div>
         </div>
         {children}
@@ -63,26 +97,12 @@ export function Block({ label, children }: { label: string; children: ReactNode 
   )
 }
 
-export function Steps({ steps }: { steps: { t: string; p: string }[] }) {
-  return (
-    <ol className="proc page-proc">
-      {steps.map((s, i) => (
-        <li className="step" key={s.t}>
-          <div className="k">{String(i + 1).padStart(2, '0')}</div>
-          <h3>{s.t}</h3>
-          <p>{s.p}</p>
-        </li>
-      ))}
-    </ol>
-  )
-}
-
 /** FAQ list as native <details>, so it works without JavaScript and the answers are in the HTML. */
 export function Faqs({ faqs }: { faqs: Faq[] }) {
   return (
     <div className="faq">
       {faqs.map((f, i) => (
-        <details key={f.q} open={i === 0}>
+        <details key={f.q} open={i === 0} className="rv" style={stagger(i, 60)}>
           <summary>
             <span className="num">{String(i + 1).padStart(2, '0')}</span>
             <h3>{f.q}</h3>
@@ -95,17 +115,35 @@ export function Faqs({ faqs }: { faqs: Faq[] }) {
   )
 }
 
+/** Cards linking to other pages. The reveal sits on a wrapper so it never fights the card's hover lift. */
 export function LinkCards({ items }: { items: { href: string; k: string; t: string }[] }) {
   return (
     <div className="link-cards">
-      {items.map((it) => (
-        <Link className="link-card" href={it.href} key={it.href}>
-          <span>
-            <small>{it.k}</small>
-            <b>{it.t}</b>
-          </span>
-          <Arrow className="go" />
-        </Link>
+      {items.map((it, i) => (
+        <div className="rv" style={stagger(i)} key={it.href}>
+          <Link className="link-card" href={it.href}>
+            <span>
+              <small>{it.k}</small>
+              <b>{it.t}</b>
+            </span>
+            <Arrow className="go" />
+          </Link>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+/** The four-up "what we do" cards. */
+export function Parts({ items }: { items: { k: string; t: string; d: string }[] }) {
+  return (
+    <div className="work-parts page-parts">
+      {items.map((p, i) => (
+        <div className="work-part rv" key={p.k} style={stagger(i)}>
+          <small>{p.k}</small>
+          <h3>{p.t}</h3>
+          <p>{p.d}</p>
+        </div>
       ))}
     </div>
   )

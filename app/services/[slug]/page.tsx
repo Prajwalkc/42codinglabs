@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd, pageJsonLd, pageMeta } from '@/lib/seo'
 import { SERVICES, serviceBySlug } from '@/lib/services'
-import { Block, CtaRow, Faqs, LinkCards, PageHero, Steps } from '@/components/site/ServicePage'
+import { Block, CtaRow, Faqs, LinkCards, PageHero, Parts, Steps, stagger } from '@/components/site/ServicePage'
 
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }))
@@ -33,20 +33,20 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <Block label={s.eyebrow}>
         <div className="work-case">
           <div>
-            <h2 className="work-h2">{s.h2}</h2>
+            <h2 className="work-h2 rv">{s.h2}</h2>
           </div>
           <div className="work-body">
-            {s.intro.map((p) => (
-              <p key={p.slice(0, 24)}>{p}</p>
+            {s.intro.map((p, i) => (
+              <p className="rv" style={stagger(i + 1, 80)} key={p.slice(0, 24)}>{p}</p>
             ))}
           </div>
         </div>
         {s.problems && (
           <>
-            <h3 className="page-h3">{s.problems.h}</h3>
+            <h3 className="page-h3 rv">{s.problems.h}</h3>
             <ul className="tick-list">
-              {s.problems.items.map((p) => (
-                <li key={p}>{p}</li>
+              {s.problems.items.map((p, i) => (
+                <li className="rv" style={stagger(i, 60)} key={p}>{p}</li>
               ))}
             </ul>
           </>
@@ -54,15 +54,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       </Block>
 
       <Block label={s.offer.h}>
-        <div className="work-parts page-parts">
-          {s.offer.items.map((p) => (
-            <div className="work-part" key={p.k}>
-              <small>{p.k}</small>
-              <h3>{p.t}</h3>
-              <p>{p.d}</p>
-            </div>
-          ))}
-        </div>
+        <Parts items={s.offer.items} />
       </Block>
 
       <Block label="How it works">
@@ -71,9 +63,9 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
 
       {s.proof && (
         <Block label={s.proof.h}>
-          <p className="page-proof">{s.proof.p}</p>
+          <p className="page-proof rv">{s.proof.p}</p>
           {s.proof.link && (
-            <Link className="text-link" href={s.proof.link[1]} style={{ marginTop: 20 }}>
+            <Link className="text-link rv" href={s.proof.link[1]} style={{ marginTop: 20, ...stagger(1) }}>
               {s.proof.link[0]} →
             </Link>
           )}
@@ -81,7 +73,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       )}
 
       <Block label="Questions">
-        <h2 className="work-h2" style={{ marginTop: 28 }}>Frequently asked questions</h2>
+        <h2 className="work-h2 rv" style={{ marginTop: 28 }}>Frequently asked questions</h2>
         <Faqs faqs={s.faqs} />
       </Block>
 
@@ -92,7 +84,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             return { href: `/services/${r.slug}`, k: r.name, t: r.card }
           })}
         />
-        <div className="page-end">
+        <div className="page-end rv">
           <h2 className="work-h2">Tell us what you are working on.</h2>
           <p className="work-note">We reply within one business day with honest next steps and a rough plan, not a sales script.</p>
           <CtaRow second={['All services', '/services']} />
