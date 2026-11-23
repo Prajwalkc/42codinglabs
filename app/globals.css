@@ -569,6 +569,8 @@ a.work-status:hover{color:var(--fg);border-color:rgba(117,77,236,.5)}
 .pkg ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
 .pkg li{position:relative;padding-left:22px;font-size:14px;line-height:1.55}
 .pkg li::before{content:"";position:absolute;left:2px;top:.42em;width:10px;height:6px;border-left:1.5px solid var(--brand);border-bottom:1.5px solid var(--brand);rotate:-45deg}
+.jump-btn:hover .chip{transform:translateY(3px)}
+#packages{scroll-margin-top:24px}
 .wa-btn .wa-chip{background:#25D366;color:#fff;box-shadow:0 6px 16px -6px rgba(37,211,102,.7)}
 .wa-btn .wa-chip svg{width:18px;height:18px}
 .wa-btn:hover{border-color:rgba(37,211,102,.55)}

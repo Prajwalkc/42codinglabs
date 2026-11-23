@@ -37,8 +37,13 @@ export default function PricingPage() {
           // No call/WhatsApp buttons up here: every card has its own "Ask for a quote", and the page
           // ends with both. A small jump link gets people to the packages sooner, on phones especially.
           <div className="ctas">
-            <a className="text-link" href="#packages">
-              See packages ↓
+            <a className="btn btn-ghost btn-lg jump-btn" href="#packages">
+              See packages
+              <span className="chip">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M8 3v10M3.5 8.5L8 13l4.5-4.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
             </a>
           </div>
         }
