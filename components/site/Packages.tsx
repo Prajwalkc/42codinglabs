@@ -49,7 +49,6 @@ const ICONS: Record<string, ReactNode> = {
   Care: <Ic><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z" /><path d="M9 12l2 2 4-4" /></Ic>,
   Grow: <Ic><path d="M3 17l6-6 4 4 8-8" /><path d="M15 7h6v6" /></Ic>,
   Scale: <Ic><path d="M12 3l9 5-9 5-9-5z" /><path d="M3 13l9 5 9-5" /></Ic>,
-  'Dedicated developer': <Ic><circle cx="12" cy="8" r="3.5" /><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5" /></Ic>,
 }
 
 /** Care plans have one-word names; say "care plan" so the enquiry is clear. */

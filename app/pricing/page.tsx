@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { JsonLd, pageJsonLd, pageMeta } from '@/lib/seo'
-import { CARE, FIX, TEAM, builds } from '@/lib/packages'
+import { CARE, FIX, builds } from '@/lib/packages'
 import type { Faq } from '@/lib/services'
 import { Block, Faqs, PageHero, stagger } from '@/components/site/ServicePage'
 import { ContactCtas, Packages } from '@/components/site/Packages'
 
 const PATH = '/pricing'
 const DESCRIPTION =
-  'Packages from 42 Coding Labs: AI-built app rescue, App Store launch, a business website, a mobile app from MVP to production, a complete business app with admin panel, monthly care plans and dedicated developers. Fixed scope, and you own everything.'
+  'Packages from 42 Coding Labs: AI-built app rescue, App Store launch, a business website, a mobile app from MVP to production, a complete business app with admin panel, and monthly care plans. Fixed scope, and you own everything.'
 
 export const metadata: Metadata = pageMeta({
   title: 'Packages and pricing: websites, mobile apps and admin panels',
@@ -32,7 +32,7 @@ export default function PricingPage() {
       <PageHero
         crumbs={crumbs}
         h1={['Clear packages,', 'fixed', 'scope.']}
-        lead="Fix and launch what you have, build a website, an app or the complete software, then keep it growing with a monthly plan or a developer of your own. Tell us what you need and get a written estimate within one business day."
+        lead="Fix and launch what you have, build a website, an app or the complete software, then keep it growing with a monthly care plan. Tell us what you need and get a written estimate within one business day."
         cta={<ContactCtas />}
       />
 
@@ -58,14 +58,6 @@ export default function PricingPage() {
           Fixed deliverables every month, so you know exactly what you are paying for. Everything we make stays yours.
         </p>
         <Packages items={CARE} />
-      </Block>
-
-      <Block label="Team">
-        <h2 className="work-h2 rv" style={{ marginTop: 28 }}>Or a developer of your own.</h2>
-        <p className="work-note rv" style={stagger(1)}>
-          A senior engineer who works as part of your team, month to month, with you talking to them directly.
-        </p>
-        <Packages items={TEAM} />
       </Block>
 
       <Block label="Need something specific?">

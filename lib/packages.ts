@@ -118,23 +118,6 @@ export const FIX: Pkg[] = [
   },
 ]
 
-/** Monthly team option, next to the care plans. */
-export const TEAM: Pkg[] = [
-  {
-    name: 'Dedicated developer',
-    price: null,
-    unit: '/ month',
-    blurb: 'A senior engineer on your team, working in your hours.',
-    items: [
-      'Senior mobile, web or backend engineer',
-      'Hours that overlap the US, UK, EU or Gulf',
-      'Joins your Slack, stand-ups and repository',
-      'Weekly written report',
-      'All code in your repository, always yours',
-    ],
-  },
-]
-
 export const CARE: Pkg[] = [
   {
     name: 'Care',
