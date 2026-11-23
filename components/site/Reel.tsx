@@ -72,17 +72,43 @@ export function Reel() {
       setPlaying(true)
       return
     }
+    // Safari only autoplays a video it knows is silent. React sets `muted` as a property but never writes the
+    // attribute, so set both before the first play().
+    v.muted = true
+    v.defaultMuted = true
+    v.setAttribute('muted', '')
+    v.setAttribute('playsinline', '')
+    // If autoplay is still refused (iPhone Low Power Mode, Safari's "Never Auto-Play"), the poster stays up and
+    // the first tap, click or key press starts the reel.
+    const onGesture = () => {
+      v.play().catch(() => {})
+      gestures.forEach((g) => window.removeEventListener(g, onGesture))
+    }
+    const gestures = ['touchstart', 'pointerdown', 'keydown'] as const
+    const tryPlay = () =>
+      v.play().catch(() => gestures.forEach((g) => window.addEventListener(g, onGesture, { once: true, passive: true })))
     // Only play while the reel is on screen.
     const io = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting) v.play().catch(() => {})
+        if (e.isIntersecting) tryPlay()
         else v.pause()
       },
       { threshold: 0.25 },
     )
     io.observe(v)
-    return () => io.disconnect()
+    return () => {
+      io.disconnect()
+      gestures.forEach((g) => window.removeEventListener(g, onGesture))
+    }
   }, [film, ready])
+
+  // Safari's WebM support is newer and less dependable than its MP4 playback, so Safari gets the MP4 first.
+  const safari = typeof navigator !== 'undefined' && /^((?!chrome|chromium|crios|fxios|android|edg).)*safari/i.test(navigator.userAgent)
+  const sources = [
+    { src: `${film}.webm`, type: 'video/webm' },
+    { src: `${film}.mp4`, type: 'video/mp4' },
+  ]
+  if (safari) sources.reverse()
 
   return (
     // The first screen: just the reel, edge to edge. The hero follows on scroll.
@@ -100,8 +126,9 @@ export function Reel() {
           onPlaying={() => setPlaying(true)}
           aria-label="Think, Code, Ship, typed by a cursor, ending on the 42 Coding Labs logo"
         >
-          <source src={`${film}.webm`} type="video/webm" />
-          <source src={`${film}.mp4`} type="video/mp4" />
+          {sources.map((s) => (
+            <source key={s.type} src={s.src} type={s.type} />
+          ))}
         </video>
       )}
       <a className="reel-scroll" href="#studio" aria-label="Scroll down to the studio">
