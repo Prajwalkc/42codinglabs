@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
+import { pageMeta, SITE } from '@/lib/seo'
 import { Nav } from '@/components/site/Nav'
 import { Footer } from '@/components/site/Footer'
 import { RevealObserver } from '@/components/site/RevealObserver'
@@ -13,20 +14,16 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.42codinglabs.com'),
+  metadataBase: new URL(SITE),
   title: {
     default: '42 Coding Labs · Apps, platforms and AI products',
     template: '%s · 42 Coding Labs',
   },
-  description:
-    '42 Coding Labs is a software studio in Kathmandu building mobile apps, web platforms and AI products for teams in the US, UK, EU and the Gulf.',
-  openGraph: {
-    title: '42 Coding Labs',
-    description: 'Apps, platforms and AI products for ambitious teams. Think. Code. Ship.',
-    url: 'https://www.42codinglabs.com',
-    siteName: '42 Coding Labs',
-    type: 'website',
-  },
+  ...pageMeta({
+    description:
+      'A software studio in Kathmandu building mobile apps, web platforms and AI products for teams in the US, UK, EU and the Gulf. Think. Code. Ship.',
+    path: '/',
+  }),
 }
 
 export const viewport: Viewport = {

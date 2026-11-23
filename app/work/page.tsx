@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import { Chip } from '@/components/site/icons'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Work',
-  description: 'The Mountain Whisper guest app, admin panel and API, and the fintech apps our team shipped before 42 Coding Labs.',
-}
+  description:
+    'The Mountain Whisper guest app, admin panel and API, and the fintech apps our team shipped before 42 Coding Labs.',
+  path: '/work',
+})
 
 // Only real work. Past-employer apps are shown with public information only (company, what the app is, role, store link).
 const MW_PARTS = [

@@ -1,7 +1,13 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import { ComingSoon } from '@/components/site/ComingSoon'
 
-export const metadata: Metadata = { title: 'Pricing' }
+export const metadata: Metadata = pageMeta({
+  title: 'Pricing',
+  description:
+    'Fixed-scope projects, monthly care plans and dedicated developers. Tell us what you need and get a written estimate within one business day.',
+  path: '/pricing',
+})
 
 export default function PricingPage() {
   return (
