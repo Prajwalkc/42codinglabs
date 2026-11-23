@@ -34,6 +34,8 @@ export type Pkg = {
   blurb: string
   items: string[]
   featured?: boolean
+  /** Contact form "What do you need?" option to preselect when someone asks for a quote. */
+  service?: string
 }
 
 /** One-time builds. `local` swaps in Nepal details: eSewa, Khalti and Fonepay, and English and Nepali. */
@@ -43,6 +45,7 @@ export function builds(local = false): Pkg[] {
   return [
     {
       name: 'Business website',
+      service: 'Web platform',
       price: null,
       unit: 'one-time',
       blurb: 'A clean, fast website that tells people what you do and how to reach you.',
@@ -55,6 +58,7 @@ export function builds(local = false): Pkg[] {
     },
     {
       name: 'Mobile app',
+      service: 'Mobile app',
       price: null,
       unit: 'one-time',
       blurb: 'Your idea as a real iOS and Android app, from a first MVP to a production-ready app.',
@@ -68,6 +72,7 @@ export function builds(local = false): Pkg[] {
     },
     {
       name: 'Business app and admin panel',
+      service: 'Mobile app',
       price: null,
       unit: 'one-time',
       blurb: 'The complete software to run your business: an app for your customers, an admin panel for your team.',
@@ -87,6 +92,7 @@ export function builds(local = false): Pkg[] {
 export const FIX: Pkg[] = [
   {
     name: 'AI-built app rescue',
+    service: 'AI-built app rescue',
     price: null,
     unit: 'fixed scope',
     blurb: 'Your Lovable or Bolt app, reviewed, fixed and launched.',
@@ -99,6 +105,7 @@ export const FIX: Pkg[] = [
   },
   {
     name: 'App Store launch',
+    service: 'Store publishing',
     price: null,
     unit: 'fixed scope',
     blurb: 'Your app through Apple and Google review, including rejections.',

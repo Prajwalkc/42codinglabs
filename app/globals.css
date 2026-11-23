@@ -544,7 +544,10 @@ a.work-status:hover{color:var(--fg);border-color:rgba(117,77,236,.5)}
 .pkg-blurb{margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
 .pkg-price{display:flex;align-items:baseline;gap:8px;margin:24px 0 0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .pkg-price b{font-size:26px;font-weight:600;letter-spacing:-.03em}
-.pkg-price b.ask{font-size:17px;font-weight:500}
+.pkg-price .ask{display:inline-flex;align-items:center;gap:8px;font-size:17px;font-weight:500;color:var(--fg);transition:color .25s}
+.pkg-price .ask .go{width:16px;color:var(--brand);transition:transform .4s var(--spring)}
+.pkg-price .ask:hover{color:var(--brand)}
+.pkg-price .ask:hover .go{transform:rotate(45deg)}
 .pkg-price span{color:var(--muted);font-size:13px}
 .pkg ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
 .pkg li{position:relative;padding-left:22px;font-size:14px;line-height:1.55}

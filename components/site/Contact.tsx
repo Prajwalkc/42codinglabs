@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import Link from 'next/link'
 import { Ic } from './icons'
 
@@ -13,6 +13,21 @@ type State = 'idle' | 'sending' | 'sent' | 'preview' | 'error'
 export function Contact() {
   const [state, setState] = useState<State>('idle')
   const [msg, setMsg] = useState('')
+  const formRef = useRef<HTMLFormElement>(null)
+
+  // "Ask for a quote" on a package links to /?package=…&service=…#contact: preselect the service
+  // and start the project details with the package name, so the enquiry says what it is about.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search)
+    const form = formRef.current
+    const pkg = q.get('package')
+    if (!form || !pkg) return
+    const svc = q.get('service')
+    const select = form.elements.namedItem('service') as HTMLSelectElement | null
+    if (svc && select && Array.from(select.options).some((o) => o.text === svc)) select.value = svc
+    const details = form.elements.namedItem('message') as HTMLTextAreaElement | null
+    if (details && !details.value) details.value = `Package: ${pkg}\n\n`
+  }, [])
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -65,7 +80,7 @@ export function Contact() {
             </div>
           </div>
           <div className={`form rv${done ? ' done' : ''}`} style={{ ['--d' as string]: '.1s' }}>
-            <form onSubmit={onSubmit} noValidate>
+            <form ref={formRef} onSubmit={onSubmit} noValidate>
               <div className="form-head">
                 <div>
                   <h3>Tell us about your project</h3>

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Pkg } from '@/lib/packages'
 import { whatsappHref } from '@/lib/packages'
-import { Chip } from './icons'
+import { Arrow, Chip } from './icons'
 import { stagger } from './ServicePage'
 
 /** WhatsApp logo, drawn as a single path so it follows currentColor. */
@@ -32,6 +32,9 @@ export function ContactCtas() {
   )
 }
 
+/** Care plans have one-word names; say "care plan" so the enquiry is clear. */
+const CARE_NAMES = ['Care', 'Grow', 'Scale']
+
 export function Packages({ items }: { items: Pkg[] }) {
   // A lone card stays card-sized instead of stretching across the page.
   return (
@@ -48,7 +51,10 @@ export function Packages({ items }: { items: Pkg[] }) {
                 <span>{p.unit}</span>
               </>
             ) : (
-              <b className="ask">Ask for a quote</b>
+              <Link className="ask" href={`/?${new URLSearchParams({ package: CARE_NAMES.includes(p.name) ? `${p.name} care plan` : p.name, ...(p.service ? { service: p.service } : {}) })}#contact`}>
+                Ask for a quote
+                <Arrow className="go" />
+              </Link>
             )}
           </div>
           <ul>
