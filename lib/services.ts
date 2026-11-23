@@ -66,7 +66,7 @@ export const SERVICES: ServiceContent[] = [
     lead: 'You got a long way with an AI app builder. Now it breaks with real users, every fix breaks something else, or it has to become a real iOS and Android app. Senior engineers take it from here, without starting over.',
     h2: 'Keep what works. Fix the rest.',
     intro: [
-      'Lovable, Bolt and tools like them are a fast way to get a product in front of people. What they leave behind is code nobody has reviewed: logins that work in the demo but not under load, data rules that are wide open, keys sitting in the browser, and features that only work on the happy path.',
+      'Lovable, Bolt, Replit, v0 and tools like them are a fast way to get a product in front of people. What they leave behind is code nobody has reviewed: logins that work in the demo but not under load, data rules that are wide open, keys sitting in the browser, and features that only work on the happy path.',
       'We read the code your builder generated, keep what is good, and fix what is not. Then we launch it, on the web and, if you need it, as a native app in the App Store and Google Play.',
     ],
     problems: {
@@ -97,6 +97,7 @@ export const SERVICES: ServiceContent[] = [
     ],
     faqs: [
       { q: 'Can you work with the code Lovable or Bolt generated?', a: 'Yes. Both let you export a normal codebase, and that is where we start. We keep what works and replace what does not, so you do not pay to rebuild parts that are already fine.' },
+      { q: 'Do you only fix Lovable and Bolt apps?', a: 'No. We take on apps built with any AI tool, including Replit, v0 and Cursor, as long as we can get the code. The approach is the same: review it, keep what works, fix the rest and launch it.' },
       { q: 'Do I have to start from scratch?', a: 'Not necessarily. The audit tells you which parts are worth keeping and what a rebuild of the rest would involve, so you decide with the facts in front of you.' },
       { q: 'Can you turn my Lovable or Bolt web app into an iOS and Android app?', a: 'Yes. We build a native app with React Native and Expo that uses the same backend, then handle the App Store and Google Play submissions, including review.' },
       { q: 'Can I keep editing the app in Lovable or Bolt afterwards?', a: 'You can, but once engineers change the code by hand, regenerating it in the builder can undo those fixes. We agree a way of working with you up front so that does not happen.' },
