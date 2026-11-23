@@ -33,10 +33,18 @@ export default function PricingPage() {
         crumbs={crumbs}
         h1={['Clear packages,', 'fixed', 'scope.']}
         lead="Fix and launch what you have, build a website, an app or the complete software, then keep it growing with a monthly care plan. Tell us what you need and get a written estimate within one business day."
-        cta={<ContactCtas />}
+        cta={
+          // No call/WhatsApp buttons up here: every card has its own "Ask for a quote", and the page
+          // ends with both. A small jump link gets people to the packages sooner, on phones especially.
+          <div className="ctas">
+            <a className="text-link" href="#packages">
+              See packages ↓
+            </a>
+          </div>
+        }
       />
 
-      <Block label="Fix and launch">
+      <Block label="Fix and launch" id="packages">
         <h2 className="work-h2 rv" style={{ marginTop: 28 }}>Already have an app? Start here.</h2>
         <p className="work-note rv" style={stagger(1)}>
           Small, fixed-scope jobs to get what you have working and live.

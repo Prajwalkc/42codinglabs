@@ -84,9 +84,9 @@ export function CtaRow({ second = ['See our work', '/work'] }: { second?: [strin
 }
 
 /** A bordered page section with an eyebrow label. */
-export function Block({ label, children }: { label: string; children: ReactNode }) {
+export function Block({ label, id, children }: { label: string; id?: string; children: ReactNode }) {
   return (
-    <section className="sec work-sec">
+    <section className="sec work-sec" id={id}>
       <div className="wrap">
         <div className="sec-head rv">
           <div className="eyebrow">{label}</div>
