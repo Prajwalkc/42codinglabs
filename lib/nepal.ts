@@ -3,11 +3,18 @@
  * The rest of the site is for US, UK, EU and Gulf clients and shows no NPR prices.
  *
  * Prices and the WhatsApp number are set by Prajwal. Until a value is filled in, the page shows
- * "Quote on request" and hides the WhatsApp button, so nothing invented is ever published.
+ * "Ask for a quote" and hides the WhatsApp button, so nothing invented is ever published.
  */
 
-/** WhatsApp number in international format, digits only (e.g. 9779800000000). null hides the button. */
-export const WHATSAPP: string | null = null
+/**
+ * WhatsApp number in international format, digits only (Prajwal's number, +971 50 371 5287).
+ * Set to null to hide the button; `npm run build` then prints a warning.
+ */
+export const WHATSAPP: string | null = '971503715287'
+
+if (!WHATSAPP && process.env.NODE_ENV === 'production') {
+  console.warn('[nepal] WHATSAPP is not set in lib/nepal.ts: the WhatsApp button on /software-company-nepal is hidden.')
+}
 
 const WA_TEXT = [
   'Hi 42 Coding Labs, I would like to talk about a project.',
@@ -22,7 +29,7 @@ export const whatsappHref = () => (WHATSAPP ? `https://wa.me/${WHATSAPP}?text=${
 
 export type Pkg = {
   name: string
-  /** e.g. "NPR 60,000". null shows "Quote on request". */
+  /** No prices yet (Prajwal, 23 Nov 2026): keep null so the card shows "Ask for a quote". */
   price: string | null
   /** Shown after the price, e.g. "one-time" or "/ month". */
   unit: string

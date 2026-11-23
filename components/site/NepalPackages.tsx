@@ -47,7 +47,7 @@ export function Packages({ items }: { items: Pkg[] }) {
                 <span>{p.unit}</span>
               </>
             ) : (
-              <b className="ask">Quote on request</b>
+              <b className="ask">Ask for a quote</b>
             )}
           </div>
           <ul>
