@@ -13,8 +13,8 @@ const FILMS = {
   'tall-light': '/film/reel-loop-portrait-light',
 }
 type Film = (typeof FILMS)[keyof typeof FILMS]
-// Played faster than it was rendered (Prajwal, 23 Nov 2026): the 12 s loop runs in 8 s.
-const SPEED = 1.5
+// Played faster than it was rendered (Prajwal, 23 Nov 2026): the 12 s loop runs in 9.6 s.
+const SPEED = 1.25
 
 /**
  * Studio reel, the first screen of the home page: a 12 s seamless loop, played at SPEED (Think. Code. Ship. typed by the teal
