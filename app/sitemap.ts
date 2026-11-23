@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { SITE } from '@/lib/seo'
 import { SERVICE_ORDER } from '@/lib/services'
+import { CASE_STUDIES } from '@/lib/case-studies'
 
 export const dynamic = 'force-static'
 
@@ -11,6 +12,7 @@ const PAGES: [string, number][] = [
   ...SERVICE_ORDER.map((s): [string, number] => [`/services/${s}`, 0.9]),
   ['/software-company-nepal', 0.8],
   ['/work', 0.7],
+  ...CASE_STUDIES.map((c): [string, number] => [`/work/${c.slug}`, 0.7]),
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
