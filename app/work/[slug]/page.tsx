@@ -7,8 +7,6 @@ import { BrowserShot, PhoneShot } from '@/components/site/CaseShots'
 import { Chip } from '@/components/site/icons'
 import '../case-studies.css'
 
-export const dynamicParams = false
-
 export function generateStaticParams() {
   return CASE_STUDIES.map((c) => ({ slug: c.slug }))
 }
