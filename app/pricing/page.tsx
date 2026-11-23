@@ -7,6 +7,7 @@ export const metadata: Metadata = pageMeta({
   description:
     'Fixed-scope projects, monthly care plans and dedicated developers. Tell us what you need and get a written estimate within one business day.',
   path: '/pricing',
+  noindex: true,
 })
 
 export default function PricingPage() {

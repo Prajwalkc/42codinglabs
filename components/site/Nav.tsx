@@ -4,14 +4,9 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { Logo } from './Logo'
 import { Chip } from './icons'
+import { orderedServices } from '@/lib/services'
 
-const SERVICES = [
-  ['Mobile apps', 'iOS and Android, one codebase'],
-  ['Web platforms', 'Web products and admin panels'],
-  ['AI-built app rescue', 'Fix and launch Lovable or Bolt apps'],
-  ['Backends & APIs', 'Databases, auth and integrations'],
-  ['Store publishing', 'App Store and Play Store, first time'],
-]
+const SERVICES = orderedServices().map((s) => [s.name, s.blurb, `/services/${s.slug}`])
 
 const LINKS = [
   ['Home', '/'],
@@ -59,8 +54,8 @@ export function Nav() {
               </svg>
             </button>
             <div className="dd-menu">
-              {SERVICES.map(([t, s]) => (
-                <Link key={t} href="/#services" onClick={() => setDdOpen(false)}>
+              {SERVICES.map(([t, s, href]) => (
+                <Link key={t} href={href} onClick={() => setDdOpen(false)}>
                   <b>{t}</b>
                   <span>{s}</span>
                 </Link>
@@ -90,7 +85,7 @@ export function Nav() {
         </button>
       </div>
       <div className={`mmenu${menuOpen ? ' open' : ''}`}>
-        {[...LINKS, ['Services', '/#services']].map(([label, href]) => (
+        {[...LINKS, ['Services', '/services']].map(([label, href]) => (
           <Link key={label} href={href} onClick={() => setMenuOpen(false)}>
             {label}
           </Link>

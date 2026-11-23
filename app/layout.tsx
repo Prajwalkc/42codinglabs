@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
-import { pageMeta, SITE } from '@/lib/seo'
+import { JsonLd, pageMeta, SITE, siteJsonLd } from '@/lib/seo'
 import { Nav } from '@/components/site/Nav'
 import { Footer } from '@/components/site/Footer'
 import { RevealObserver } from '@/components/site/RevealObserver'
@@ -39,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <JsonLd data={siteJsonLd} />
       </head>
       <body>
         <Nav />

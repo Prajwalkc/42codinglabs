@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { InlineMark, Logo, Mark } from './Logo'
+import { orderedServices } from '@/lib/services'
 
 export function Footer() {
   return (
@@ -13,10 +14,9 @@ export function Footer() {
           <div>
             <h4>Services</h4>
             <ul>
-              <li><Link href="/#services">Mobile apps</Link></li>
-              <li><Link href="/#services">Web platforms</Link></li>
-              <li><Link href="/#services">AI-built app rescue</Link></li>
-              <li><Link href="/#services">Store publishing</Link></li>
+              {orderedServices().map((s) => (
+                <li key={s.slug}><Link href={`/services/${s.slug}`}>{s.name}</Link></li>
+              ))}
             </ul>
           </div>
           <div>
@@ -34,7 +34,7 @@ export function Footer() {
         </span>
         <div className="foot-bot">
           <span>© {new Date().getFullYear()} <InlineMark /> Coding Labs · <span className="tagline">Think. Code. Ship<i className="tcur" aria-hidden="true" /></span></span>
-          <span>Kathmandu · Remote worldwide</span>
+          <span><Link href="/software-company-nepal">Kathmandu, Nepal</Link> · Remote worldwide</span>
         </div>
       </div>
     </footer>

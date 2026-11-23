@@ -7,6 +7,7 @@ export const metadata: Metadata = pageMeta({
   description:
     'Notes from 42 Coding Labs on building mobile apps, web platforms and AI products.',
   path: '/blog',
+  noindex: true,
 })
 
 export default function BlogPage() {

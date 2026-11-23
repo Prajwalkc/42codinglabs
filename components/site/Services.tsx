@@ -4,12 +4,12 @@ import Link from 'next/link'
 import { useEffect, useRef, type ReactNode } from 'react'
 import { Arrow, Chip, Ic } from './icons'
 
-const SERVICES: { k: string; title: string; icon: ReactNode }[] = [
-  { k: '01 · Mobile apps', title: 'iOS and Android apps that feel native.', icon: <Ic><rect x="7" y="2.5" width="10" height="19" rx="2.5" /><path d="M11 18.5h2" /></Ic> },
-  { k: '02 · Web platforms', title: 'Fast web products and admin panels.', icon: <Ic><rect x="3" y="4" width="18" height="14" rx="2" /><path d="M3 8h18M8 21h8" /></Ic> },
-  { k: '03 · AI-built app rescue', title: 'We fix and launch what Lovable and Bolt started.', icon: <Ic><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z" /><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z" /></Ic> },
-  { k: '04 · Backends & APIs', title: 'Databases, auth and APIs that hold up.', icon: <Ic><ellipse cx="12" cy="5.5" rx="7" ry="2.5" /><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5" /></Ic> },
-  { k: '05 · Store publishing', title: 'Through App Store review, first time.', icon: <Ic><path d="M5 15c-1.5 1.3-2 4-2 6 2 0 4.7-.5 6-2M9 13l2 2M14.5 4.5C17 3 20 3 21 3c0 1 0 4-1.5 6.5L13 16l-5-5z" /><circle cx="15.5" cy="8.5" r="1.5" /></Ic> },
+const SERVICES: { k: string; href: string; title: string; icon: ReactNode }[] = [
+  { k: '01 · Mobile apps', href: '/services/mobile-apps', title: 'iOS and Android apps that feel native.', icon: <Ic><rect x="7" y="2.5" width="10" height="19" rx="2.5" /><path d="M11 18.5h2" /></Ic> },
+  { k: '02 · Web platforms', href: '/services/web-platforms', title: 'Fast web products and admin panels.', icon: <Ic><rect x="3" y="4" width="18" height="14" rx="2" /><path d="M3 8h18M8 21h8" /></Ic> },
+  { k: '03 · AI-built app rescue', href: '/services/ai-app-rescue', title: 'We fix and launch what Lovable and Bolt started.', icon: <Ic><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z" /><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z" /></Ic> },
+  { k: '04 · Backends & APIs', href: '/services/backend-admin', title: 'Databases, auth and APIs that hold up.', icon: <Ic><ellipse cx="12" cy="5.5" rx="7" ry="2.5" /><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5" /></Ic> },
+  { k: '05 · Store publishing', href: '/services/app-store-publishing', title: 'Through App Store review, first time.', icon: <Ic><path d="M5 15c-1.5 1.3-2 4-2 6 2 0 4.7-.5 6-2M9 13l2 2M14.5 4.5C17 3 20 3 21 3c0 1 0 4-1.5 6.5L13 16l-5-5z" /><circle cx="15.5" cy="8.5" r="1.5" /></Ic> },
 ]
 
 /** The S-curve that connects the service cards, drawn as you scroll. */
@@ -120,7 +120,7 @@ export function Services() {
             <circle id="pDot" r="6" fill="#fff" style={{ filter: 'drop-shadow(0 0 10px #a78bfa) drop-shadow(0 0 4px #754DEC)' }} />
           </svg>
           {SERVICES.map((s) => (
-            <Link className="svc-card rv" href="/#contact" key={s.k}>
+            <Link className="svc-card rv" href={s.href} key={s.k}>
               <span className="svc-ic">{s.icon}</span>
               <span>
                 <small>{s.k}</small>
