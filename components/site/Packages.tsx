@@ -27,8 +27,8 @@ export function ContactCtas() {
         <Chip />
       </Link>
       {wa && (
-        <a className="btn btn-ghost btn-lg wa-btn" href={wa} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp (opens WhatsApp)">
-          Chat on WhatsApp
+        <a className="btn btn-ghost btn-lg wa-btn" href={wa} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp us (opens WhatsApp)">
+          WhatsApp us
           <span className="chip wa-chip">
             <WaIcon />
           </span>
