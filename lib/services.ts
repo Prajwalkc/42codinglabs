@@ -313,7 +313,8 @@ export const NEPAL_FAQS: Faq[] = [
   { q: 'What experience does the team have?', a: 'Our engineers have 8+ years of senior engineering behind them and 10+ apps live on the stores, including mobile work at eSewa in Nepal, Pyypl in the UAE and Aquanow in Canada before 42 Coding Labs.' },
   { q: 'Do you take eSewa, Khalti and Fonepay payments in websites and apps?', a: 'Yes. Our e-commerce sites and apps for Nepal take payments through eSewa, Khalti and Fonepay.' },
   { q: 'Do I own the website or app?', a: 'Yes, fully. The code, domain, hosting and content are in your name from day one, and there is no fee to take your code elsewhere.' },
-  { q: 'Is ad spend included in the monthly plans?', a: 'No. Money for Facebook, Instagram, TikTok or Google ads is paid by you directly to the platform, so you always see exactly what was spent. Our plans cover the work, not the ad budget.' },
+  { q: 'How much does software or app development cost in Nepal?', a: 'It depends on what you need, so we quote each project after a short call, as a fixed scope you can hold us to. Our packages page shows what a website, a mobile app or a complete business app includes.' },
+  { q: 'Do you work with businesses outside Kathmandu?', a: 'Yes. We are based in Kathmandu and work remotely with businesses anywhere in Nepal, as well as teams in the US, UK, EU and the Gulf.' },
   TIMEZONES,
   OWNERSHIP,
 ]

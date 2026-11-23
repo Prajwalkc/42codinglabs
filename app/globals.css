@@ -552,4 +552,9 @@ a.work-status:hover{color:var(--fg);border-color:rgba(117,77,236,.5)}
 .ad-note{margin:32px 0 0;padding:18px 22px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);font-size:14px;line-height:1.6;max-width:760px}
 .ad-note b{color:var(--fg);font-weight:600}
 .wa-btn svg{margin-right:2px}
+.nap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:36px 0 0}
+.nap dt{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--brand)}
+.nap dd{margin:8px 0 0;font-size:16px;font-weight:500}
+@media (max-width:960px){.nap{grid-template-columns:1fr 1fr}}
+.pkgs.one{grid-template-columns:minmax(0,440px)}
 @media (max-width:960px){.pkgs{grid-template-columns:1fr;max-width:520px}}

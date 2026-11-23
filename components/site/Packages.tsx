@@ -33,8 +33,9 @@ export function ContactCtas() {
 }
 
 export function Packages({ items }: { items: Pkg[] }) {
+  // A lone card stays card-sized instead of stretching across the page.
   return (
-    <div className="pkgs" style={{ ['--cols' as string]: items.length }}>
+    <div className={`pkgs${items.length === 1 ? ' one' : ''}`} style={{ ['--cols' as string]: items.length }}>
       {items.map((p, i) => (
         <div className={`pkg rv${p.featured ? ' featured' : ''}`} key={p.name} style={stagger(i, 80)}>
           {p.featured && <span className="pkg-tag">Recommended</span>}

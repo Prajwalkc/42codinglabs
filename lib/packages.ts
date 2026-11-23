@@ -83,6 +83,51 @@ export function builds(local = false): Pkg[] {
   ]
 }
 
+/** Small fixed-scope jobs: often the first project with a new client. */
+export const FIX: Pkg[] = [
+  {
+    name: 'AI-built app rescue',
+    price: null,
+    unit: 'fixed scope',
+    blurb: 'Your Lovable or Bolt app, reviewed, fixed and launched.',
+    items: [
+      'Written code review and fix plan',
+      'Login, data access, secrets and payments fixed',
+      'Deployed on accounts in your name',
+      'Optional: turn it into an iOS and Android app',
+    ],
+  },
+  {
+    name: 'App Store launch',
+    price: null,
+    unit: 'fixed scope',
+    blurb: 'Your app through Apple and Google review, including rejections.',
+    items: [
+      'Developer accounts set up in your name',
+      'Signing, release builds and test tracks',
+      'Store listing, screenshots and privacy forms',
+      'Rejections fixed and resubmitted',
+    ],
+  },
+]
+
+/** Monthly team option, next to the care plans. */
+export const TEAM: Pkg[] = [
+  {
+    name: 'Dedicated developer',
+    price: null,
+    unit: '/ month',
+    blurb: 'A senior engineer on your team, working in your hours.',
+    items: [
+      'Senior mobile, web or backend engineer',
+      'Hours that overlap the US, UK, EU or Gulf',
+      'Joins your Slack, stand-ups and repository',
+      'Weekly written report',
+      'All code in your repository, always yours',
+    ],
+  },
+]
+
 export const CARE: Pkg[] = [
   {
     name: 'Care',
@@ -112,5 +157,5 @@ export const EDGES = [
   { k: 'Ownership', t: 'You own everything', d: 'Code, domain, hosting and content are in your name from day one. No buyout fee to take your own code with you, ever.' },
   { k: 'Apps', t: 'Real apps, not just websites', d: 'Our engineers have shipped 10+ apps to the App Store and Google Play. When your business needs an app, it is the same team.' },
   { k: 'Platform', t: 'A working start, not a blank page', d: 'Our customer app, admin panel and backend are already built, so your business software starts from a working foundation instead of from zero.' },
-  { k: 'Video', t: 'More reels, made properly', d: 'Short videos scripted, edited and captioned for Reels, TikTok and Shorts every month, as part of the plan rather than an extra.' },
+  { k: 'Payments', t: 'eSewa, Khalti and Fonepay', d: 'Local payments built into your website or app, so customers in Nepal can pay the way they already do.' },
 ]

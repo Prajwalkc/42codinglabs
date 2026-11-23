@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { JsonLd, pageJsonLd, pageMeta } from '@/lib/seo'
+import { EMAIL, JsonLd, pageJsonLd, pageMeta } from '@/lib/seo'
 import { NEPAL_FAQS, orderedServices } from '@/lib/services'
 import { Block, Faqs, LinkCards, PageHero, Parts, stagger } from '@/components/site/ServicePage'
-import { ContactCtas, Packages } from '@/components/site/Packages'
-import { CARE, EDGES, builds } from '@/lib/packages'
+import { ContactCtas } from '@/components/site/Packages'
+import { EDGES } from '@/lib/packages'
 
 const PATH = '/software-company-nepal'
 const DESCRIPTION =
@@ -15,6 +15,17 @@ export const metadata: Metadata = pageMeta({
   description: DESCRIPTION,
   path: PATH,
 })
+
+const INDUSTRIES = [
+  'Travel, trekking and tour operators',
+  'Clinics and health services',
+  'Schools, colleges and training centres',
+  'Restaurants and cafés',
+  'Shops and online stores',
+  'Gyms and fitness studios',
+  'Real estate and rentals',
+  'Service businesses and startups',
+]
 
 const WHY = [
   { k: 'Senior', t: '8+ years of senior engineering', d: 'The engineers on your calls are the ones writing the code, with 10+ apps live on the stores between them.' },
@@ -30,7 +41,7 @@ export default function NepalPage() {
       <JsonLd data={pageJsonLd({ path: PATH, name: 'Software development in Kathmandu, Nepal', description: DESCRIPTION, faqs: NEPAL_FAQS, crumbs })} />
       <PageHero
         crumbs={crumbs}
-        h1={['Software studio', 'in', 'Kathmandu.']}
+        h1={['Software company', 'in Kathmandu,', 'Nepal.']}
         lead="42 Coding Labs is a software and app development company in Kathmandu, Nepal. We build mobile apps, web platforms and backends for businesses here at home and for teams in the US, UK, EU and the Gulf."
         cta={<ContactCtas />}
       />
@@ -55,22 +66,26 @@ export default function NepalPage() {
         </div>
       </Block>
 
-      <Block label="Packages for Nepal">
-        <h2 className="work-h2 rv" style={{ marginTop: 28 }}>A website, an app, or the complete software.</h2>
+      <Block label="Services in Nepal">
+        <h2 className="work-h2 rv" style={{ marginTop: 28 }}>Software development services in Nepal.</h2>
         <p className="work-note rv" style={stagger(1)}>
-          A fixed price for the build, agreed before we start. Everything we make is yours to keep.
+          Websites, mobile apps, admin panels, backends and App Store publishing, built in Kathmandu by senior engineers.
         </p>
-        <Packages items={builds(true)} />
+        <LinkCards
+          items={[
+            ...orderedServices().map((s) => ({ href: `/services/${s.slug}`, k: s.name, t: s.card })),
+            { href: '/pricing', k: 'Packages', t: 'See what each package includes and ask for a quote.' },
+          ]}
+        />
+      </Block>
 
-        <h2 className="work-h2 rv" style={{ marginTop: 96 }}>Monthly care plans.</h2>
-        <p className="work-note rv" style={stagger(1)}>
-          Fixed deliverables every month, so you know exactly what you are paying for. Everything we make stays yours.
-        </p>
-        <Packages items={CARE} />
-        <p className="ad-note rv">
-          <b>Ad spend is separate.</b> Money for Facebook, Instagram, TikTok or Google ads is paid by you directly to the platform,
-          never through us, so you always see what was spent.
-        </p>
+      <Block label="Who we build for">
+        <h2 className="work-h2 rv" style={{ marginTop: 28 }}>Software for businesses across Nepal.</h2>
+        <ul className="tick-list">
+          {INDUSTRIES.map((it, i) => (
+            <li className="rv" style={stagger(i, 50)} key={it}>{it}</li>
+          ))}
+        </ul>
       </Block>
 
       <Block label="Why local businesses choose us">
@@ -101,8 +116,13 @@ export default function NepalPage() {
         <Parts items={WHY} />
       </Block>
 
-      <Block label="What we build">
-        <LinkCards items={orderedServices().map((s) => ({ href: `/services/${s.slug}`, k: s.name, t: s.card }))} />
+      <Block label="Contact in Kathmandu">
+        <dl className="nap rv">
+          <div><dt>Company</dt><dd>42 Coding Labs</dd></div>
+          <div><dt>Location</dt><dd>Kathmandu, Nepal</dd></div>
+          <div><dt>Email</dt><dd><a className="info-link" href={`mailto:${EMAIL}`}>{EMAIL}</a></dd></div>
+          <div><dt>Reply time</dt><dd>Within one business day</dd></div>
+        </dl>
       </Block>
 
       <Block label="Questions">
