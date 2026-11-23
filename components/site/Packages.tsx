@@ -51,7 +51,7 @@ export function Packages({ items }: { items: Pkg[] }) {
                 <span>{p.unit}</span>
               </>
             ) : (
-              <Link className="ask" href={`/?${new URLSearchParams({ package: CARE_NAMES.includes(p.name) ? `${p.name} care plan` : p.name, ...(p.service ? { service: p.service } : {}) })}#contact`}>
+              <Link className="ask" href={`/?${new URLSearchParams({ package: CARE_NAMES.includes(p.name) ? `${p.name === 'Care' ? 'Care' : `${p.name} care`} plan` : p.name, ...(p.service ? { service: p.service } : {}) })}#contact`}>
                 Ask for a quote
                 <Arrow className="go" />
               </Link>
