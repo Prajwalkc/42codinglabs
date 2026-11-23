@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
+import Link from 'next/link'
 import { Ic } from './icons'
 
 // Formspree address, set in Vercel as NEXT_PUBLIC_FORM_ENDPOINT (see .env.example). Without it the form runs in preview mode.
@@ -59,7 +60,7 @@ export function Contact() {
             <p className="lead">Tell us what you&apos;re working on. We&apos;ll reply with honest next steps and a rough plan, not a sales script.</p>
             <div className="info">
               <div><span className="ic"><Ic><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></Ic></span><span><small>Email</small><b>{EMAIL}</b></span></div>
-              <div><span className="ic"><Ic><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" /><circle cx="12" cy="10" r="2.5" /></Ic></span><span><small>Based in</small><b>Kathmandu, Nepal</b></span></div>
+              <div><span className="ic"><Ic><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" /><circle cx="12" cy="10" r="2.5" /></Ic></span><span><small>Based in</small><b><Link className="info-link" href="/software-company-nepal">Kathmandu, Nepal</Link></b></span></div>
               <div><span className="ic"><Ic><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></Ic></span><span><small>Response time</small><b>Within 1 business day</b></span></div>
             </div>
           </div>

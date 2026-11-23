@@ -56,7 +56,7 @@ export default function NepalPage() {
       </Block>
 
       <Block label="Packages for Nepal">
-        <h2 className="work-h2 rv" style={{ marginTop: 28 }}>Websites, shops and apps, built once.</h2>
+        <h2 className="work-h2 rv" style={{ marginTop: 28 }}>A website, an app, or the complete software.</h2>
         <p className="work-note rv" style={stagger(1)}>
           A fixed price for the build, agreed before we start. Everything we make is yours to keep.
         </p>
@@ -77,19 +77,20 @@ export default function NepalPage() {
         <Parts items={EDGES} />
       </Block>
 
-      <Block label="For trekking and tour operators">
+      <Block label="One platform, any business">
         <div className="work-case">
           <div>
-            <h2 className="work-h2 rv">A guest app and admin panel, built for trips.</h2>
+            <h2 className="work-h2 rv">An app and admin panel for your business.</h2>
           </div>
           <div className="work-body">
             <p className="rv" style={stagger(1, 80)}>
-              We built a platform for trekking and tour operators. Guests get one app for the whole trip: a day-by-day plan,
-              offline maps, chat with your team, a wallet for travel documents and a hold-to-send SOS.
+              We built a complete platform for a travel company in Nepal: an app for guests, an admin panel for staff and the
+              backend behind both. The same foundation fits any business that takes bookings, orders or members: clinics,
+              schools, gyms, restaurants, shops and service companies.
             </p>
             <p className="rv" style={stagger(2, 80)}>
-              Your staff enter trips, bookings, guests and payments once in an admin panel that works in English and Nepali, and
-              each booked guest gets their own plan. It runs under your brand, and the data stays yours.
+              Your customers book, order and pay in the app. Your team runs everything from one admin panel in English and
+              Nepali. It carries your brand, and the code and data are yours.
             </p>
             <Link className="text-link rv" href="/work" style={stagger(3, 80)}>See the case study →</Link>
           </div>

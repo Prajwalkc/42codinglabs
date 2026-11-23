@@ -34,7 +34,7 @@ export function NepalCtas() {
 
 export function Packages({ items }: { items: Pkg[] }) {
   return (
-    <div className="pkgs">
+    <div className="pkgs" style={{ ['--cols' as string]: items.length }}>
       {items.map((p, i) => (
         <div className={`pkg rv${p.featured ? ' featured' : ''}`} key={p.name} style={stagger(i, 80)}>
           {p.featured && <span className="pkg-tag">Recommended</span>}

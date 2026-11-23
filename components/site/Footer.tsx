@@ -26,6 +26,7 @@ export function Footer() {
               <li><Link href="/#process">Process</Link></li>
               <li><Link href="/work">Work</Link></li>
               <li><Link href="/#contact">Contact</Link></li>
+              <li><Link href="/software-company-nepal">For businesses in Nepal</Link></li>
             </ul>
           </div>
         </div>
